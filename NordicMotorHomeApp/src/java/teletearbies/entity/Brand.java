@@ -1,6 +1,7 @@
-package com.teletearbies;
+package teletearbies.entity;
 
 public class Brand {
+    private int id;
     private String name;
     private String model;
     private double dailyBrandPrice;
@@ -13,7 +14,16 @@ public class Brand {
         this.capacity = capacity;
     }
 
-    public Brand(){}
+    public Brand() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

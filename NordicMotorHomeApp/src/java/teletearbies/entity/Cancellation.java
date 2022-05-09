@@ -1,6 +1,7 @@
-package com.teletearbies;
+package teletearbies.entity;
 
 public class Cancellation {
+    private int id;
     private String type;
     private double percentage;
 
@@ -9,6 +10,14 @@ public class Cancellation {
     public Cancellation(String type, double percentage) {
         this.type = type;
         this.percentage = percentage;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getType() {

@@ -1,4 +1,4 @@
-package com.teletearbies;
+package teletearbies.entity;
 
 public class Extra {
    private String name;

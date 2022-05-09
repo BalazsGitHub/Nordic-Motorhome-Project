@@ -1,6 +1,4 @@
-package com.teletearbies.common;
-
-
+package teletearbies.common;
 import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PostConstruct;
@@ -11,9 +9,9 @@ public class InitialData {
 
 
     //@PostConstruct
-    public void initialDatabase(){
+    public void initialiseDatabase(){
+
+
 
     }
-
-
 }

@@ -1,13 +1,13 @@
-package com.teletearbies.main;
+package teletearbies.main;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class NordicMotorHomeAppApplication {
+public class NordicMotorHomeApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(NordicMotorHomeAppApplication.class, args);
+        SpringApplication.run(NordicMotorHomeApplication.class, args);
     }
 
 }

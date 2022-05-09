@@ -1,4 +1,4 @@
-package com.teletearbies;
+package teletearbies.entity;
 
 public class Customer {
     private int id;
