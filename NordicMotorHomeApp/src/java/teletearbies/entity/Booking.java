@@ -49,7 +49,7 @@ public class Booking {
     private List<BookedExtras> bookedExtras;
 
     public Booking(Motorhome motorhome, String pickUpPoint, String dropOffPoint, boolean isServiced, boolean isFuelHalf) {
-        this.motorhome = (List<Motorhome>) motorhome;
+        this.motorhome = motorhome;
         this.pickUpPoint = pickUpPoint;
         this.dropOffPoint = dropOffPoint;
         this.extraKilometer = extraKilometer;
@@ -107,43 +107,43 @@ public class Booking {
         isFuelHalf = fuelHalf;
     }
 
-    public int getMotorhomeId() {
-        return motorhomeId;
+    public Motorhome getMotorhomeId() {
+        return motorhome;
     }
 
-    public void setMotorhomeId(int motorhomeId) {
-        this.motorhomeId = motorhomeId;
+    public void setMotorhomeId(Motorhome motorhomeId) {
+        this.motorhome = motorhomeId;
     }
 
-    public int getCustomerId() {
+    public Customer getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setCustomerId(Customer customerId) {
         this.customerId = customerId;
     }
 
-    public int getEmployeeId() {
+    public Employee getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(int employeeId) {
+    public void setEmployeeId(Employee employeeId) {
         this.employeeId = employeeId;
     }
 
-    public int getSeasonId() {
+    public Season getSeasonId() {
         return seasonId;
     }
 
-    public void setSeasonId(int seasonId) {
+    public void setSeasonId(Season seasonId) {
         this.seasonId = seasonId;
     }
 
-    public int getCancellationId() {
+    public Cancellation getCancellationId() {
         return cancellationId;
     }
 
-    public void setCancellationId(int cancellationId) {
+    public void setCancellationId(Cancellation cancellationId) {
         this.cancellationId = cancellationId;
     }
 }
