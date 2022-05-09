@@ -20,7 +20,7 @@ public class Motorhome {
     @Column(nullable = false, unique = false, length = 10, name = "speedomenter")
     private double speedometer;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "brand_id")
     private Brand brandId;
 
