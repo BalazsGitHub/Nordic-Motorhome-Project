@@ -26,9 +26,8 @@ public class Booking {
 
     private boolean isFuelHalf;
 
-    @OneToMany(mappedBy = "booking")
-    private List<Motorhome> motorhome;
-
+    @ManyToOne
+    private Motorhome motorhome;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id")
@@ -49,8 +48,8 @@ public class Booking {
     @OneToMany(mappedBy = "booking")
     private List<BookedExtras> bookedExtras;
 
-    public Booking(Motorhome motorhomeId, String pickUpPoint, String dropOffPoint, boolean isServiced, boolean isFuelHalf) {
-        this.motorhomeId = motorhomeId;
+    public Booking(Motorhome motorhome, String pickUpPoint, String dropOffPoint, boolean isServiced, boolean isFuelHalf) {
+        this.motorhome = (List<Motorhome>) motorhome;
         this.pickUpPoint = pickUpPoint;
         this.dropOffPoint = dropOffPoint;
         this.extraKilometer = extraKilometer;
