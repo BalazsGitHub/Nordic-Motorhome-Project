@@ -11,7 +11,5 @@ public class InitialData {
     //@PostConstruct
     public void initialiseDatabase(){
 
-
-
     }
 }

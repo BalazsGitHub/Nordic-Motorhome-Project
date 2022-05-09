@@ -1,10 +1,25 @@
 package teletearbies.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "brand")
 public class Brand {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(nullable = false, unique = false, length = 255, name = "name")
     private String name;
+
+    @Column(nullable = false, unique = false, length = 255, name = "model")
     private String model;
+
+    @Column(nullable = false, unique = false, length = 255, name = "daily_brand_price")
     private double dailyBrandPrice;
+
+    @Column(nullable = false, unique = false, length = 10, name = "capacity")
     private int capacity;
 
     public Brand(String name, String model, double dailyBrandPrice, int capacity) {

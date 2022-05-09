@@ -9,5 +9,4 @@ public class NordicMotorHomeApplication {
     public static void main(String[] args) {
         SpringApplication.run(NordicMotorHomeApplication.class, args);
     }
-
 }

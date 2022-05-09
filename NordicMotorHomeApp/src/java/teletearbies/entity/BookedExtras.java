@@ -12,7 +12,6 @@ public class BookedExtras {
     public BookedExtras() {
     }
 
-
     public int getBooking_id() {
         return booking_id;
     }

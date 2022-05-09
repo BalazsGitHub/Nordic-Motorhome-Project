@@ -1,5 +1,10 @@
 package teletearbies.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "cancellation")
 public class Cancellation {
     private int id;
     private String type;
