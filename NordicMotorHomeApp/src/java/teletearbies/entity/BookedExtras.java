@@ -16,7 +16,7 @@ public class BookedExtras {
     private int extra_id;
 
     @ManyToOne
-    @JoinColumn(name = "booking_id")
+    @JoinColumn(name = "booking")
     private Booking booking;
 
     public Booking getBooking() {

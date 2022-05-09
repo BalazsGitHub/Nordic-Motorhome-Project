@@ -1,6 +1,7 @@
 package teletearbies.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "motorhome")
@@ -23,8 +24,8 @@ public class Motorhome {
     @JoinColumn(name = "brand_id")
     private Brand brandId;
 
-    @OneToMany
-    private Booking booking;
+    @OneToMany(mappedBy = "motorhome_id")
+    private List<Booking> booking;
 
 
     public Motorhome(String name, String fuelType, double speedometer, Brand brandId) {
