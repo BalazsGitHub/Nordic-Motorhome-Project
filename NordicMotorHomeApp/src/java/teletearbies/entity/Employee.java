@@ -1,10 +1,22 @@
 package teletearbies.entity;
 
+import javax.persistence.*;
 
+@Entity
+@Table(name = "employee")
 public class Employee {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(nullable = false, unique = false, length = 255, name = "full_name")
     private String fullName;
+
+    @Column(nullable = false, unique = false, length = 255, name = "title")
     private String title;
+
+    @Column(nullable = false,unique = false,length = 255, name = "phone_number")
     private String phoneNumber;
 
     public Employee(String fullName, String title, String phoneNumber){
