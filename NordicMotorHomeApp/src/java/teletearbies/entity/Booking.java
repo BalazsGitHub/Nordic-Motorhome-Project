@@ -1,29 +1,57 @@
 package teletearbies.entity;
 
-public class Booking {
-    private int id;
-    private String pickUpPoint;
-    private String dropOffPoint;
-    private double extraKilometer;
-    private boolean isServiced;
-    private boolean isFuelHalf;
-    private int motorhomeId;
-    private int customerId;
-    private int employeeId;
-    private int seasonId;
-    private int cancellationId;
+import javax.persistence.*;
+import java.util.List;
 
-    public Booking(String pickUpPoint, String dropOffPoint, double extraKilometer, boolean isServiced, boolean isFuelHalf, int motorhomeId, int customerId, int employeeId, int seasonId, int cancellationId) {
+@Entity
+@Table(name = "booking")
+public class Booking {
+
+    @Id
+    //indicates that the ID should be generated automatically
+    //identity means that will be unique
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(nullable = false, unique = false, length = 255, name = "pickup_point")
+    private String pickUpPoint;
+
+    @Column(nullable = false, unique = false, length = 255, name = "dropoff_point")
+    private String dropOffPoint;
+
+    @Column(nullable = false, unique = false, length = 255, name = "extra_kilometer")
+    private double extraKilometer;
+
+    private boolean isServiced;
+
+    private boolean isFuelHalf;
+
+    @ManyToOne
+    private Motorhome motorhomeId;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "customer_id")
+    private Customer customerId;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "employee_id")
+    private Employee employeeId;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "season_id")
+    private Season seasonId;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cancellation_id")
+    private Cancellation cancellationId;
+
+    public Booking(Motorhome motorhomeId, String pickUpPoint, String dropOffPoint, boolean isServiced, boolean isFuelHalf) {
+        this.motorhomeId = motorhomeId;
         this.pickUpPoint = pickUpPoint;
         this.dropOffPoint = dropOffPoint;
         this.extraKilometer = extraKilometer;
         this.isServiced = isServiced;
         this.isFuelHalf = isFuelHalf;
-        this.motorhomeId = motorhomeId;
-        this.customerId = customerId;
-        this.employeeId = employeeId;
-        this.seasonId = seasonId;
-        this.cancellationId = cancellationId;
     }
 
     public Booking(){}
