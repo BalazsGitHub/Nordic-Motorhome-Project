@@ -1,6 +1,8 @@
 package teletearbies.entity;
 
 import javax.persistence.*;
+import java.awt.*;
+import java.util.List;
 
 @Entity
 @Table(name = "brand")
@@ -22,12 +24,18 @@ public class Brand {
     @Column(nullable = false, unique = false, length = 10, name = "capacity")
     private int capacity;
 
+    //the 'type' of a one-to-many relationship needs to be put into a list
+    @OneToMany
+    private List<Motorhome> motorhome;
+
+
     public Brand(String name, String model, double dailyBrandPrice, int capacity) {
         this.name = name;
         this.model = model;
         this.dailyBrandPrice = dailyBrandPrice;
         this.capacity = capacity;
     }
+
 
     public Brand() {
     }

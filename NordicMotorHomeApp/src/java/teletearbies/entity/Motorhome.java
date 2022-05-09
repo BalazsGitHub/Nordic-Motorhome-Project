@@ -1,14 +1,33 @@
 package teletearbies.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "motorhome")
 public class Motorhome {
-    private int id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(nullable = false, unique = false, length = 255, name = "name")
     private String name;
+
+    @Column(nullable = false,unique = false, length = 255, name = "fuel_type")
     private String fuelType;
+
+    @Column(nullable = false, unique = false, length = 10, name = "speedomenter")
     private double speedometer;
-    private int brandId;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "brand_id")
+    private Brand brandId;
+
+    @OneToMany
+    private Booking booking;
 
 
-    public Motorhome(String name, String fuelType, double speedometer, int brandId) {
+    public Motorhome(String name, String fuelType, double speedometer, Brand brandId) {
         this.name = name;
         this.fuelType = fuelType;
         this.speedometer = speedometer;
@@ -50,11 +69,11 @@ public class Motorhome {
         this.speedometer = speedometer;
     }
 
-    public int getBrandId() {
+    public Brand getBrandId() {
         return brandId;
     }
 
-    public void setBrandId(int brandId) {
+    public void setBrandId(Brand brandId) {
         this.brandId = brandId;
     }
 }
