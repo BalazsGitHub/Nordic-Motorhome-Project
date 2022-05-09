@@ -45,6 +45,9 @@ public class Booking {
     @JoinColumn(name = "cancellation_id")
     private Cancellation cancellationId;
 
+    @OneToMany(mappedBy = "booking")
+    private List<BookedExtras> bookedExtras;
+
     public Booking(Motorhome motorhomeId, String pickUpPoint, String dropOffPoint, boolean isServiced, boolean isFuelHalf) {
         this.motorhomeId = motorhomeId;
         this.pickUpPoint = pickUpPoint;

@@ -1,10 +1,33 @@
 package teletearbies.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "booked_extras")
 public class BookedExtras {
-    private int booking_id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @ManyToOne
+    private Booking booking_id;
+
     private int extra_id;
 
-    public BookedExtras(int booking_id, int extra_id) {
+    @ManyToOne
+    @JoinColumn(name = "booking_id")
+    private Booking booking;
+
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
+    }
+
+    public BookedExtras(Booking booking_id, int extra_id) {
         this.booking_id = booking_id;
         this.extra_id = extra_id;
     }
@@ -12,19 +35,4 @@ public class BookedExtras {
     public BookedExtras() {
     }
 
-    public int getBooking_id() {
-        return booking_id;
-    }
-
-    public void setBooking_id(int booking_id) {
-        this.booking_id = booking_id;
-    }
-
-    public int getExtra_id() {
-        return extra_id;
-    }
-
-    public void setExtra_id(int extra_id) {
-        this.extra_id = extra_id;
-    }
 }
