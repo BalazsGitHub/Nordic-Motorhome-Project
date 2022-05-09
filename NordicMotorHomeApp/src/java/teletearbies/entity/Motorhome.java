@@ -24,8 +24,8 @@ public class Motorhome {
     @JoinColumn(name = "brand_id")
     private Brand brandId;
 
-    @OneToMany(mappedBy = "motorhome")
-    private List<Booking> booking;
+   @ManyToOne
+   private Booking booking;
 
 
     public Motorhome(String name, String fuelType, double speedometer, Brand brandId) {

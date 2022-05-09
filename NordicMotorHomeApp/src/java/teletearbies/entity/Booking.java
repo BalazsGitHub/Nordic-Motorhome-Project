@@ -26,8 +26,9 @@ public class Booking {
 
     private boolean isFuelHalf;
 
-    @ManyToOne
-    private Motorhome motorhome;
+    @OneToMany(mappedBy = "booking")
+    private List<Motorhome> motorhome;
+
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id")
