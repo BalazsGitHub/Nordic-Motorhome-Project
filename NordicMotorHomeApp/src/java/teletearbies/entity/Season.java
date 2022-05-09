@@ -1,11 +1,23 @@
 package teletearbies.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "season")
 public class Season {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(nullable = false, unique = false, length = 255, name = "name")
     private String name;
+
+    @Column(nullable = false, unique = false, length = 10, name = "type")
     private double seasonPriceMultiplier;
 
-    public Season(){}
+    public Season(){
+    }
 
     public Season(String name, double seasonPriceMultiplier){
         this.name=name;

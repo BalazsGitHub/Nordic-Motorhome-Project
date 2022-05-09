@@ -1,13 +1,19 @@
 package teletearbies.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "cancellation")
 public class Cancellation {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(nullable = false, unique = false, length = 255, name = "type")
     private String type;
+
+    @Column(nullable = false, unique = false, length = 10, name = "percentage")
     private double percentage;
 
     public Cancellation(){}
