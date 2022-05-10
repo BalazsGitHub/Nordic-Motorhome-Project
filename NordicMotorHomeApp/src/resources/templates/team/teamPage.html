@@ -1,21 +1,18 @@
 <head th:replace="fragments/header :: head"></head>
 <body>
-
-<h1 class="center"> Nordic Motorhome Rental</h1>
+<h1 class="center">Team Teletearbies</h1>
 
 <div class="image">
     <figure>
-        <img th:src="@{/images/tele.nmh.png}" alt="bg" width="600" height="400">
+        <a th:href="@{/}"><img th:src="@{/images/tele.nmh.png}" alt="bg" width="600" height="400"></a>
         <figcaption>
-            Team Teletearbies
             <span>
                 <div class="row nav-links">
-                <a th:href="@{/overview}">Overview</a>
+                <a th:href="@{/}">Main Page</a>
                 </div>
             </span>
         </figcaption>
     </figure>
 </div>
-
 </body>
 </html>
