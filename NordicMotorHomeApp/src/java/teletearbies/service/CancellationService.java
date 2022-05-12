@@ -13,7 +13,7 @@ public class CancellationService {
     @Autowired
     CancellationRepository cancellationRepository;
 
-    public void saveBrand(Cancellation cancellation) {
+    public void saveCancellation(Cancellation cancellation) {
         cancellationRepository.save(cancellation);
     }
 
@@ -21,7 +21,7 @@ public class CancellationService {
         return cancellationRepository.findById(id).get();
     }
 
-    public List<Cancellation> getAllEmployees() {
+    public List<Cancellation> getAllCancellations() {
         return (List<Cancellation>) cancellationRepository.findAll();
     }
 

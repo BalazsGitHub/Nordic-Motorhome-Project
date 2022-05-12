@@ -22,7 +22,7 @@ public class SeasonService {
         return seasonRepository.findById(id).get();
     }
 
-    public List<Season> getAllEmployees() {
+    public List<Season> getAll() {
         return (List<Season>) seasonRepository.findAll();
     }
 

@@ -25,8 +25,8 @@ public class Brand {
     private int capacity;
 
     //the 'type' of a one-to-many relationship needs to be put into a list
-    @OneToMany
-    private List<Motorhome> motorhome;
+    @OneToMany(mappedBy = "brand")
+    private List<Motorhome> motorhomes;
 
 
     public Brand(String name, String model, double dailyBrandPrice, int capacity) {

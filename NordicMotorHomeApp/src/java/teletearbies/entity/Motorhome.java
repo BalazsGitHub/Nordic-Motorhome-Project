@@ -21,30 +21,22 @@ public class Motorhome {
     private double speedometer;
 
     @ManyToOne
-    @JoinColumn(name = "brand_id")
-    private Brand brandId;
+    @JoinColumn(name = "id", referencedColumnName = "brand_id")
+    private Brand brand;
 
    @OneToMany(mappedBy = "motorhome")
    private List <Booking> booking;
 
 
-    public Motorhome(String name, String fuelType, double speedometer, Brand brandId) {
+    public Motorhome(String name, String fuelType, double speedometer) {
         this.name = name;
         this.fuelType = fuelType;
         this.speedometer = speedometer;
-        this.brandId = brandId;
     }
 
     public Motorhome() {
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -71,10 +63,26 @@ public class Motorhome {
     }
 
     public Brand getBrandId() {
-        return brandId;
+        return brand;
     }
 
     public void setBrandId(Brand brandId) {
-        this.brandId = brandId;
+        this.brand = brandId;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public List<Booking> getBooking() {
+        return booking;
+    }
+
+    public void setBooking(List<Booking> booking) {
+        this.booking = booking;
+    }
+
+    public Integer getId() {
+        return id;
     }
 }

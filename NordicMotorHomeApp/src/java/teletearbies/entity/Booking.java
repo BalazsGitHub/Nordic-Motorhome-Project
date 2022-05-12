@@ -26,6 +26,7 @@ public class Booking {
 
     private boolean isFuelHalf;
 
+
     @ManyToOne
     private Motorhome motorhome;
 
