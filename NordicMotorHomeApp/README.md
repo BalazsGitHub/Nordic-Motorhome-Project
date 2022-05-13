@@ -8,6 +8,6 @@ Fé: Booking, BookedExtras
 
 Mubbi: Motorhome, Extra, Customer
 
-Balu: initialdata, EMployee
+Balu: initialdata, Employee
 
 Dani: Brand, Season, Cancellation
