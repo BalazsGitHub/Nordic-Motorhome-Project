@@ -14,13 +14,13 @@
 <table class="table" table-bordered>
     <thead class="thead-dark"></thead>
     <tr>
-        <th></th>
         <th>ID</th>
         <th>Name</th>
         <th>Fuel</th>
         <th>Speedometer</th>
         <th>Brand</th>
-        <th>Motorhome</th>
+        <th>Model</th>
+        <th>Price/day</th>
         <th></th>
     </tr>
     <tbody>
@@ -30,7 +30,9 @@
             <td>[[${motorhome.name}]]</td>
             <td>[[${motorhome.fuelType}]]</td>
             <td>[[${motorhome.speedometer}]]</td>
-            <td>[[${motorhome.brandId}]]</td>
+            <td>[[${motorhome.brandId.name}]]</td>
+            <td>[[${motorhome.brandId.model}]]</td>
+            <td>[[${motorhome.brandId.dailyBrandPrice}]]</td>
             <td></td>
         </tr>
     </th:block>

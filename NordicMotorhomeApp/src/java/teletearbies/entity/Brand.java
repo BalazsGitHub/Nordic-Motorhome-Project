@@ -27,7 +27,6 @@ public class Brand {
     @OneToMany(mappedBy = "brand")
     private List<Motorhome> motorhomes;
 
-
     public Brand(String name, String model, double dailyBrandPrice, int capacity) {
         this.name = name;
         this.model = model;
@@ -78,4 +77,5 @@ public class Brand {
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
+
 }

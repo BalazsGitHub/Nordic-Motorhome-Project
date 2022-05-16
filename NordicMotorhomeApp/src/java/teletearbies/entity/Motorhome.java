@@ -29,10 +29,11 @@ public class Motorhome {
     private List<Booking> booking;
 
 
-    public Motorhome(String name, String fuelType, double speedometer) {
+    public Motorhome(String name, String fuelType, double speedometer, Brand brand) {
         this.name = name;
         this.fuelType = fuelType;
         this.speedometer = speedometer;
+        this.brand = brand;
     }
 
     public Motorhome() {
