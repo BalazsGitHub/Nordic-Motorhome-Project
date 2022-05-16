@@ -3,13 +3,16 @@ package teletearbies.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "employee")
-public class Employee {
-
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(nullable = false, unique = false, length = 255, name = "user_name")
+    private String userName;
+
+    @Column(nullable = false, unique = false, length = 255, name = "password")
+    private String password;
     @Column(nullable = false, unique = false, length = 255, name = "full_name")
     private String fullName;
 
@@ -19,13 +22,15 @@ public class Employee {
     @Column(nullable = false, unique = false, length = 255, name = "phone_number")
     private String phoneNumber;
 
-    public Employee(String fullName, String title, String phoneNumber) {
+    public User(String fullName, String title, String phoneNumber, String userName, String password) {
         this.fullName = fullName;
         this.title = title;
         this.phoneNumber = phoneNumber;
+        this.userName = userName;
+        this.password = password;
     }
 
-    public Employee() {
+    public User() {
     }
 
     public int getId() {
@@ -58,5 +63,21 @@ public class Employee {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

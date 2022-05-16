@@ -2,7 +2,6 @@ package teletearbies.common;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import teletearbies.entity.*;
 import teletearbies.service.*;
 
 import javax.annotation.PostConstruct;
@@ -20,7 +19,7 @@ public class InitialData {
     private CancellationService cancellationService;
 
     @Autowired
-    private EmployeeService employeeService;
+    private UserService userService;
 
     @Autowired
     private SeasonService seasonService;
@@ -28,9 +27,10 @@ public class InitialData {
     @Autowired
     private CustomerService customerService;
 
-//    @PostConstruct
-//    public void initialiseDatabase() {
-//
+
+    @PostConstruct
+    public void initialiseDatabase() {
+
 //        Brand brand1 = new Brand("American coach", "Eagle", 4000, 12);
 //        Brand brand2 = new Brand("American coach", "Dream", 4000, 12);
 //        Brand brand3 = new Brand("Jayco", "Alante", 3500, 10);
@@ -72,17 +72,30 @@ public class InitialData {
 //        motorhomeService.saveMotorhome(motorhome10);
 //
 //
-//        Employee employee1 = new Employee("Barbara Santa", "Sales assistant", "55512131415");
-//        Employee employee2 = new Employee("Monica Lewinsky", "Sales assistant", "55522232425");
-//        Employee employee3 = new Employee("Cindy Crawford", "Sales assistant", "55532333435");
-//        Employee employee4 = new Employee("Mr. Robot", "Sales assistant", "55542434445");
-//        Employee employee5 = new Employee("Claudia Schiffer", "Cleaning staff", "55552535455");
-//        Employee employee6 = new Employee("Heidi Klum", "Cleaning staff", "55562636465");
-//        Employee employee7 = new Employee("Big Gay Al", "Auto mechanic", "55572737475");
-//        Employee employee8 = new Employee("John Doe", "Bookkeeper", "55582838485");
+//        User user1 = new User("Barbara Santa", "Sales assistant", "55512131415", "Barbi", "1234");
+//        User user2 = new User("Monica Lewinsky", "Sales assistant", "55522232425", "Mona", "1111");
+//        User user3 = new User("Cindy Crawford", "Sales assistant", "55532333435", "Cindy", "0000");
+//        User user4 = new User("Mr. Robot", "Sales assistant", "55542434445", "Robi", "0123");
+//        User user5 = new User("John Doe", "Bookkeeper", "55582838485", "Johnny", "4321");
 //
-//        employeeService.saveEmployee(employee1);
-//        employeeService.saveEmployee(employee1);
+//        userService.saveUser(user1);
+//        userService.saveUser(user2);
+//        userService.saveUser(user3);
+//        userService.saveUser(user4);
+//        userService.saveUser(user5);
+//
+//
+////        Employee employee1 = new Employee("Barbara Santa", "Sales assistant", "55512131415");
+////        Employee employee2 = new Employee("Monica Lewinsky", "Sales assistant", "55522232425");
+////        Employee employee3 = new Employee("Cindy Crawford", "Sales assistant", "55532333435");
+////        Employee employee4 = new Employee("Mr. Robot", "Sales assistant", "55542434445");
+////        Employee employee5 = new Employee("Claudia Schiffer", "Cleaning staff", "55552535455");
+////        Employee employee6 = new Employee("Heidi Klum", "Cleaning staff", "55562636465");
+////        Employee employee7 = new Employee("Big Gay Al", "Auto mechanic", "55572737475");
+////        Employee employee8 = new Employee("John Doe", "Bookkeeper", "55582838485");
+////
+////        employeeService.saveEmployee(employee1);
+////        employeeService.saveEmployee(employee1);
 //
 //
 //        Season seasonLow = new Season("Low Season", 1);
@@ -118,5 +131,6 @@ public class InitialData {
 //        Extra extra4 = new Extra("motorhoe", 999);
 //        Extra extra5 = new Extra("trailer", 500);
 //
-//    }
+//
+    }
 }
