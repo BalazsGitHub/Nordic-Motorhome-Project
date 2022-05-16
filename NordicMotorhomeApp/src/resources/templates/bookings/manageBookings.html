@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" href="booking.css" th:href="@{/css/booking.css}" media="screen">
+    <title>Nordic Motorhome Rental</title>
+</head>
+<body>
+<div class="container-fluid text-center">
+</div>
+<table class="table" table-bordered>
+    <thead class="thead-dark"></thead>
+    <tr>
+        <th></th>
+        <th>ID number</th>
+        <th>Pick up point</th>
+        <th>Drop off point</th>
+        <th>Extra km</th>
+        <th>Is it serviced</th>
+        <th>Is fuel at least half full</th>
+        <th></th>
+    </tr>
+    <tbody>
+    <th:block th:each="booking : ${bookingList}">
+        <tr>
+            <td>[[${booking.id}]]</td>
+            <td>[[${booking.pickUpPoint}]]</td>
+            <td>[[${booking.dropOffPoint}]]</td>
+            <td>[[${booking.extraKilometer}]]</td>
+            <td>[[${booking.isServiced}]]</td>
+            <td>[[${booking.isFuelHalf}]]</td>
+            <td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+<div>
+    <a class="h5 text-center" th:href="@{/}">Back to the main site</a>
+</div>
+</div>
+</body>
+</html>

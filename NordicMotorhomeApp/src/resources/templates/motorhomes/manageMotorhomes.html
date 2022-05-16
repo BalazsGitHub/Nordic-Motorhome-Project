@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" href="booking.css" th:href="@{/css/booking.css}" media="screen">
+    <title>Nordic Motorhome Rental</title>
+</head>
+<body>
+<div class="container-fluid text-center">
+</div>
+<table class="table" table-bordered>
+    <thead class="thead-dark"></thead>
+    <tr>
+        <th></th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Fuel</th>
+        <th>Speedometer</th>
+        <th>Brand</th>
+        <th>Motorhome</th>
+        <th></th>
+    </tr>
+    <tbody>
+    <th:block th:each="motorhome : ${motorhomeList}">
+        <tr>
+            <td>[[${motorhome.id}]]</td>
+            <td>[[${motorhome.name}]]</td>
+            <td>[[${motorhome.fuelType}]]</td>
+            <td>[[${motorhome.speedometer}]]</td>
+            <td>[[${motorhome.brandId}]]</td>
+            <td></td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+</div>
+</body>
+</html>
