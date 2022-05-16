@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import teletearbies.entity.Brand;
 import teletearbies.entity.Motorhome;
+import teletearbies.repository.MotorhomeRepository;
 import teletearbies.service.BrandService;
 import teletearbies.service.MotorhomeNotFoundException;
 import teletearbies.service.MotorhomeService;
@@ -27,11 +28,12 @@ public class MotorhomeController {
 
     @RequestMapping("/motorhome/add")
     public String addMotorhome(Model model) {
-        model.addAttribute("motorhome", new Motorhome());
+
 
         List<Brand> brandList = brandService.getAllBrands();
-
         model.addAttribute("brands", brandList );
+
+        model.addAttribute("motorhome", new Motorhome());
 
         return "motorhomes/motorhomeForm";
     }
@@ -48,6 +50,12 @@ public class MotorhomeController {
         try {
             Motorhome motorhome = motorhomeService.getMotorhome(id);
             model.addAttribute("motorhome", motorhome);
+
+            List<Brand> brandList = brandService.getAllBrands();
+            model.addAttribute("brands", brandList );
+
+
+
             return "motorhomes/motorhomeForm";
         } catch (MotorhomeNotFoundException e) {
             redirectAttributes.addFlashAttribute("message", e.getMessage());
@@ -67,8 +75,5 @@ public class MotorhomeController {
 
         }
         return "redirect:/managemotorhomes";
-
     }
-
-
 }

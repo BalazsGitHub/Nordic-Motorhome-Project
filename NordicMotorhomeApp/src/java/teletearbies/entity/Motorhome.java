@@ -21,8 +21,9 @@ public class Motorhome {
     private double speedometer;
 
 
+
     @ManyToOne
-    @JoinColumn(name = "brand_id", referencedColumnName = "id")
+    @JoinColumn( name = "brand_id", referencedColumnName = "id")
     private Brand brand;
 
     @OneToMany(mappedBy = "motorhome")

@@ -2,7 +2,7 @@
 <body>
 <div class="container-fluid">
     <h2 class="text-center">Add New Motorhome</h2>
-    <h2 class="text/center" > [[${pageTitle}]]</h2>
+    <h2 class="text/center"> [[${pageTitle}]]</h2>
 </div>
 <!--  method attribute specifies how to send form-data  -->
 <!--  method="post" = sent as http -->
@@ -31,11 +31,13 @@
         </div>
 
         <div class="row2">
-        <select class="form-control" id="dropDownList">
-            <option value="0">select option</option>
-            <option th:each="brands : ${brands}" th:value="${brands}" th:text="${brands}"></option>
-        </select>
+            <div class="col sm-8">
+                <select th:field="*{brandId}" class="form-control" id="dropDownList">
+                    <option value="0">Select brand</option>
+                    <option th:each="brand : ${brands}" th:value="${brand.id}" th:text="${brand.name}"></option>
+                </select>
             </div>
+        </div>
 
         <div class="text-center">
             <button type="submit" class=" btn btn-primary m-2">Save</button>
@@ -45,7 +47,7 @@
 </form>
 <script type="text/javascript">
     function cancelForm() {
-        window.location= "[[@{/managemotorhomes}]]"
+        window.location = "[[@{/managemotorhomes}]]"
     }
 </script>
 </body>

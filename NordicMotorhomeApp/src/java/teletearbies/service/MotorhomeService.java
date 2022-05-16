@@ -15,6 +15,7 @@ public class MotorhomeService {
     private MotorhomeRepository motorhomeRepository;
 
     public void saveMotorhome(Motorhome motorhome) {
+
         motorhomeRepository.save(motorhome);
     }
 
