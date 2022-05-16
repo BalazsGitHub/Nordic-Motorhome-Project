@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import teletearbies.entity.*;
 import teletearbies.service.*;
 
-import javax.annotation.PostConstruct;
+//Test push
 
 @Configuration
 public class InitialData {
