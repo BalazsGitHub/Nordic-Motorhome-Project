@@ -6,6 +6,7 @@ import teletearbies.entity.Motorhome;
 import teletearbies.repository.MotorhomeRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MotorhomeService {
@@ -17,12 +18,23 @@ public class MotorhomeService {
         motorhomeRepository.save(motorhome);
     }
 
-    public Motorhome findById(int id) {
-        return motorhomeRepository.findById(id).get();
-    }
-
     public List<Motorhome> getAllMotorhomes() {
         return (List<Motorhome>) motorhomeRepository.findAll();
     }
 
-}
+    public Motorhome getMotorhome(Integer id) throws MotorhomeNotFoundException {
+        Optional<Motorhome> result = motorhomeRepository.findById(id);
+        if (result.isPresent()) {
+            return result.get();
+        }
+        throw new MotorhomeNotFoundException("Could not find any Motorhome with id: " + id);
+    }
+
+    public void deleteMotorhome(Integer id) throws MotorhomeNotFoundException {
+        Long count = motorhomeRepository.countById(id);
+        if (count == null || count == 0) {
+                throw new MotorhomeNotFoundException("Could not find Motorhome with id " + id);
+            }
+            motorhomeRepository.deleteById(id);
+        }
+    }
