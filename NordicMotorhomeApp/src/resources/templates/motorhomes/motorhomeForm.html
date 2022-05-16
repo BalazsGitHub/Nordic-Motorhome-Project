@@ -31,7 +31,7 @@
         </div>
 
         <div class="row2">
-        <select class="form-control" id="dropDownList">
+        <select name="brandlist" class="form-control" id="dropDownList">
             <option value="0">select option</option>
             <option th:each="brands : ${brands}" th:value="${brands}" th:text="${brands}"></option>
         </select>

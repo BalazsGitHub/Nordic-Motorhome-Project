@@ -6,4 +6,6 @@ import teletearbies.entity.Brand;
 
 @Repository
 public interface BrandRepository extends CrudRepository<Brand, Integer> {
+
+ Brand findBrandByName(String name);
 }

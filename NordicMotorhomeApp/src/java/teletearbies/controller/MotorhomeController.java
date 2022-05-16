@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import teletearbies.entity.Brand;
 import teletearbies.entity.Motorhome;
@@ -13,7 +14,6 @@ import teletearbies.service.BrandService;
 import teletearbies.service.MotorhomeNotFoundException;
 import teletearbies.service.MotorhomeService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -25,21 +25,25 @@ public class MotorhomeController {
     @Autowired
     BrandService brandService;
 
+
     @RequestMapping("/motorhome/add")
     public String addMotorhome(Model model) {
         model.addAttribute("motorhome", new Motorhome());
 
         List<Brand> brandList = brandService.getAllBrands();
 
-        model.addAttribute("brands", brandList );
+
+        model.addAttribute("brands", brandList);
 
         return "motorhomes/motorhomeForm";
     }
 
     @PostMapping("/motorhome/save")
-    public String saveMotorhome(Motorhome motorhome, RedirectAttributes redirectAttributes) {
+    public String saveMotorhome(Motorhome motorhome, @RequestParam(value = "brandlist") String brand, RedirectAttributes redirectAttributes) {
+        motorhome.setBrand(brandService.findByName(brand.substring(2)));
         motorhomeService.saveMotorhome(motorhome);
         redirectAttributes.addFlashAttribute("message", "Motorhome was saved!");
+
         return "redirect:/managemotorhomes";
     }
 

@@ -45,8 +45,4 @@ public class MainController {
         return "bookings/manageBookings";
     }
 
-    @RequestMapping("/manageusers")
-    public String manageUsers() {
-        return "users/manageUsers";
-    }
 }

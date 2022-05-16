@@ -25,4 +25,7 @@ public class BrandService {
         return (List<Brand>) brandRepository.findAll();
     }
 
+    public Brand findByName(String name){
+        return brandRepository.findBrandByName(name);
+    }
 }
