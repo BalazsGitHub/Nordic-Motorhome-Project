@@ -49,7 +49,6 @@ public class Booking {
 
     //private boolean isFuelHalf;
 
-
     @ManyToOne
     private Motorhome motorhome;
 
@@ -58,8 +57,8 @@ public class Booking {
     private Customer customerId;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "employee_id")
-    private Employee employeeId;
+    @JoinColumn(name = "user_id")
+    private User userId;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "season_id")
@@ -182,12 +181,12 @@ public class Booking {
         this.customerId = customerId;
     }
 
-    public Employee getEmployeeId() {
-        return employeeId;
+    public User getUserId() {
+        return userId;
     }
 
-    public void setEmployeeId(Employee employeeId) {
-        this.employeeId = employeeId;
+    public void setUserId(User userId) {
+        this.userId = userId;
     }
 
     public Season getSeasonId() {

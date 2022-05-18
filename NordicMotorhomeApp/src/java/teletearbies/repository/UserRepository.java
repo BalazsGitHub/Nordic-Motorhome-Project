@@ -2,8 +2,9 @@ package teletearbies.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import teletearbies.entity.Employee;
+import teletearbies.entity.User;
 
 @Repository
-public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
+public interface UserRepository extends CrudRepository<User, Integer> {
+    Long countById(Integer id);
 }

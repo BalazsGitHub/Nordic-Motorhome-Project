@@ -6,8 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import teletearbies.entity.Booking;
 import teletearbies.entity.Motorhome;
+import teletearbies.entity.User;
 import teletearbies.service.BookingService;
 import teletearbies.service.MotorhomeService;
+import teletearbies.service.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +23,8 @@ public class MainController {
 
     @Autowired
     private BookingService bookingService;
+    @Autowired
+    private UserService userService;
 
     @RequestMapping("/")
     public String index() {
@@ -47,7 +51,9 @@ public class MainController {
     }
 
     @RequestMapping("/manageusers")
-    public String manageUsers() {
+    public String manageUsers(Model model) {
+        List<User> userList = userService.getAllUsers();
+        model.addAttribute("userList", userList);
         return "users/manageUsers";
     }
 

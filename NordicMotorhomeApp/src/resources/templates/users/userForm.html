@@ -1,43 +1,46 @@
 <head th:replace="fragments/header :: head"></head>
 <body>
 <div class="container-fluid">
-    <h2 class="text-center">Add New Motorhome</h2>
+    <h2 class="text-center">Add New User</h2>
     <h2 class="text/center"> [[${pageTitle}]]</h2>
 </div>
 <!--  method attribute specifies how to send form-data  -->
 <!--  method="post" = sent as http -->
-<form th:action="@{/motorhome/save}" method="post" th:object="${motorhome}" style="max-width: 500px; margin: 0 auto;">
+<form th:action="@{/user/save}" method="post" th:object="${user}" style="max-width: 500px; margin: 0 auto;">
     <input type="hidden" th:field="*{id}">
     <!-- th:object="${user} = same as showNewForm attribute -->
     <div class="border border-secondary rounded p-3">
         <div class="row2">
-            <label class="col-sm-4 col-form-label">Name</label>
+            <label class="col-sm-4 col-form-label">User name</label>
             <div class="col sm-8">
-                <input type="text" th:field="*{name}" class="form-control" required minlength="">
+                <input type="text" th:field="*{userName}" class="form-control" required minlength="">
             </div>
         </div>
         <div class="row2">
-            <label class="col-sm-4 col-form-label">Fuel type</label>
+            <label class="col-sm-4 col-form-label">Password</label>
             <div class="col sm-8">
-                <input type="text" th:field="*{fuelType}" class="form-control">
-            </div>
-        </div>
-
-        <div class="row2">
-            <label class="col-sm-4 col-form-label">Speedometer</label>
-            <div class="col sm-8">
-                <input type="text" th:field="*{speedometer}" class="form-control">
+                <input type="text" th:field="*{password}" class="form-control">
             </div>
         </div>
 
         <div class="row2">
-
+            <label class="col-sm-4 col-form-label">Full name</label>
             <div class="col sm-8">
-                <select th:field="*{brandId}" class="form-control" id="dropDownList">
-                    <!--                    <option value="0">Select brand</option>-->
-                    <option th:each="brand : ${brands}" th:value="${brand.id}" th:text="${brand.name}"></option>
-                </select>
+                <input type="text" th:field="*{fullName}" class="form-control">
+            </div>
+        </div>
 
+        <div class="row2">
+            <label class="col-sm-4 col-form-label">Titel</label>
+            <div class="col sm-8">
+                <input type="text" th:field="*{title}" class="form-control">
+            </div>
+        </div>
+
+        <div class="row2">
+            <label class="col-sm-4 col-form-label">Phone number</label>
+            <div class="col sm-8">
+                <input type="text" th:field="*{phoneNumber}" class="form-control">
             </div>
         </div>
 
@@ -49,7 +52,7 @@
 </form>
 <script type="text/javascript">
     function cancelForm() {
-        window.location = "[[@{/managemotorhomes}]]"
+        window.location = "[[@{/manageusers}]]"
     }
 </script>
 </body>
