@@ -1,3 +1,4 @@
+/*
 package teletearbies.common;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ public class InitialData {
 
     @Autowired
     private CustomerService customerService;
+    @PostConstruct
 
 
     @PostConstruct
@@ -130,7 +132,10 @@ public class InitialData {
 //        Extra extra3 = new Extra("bicycle", 300);
 //        Extra extra4 = new Extra("motorhoe", 999);
 //        Extra extra5 = new Extra("trailer", 500);
-//
-//
+
     }
 }
+=======
+    }
+}
+*/

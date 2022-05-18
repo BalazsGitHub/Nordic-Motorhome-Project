@@ -11,7 +11,7 @@ import java.util.Optional;
 @Service
 public class MotorhomeService {
 
-    @Autowired
+   @Autowired
     private MotorhomeRepository motorhomeRepository;
 
     public void saveMotorhome(Motorhome motorhome) {
