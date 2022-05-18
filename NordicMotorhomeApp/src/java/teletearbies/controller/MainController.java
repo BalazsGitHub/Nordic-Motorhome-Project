@@ -9,6 +9,7 @@ import teletearbies.entity.Motorhome;
 import teletearbies.service.BookingService;
 import teletearbies.service.MotorhomeService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -44,5 +45,11 @@ public class MainController {
         model.addAttribute("bookingList", bookingList);
         return "bookings/manageBookings";
     }
+
+    @RequestMapping("/manageusers")
+    public String manageUsers() {
+        return "users/manageUsers";
+    }
+
 
 }

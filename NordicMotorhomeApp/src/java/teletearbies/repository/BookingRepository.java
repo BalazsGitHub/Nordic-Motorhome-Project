@@ -6,4 +6,5 @@ import teletearbies.entity.Booking;
 
 @Repository
 public interface BookingRepository extends CrudRepository<Booking, Integer> {
+    Long countById(Integer id);
 }
