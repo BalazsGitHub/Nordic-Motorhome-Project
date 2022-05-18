@@ -31,7 +31,7 @@ public class InitialData {
     @PostConstruct
     public void initialiseDatabase() {
 
- /*       Brand brand1 = new Brand("American coach", "Eagle", 4000, 12);
+    /*    Brand brand1 = new Brand("American coach", "Eagle", 4000, 12);
         Brand brand2 = new Brand("American coach", "Dream", 4000, 12);
         Brand brand3 = new Brand("Jayco", "Alante", 3500, 10);
         Brand brand4 = new Brand("Jayco", "Embark", 3500, 10);
@@ -123,11 +123,12 @@ public class InitialData {
         Extra extra4 = new Extra("motorhoe", 999);
         Extra extra5 = new Extra("trailer", 500);
 
-        Booking booking1 = new Booking("2022.05.05.", "2022.05.06.", "Køge", "Kastrup", "Mubby Mubibovich", "555-43536576", "Everland", "01234567", "12346543234567876543");
-        Booking booking2 = new Booking("2022.11.11", "2022.12.12.", "Køge", "Kastrup", "Mubby Mubibovich", "555-43536576", "Everland", "01234567", "12346543234567876543");
+        Booking booking1 = new Booking("2022.05.05.", "2022.05.06.", "Køge", "Kastrup", "Mubby Mubibovich", "555-43536576", "Everland", "01234567", "12346543234567876543", motorhome1);
+        Booking booking2 = new Booking("2022.11.11", "2022.12.12.", "Køge", "Kastrup", "Mubby Mubibovich", "555-43536576", "Everland", "01234567", "12346543234567876543", motorhome2);
 
         bookingService.saveBooking(booking1);
         bookingService.saveBooking(booking2);
+
     */
     }
 }

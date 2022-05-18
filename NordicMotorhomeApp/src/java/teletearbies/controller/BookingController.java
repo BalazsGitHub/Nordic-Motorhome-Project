@@ -1,6 +1,7 @@
 package teletearbies.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,7 +15,7 @@ import teletearbies.entity.User;
 import teletearbies.service.*;
 
 import java.util.List;
-
+@Controller
 public class BookingController {
 
     @Autowired
@@ -29,14 +30,15 @@ public class BookingController {
     @Autowired
     MotorhomeService motorhomeService;
 
+
     @RequestMapping("/booking/add")
     public String addBooking(Model model) {
         List<Motorhome> motorhomeList = motorhomeService.getAllMotorhomes();
         model.addAttribute("motorhomeList", motorhomeList);
-        List<User> userList = userService.getAllUsers();
-        model.addAttribute("userList", userList);
-        List<Season> seasonList = seasonService.getAllSeasons();
-        model.addAttribute("seasonList",seasonList);
+        //List<User> userList = userService.getAllUsers();
+        //model.addAttribute("userList", userList);
+        //List<Season> seasonList = seasonService.getAllSeasons();
+        //model.addAttribute("seasonList", seasonList);
         model.addAttribute("booking", new Booking());
         return "bookings/bookingForm";
     }
@@ -60,7 +62,7 @@ public class BookingController {
 //            List<Season> seasonList = seasonService.getAllSeasons();
 //            model.addAttribute("seasonList",seasonList);
             return "bookings/bookingForm";
-        }   catch (BookingNotFoundException e) {
+        } catch (BookingNotFoundException e) {
             redirectAttributes.addFlashAttribute("message", e.getMessage());
             model.addAttribute("pageTitle", "edit user (ID: " + id + ")");
             return "redirect:/managebookings";

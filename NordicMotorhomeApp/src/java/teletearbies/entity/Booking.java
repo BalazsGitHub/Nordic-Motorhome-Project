@@ -52,25 +52,10 @@ public class Booking {
     @JoinColumn(name = "motorhome_id")
     private Motorhome motorhome;
 
-/*    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private User userId;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "season_id")
-    private Season seasonId;*/
-
-/*    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cancellation_id")
-    private Cancellation cancellationId;*/
-
-    @OneToMany(mappedBy = "booking")
-    private List<BookedExtras> bookedExtras;
-
     public Booking() {
     }
 
-    public Booking(String startDate, String endDate, String pickUpPoint, String dropOffPoint, String fullName, String phoneNumber, String address, String driversNumber, String cardNumber) {
+    public Booking(String startDate, String endDate, String pickUpPoint, String dropOffPoint, String fullName, String phoneNumber, String address, String driversNumber, String cardNumber, Motorhome motorhome) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.pickUpPoint = pickUpPoint;
@@ -80,6 +65,7 @@ public class Booking {
         this.address = address;
         this.driversNumber = driversNumber;
         this.cardNumber = cardNumber;
+        this.motorhome = motorhome;
     }
 
     public int getId() {
@@ -150,8 +136,8 @@ public class Booking {
         return driversNumber;
     }
 
-    public void setDriversNumber(String driverNumber) {
-        this.driversNumber = driverNumber;
+    public void setDriversNumber(String driversNumber) {
+        this.driversNumber = driversNumber;
     }
 
     public String getCardNumber() {
@@ -170,45 +156,11 @@ public class Booking {
         this.motorhome = motorhome;
     }
 
- /*   public User getUserId() {
-        return userId;
-    }
-
-    public void setUserId(User userId) {
-        this.userId = userId;
-    }
-
-    public Season getSeasonId() {
-        return seasonId;
-    }
-
-    public void setSeasonId(Season seasonId) {
-        this.seasonId = seasonId;
-    }*/
-
     public Motorhome getMotorhomeId() {
         return motorhome;
     }
 
     public void setMotorhomeId(Motorhome motorhome) {
         this.motorhome = motorhome;
-    }
-
-/*
-    public Cancellation getCancellationId() {
-        return cancellationId;
-    }
-
-    public void setCancellationId(Cancellation cancellationId) {
-        this.cancellationId = cancellationId;
-    }
-*/
-
-    public List<BookedExtras> getBookedExtras() {
-        return bookedExtras;
-    }
-
-    public void setBookedExtras(List<BookedExtras> bookedExtras) {
-        this.bookedExtras = bookedExtras;
     }
 }

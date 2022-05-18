@@ -8,7 +8,7 @@
 <!--  method="post" = sent as http -->
 <form th:action="@{/motorhome/save}" method="post" th:object="${motorhome}" style="max-width: 500px; margin: 0 auto;">
     <input type="hidden" th:field="*{id}">
-    <!-- th:object="${user} = same as showNewForm attribute -->
+    <!-- th:object="${brand} = same as showNewForm attribute -->
     <div class="border border-secondary rounded p-3">
         <div class="row2">
             <label class="col-sm-4 col-form-label">Name</label>
@@ -31,7 +31,7 @@
         </div>
 
         <div class="row2">
-
+            <label class="col-sm-4 col-form-label">Choose a brand now</label>
             <div class="col sm-8">
                 <select th:field="*{brandId}" class="form-control" id="dropDownList">
                     <!--                    <option value="0">Select brand</option>-->

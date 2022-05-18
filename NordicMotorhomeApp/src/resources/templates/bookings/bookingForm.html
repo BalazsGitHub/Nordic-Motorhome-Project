@@ -1,104 +1,88 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
-
-<head th:fragment="head">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
-    <link rel="stylesheet" type="text/css" href="booking.css" th:href="@{/css/booking.css}" media="screen">
-    <title>Nordic Motorhome Rental</title>
-</head>
+<head th:replace="fragments/header :: head"></head>
 <body>
-
 <div class="container-fluid">
     <h2 class="text-center">Add New Booking</h2>
-    <h2 class="text/center" > [[${pageTitle}]]</h2>
+    <h2 class="text/center"> [[${pageTitle}]]</h2>
 </div>
 <!--  method attribute specifies how to send form-data  -->
 <!--  method="post" = sent as http -->
 <form th:action="@{/booking/save}" method="post" th:object="${booking}" style="max-width: 500px; margin: 0 auto;">
     <input type="hidden" th:field="*{id}">
-    <!-- th:object="${user} = same as showNewForm attribute -->
+    <!-- th:object="${booking} = same as showNewForm attribute -->
     <div class="border border-secondary rounded p-3">
         <div class="row2">
-            <label class="col-sm-4 col-form-label">Start Date</label>
+            <label class="col-sm-4 col-form-label">Start date</label>
             <div class="col sm-8">
-                <input type="text" th:field="*{startDate}" class="form-control">
+                <input type="text" th:field="*{startDate}" class="form-control" required minlength="">
             </div>
         </div>
+
         <div class="row2">
-            <label class="col-sm-4 col-form-label">End Date</label>
+            <label class="col-sm-4 col-form-label">End date</label>
             <div class="col sm-8">
-                <input type="text" th:field="*{endDate}" class="form-control">
+                <input type="text" th:field="*{endDate}" class="form-control" required minlength="">
             </div>
         </div>
+
         <div class="row2">
-            <label class="col-sm-4 col-form-label">PickUpPoint</label>
+            <label class="col-sm-4 col-form-label">Pick-up point</label>
             <div class="col sm-8">
                 <input type="text" th:field="*{pickUpPoint}" class="form-control" required minlength="">
             </div>
         </div>
+
         <div class="row2">
-            <label class="col-sm-4 col-form-label">DropOffPoint</label>
+            <label class="col-sm-4 col-form-label">Drop off point</label>
             <div class="col sm-8">
-                <input type="text" th:field="*{dropOffPoint}" class="form-control">
+                <input type="text" th:field="*{dropOffPoint}" class="form-control" required minlength="">
             </div>
         </div>
 
-        <div>
-            <select th:field="*{motorhomeId}" class="form-control" id="dropDownList">
-<!--            <option value="0">select option</option>-->
-            <option th:each="motorhome : ${mothorhomeList}" th:value="${motorhome.id}" th:text="${motorhome.name}"></option>
-        </select>
+        <div class="row2">
+            <label class="col-sm-4 col-form-label">Full name</label>
+            <div class="col sm-8">
+                <input type="text" th:field="*{fullName}" class="form-control" required minlength="">
+            </div>
         </div>
 
-<!--        <div>
-            <select th:field="*{season}" class="form-control" id="dropDownList2">
-                &lt;!&ndash;            <option value="0">select option</option>&ndash;&gt;
-                <option th:each="season : ${seasonList}" th:value="${season.id}" th:text="${season.name}"></option>
-            </select>
+        <div class="row2">
+            <label class="col-sm-4 col-form-label">Phone number</label>
+            <div class="col sm-8">
+                <input type="text" th:field="*{phoneNumber}" class="form-control" required minlength="">
+            </div>
         </div>
 
-        <div>
-            <select th:field="*{user}" class="form-control" id="dropDownList3">
-                &lt;!&ndash;            <option value="0">select option</option>&ndash;&gt;
-                <option th:each="user : ${userList}" th:value="${user.id}" th:text="${user.fullName}"></option>
-            </select>
-        </div>-->
-
-        <p>extras</p>
+        <div class="row2">
+            <label class="col-sm-4 col-form-label">Address</label>
+            <div class="col sm-8">
+                <input type="text" th:field="*{address}" class="form-control" required minlength="">
+            </div>
+        </div>
 
         <div class="row2">
-            <label class="col-sm-4 col-form-label">Customer Name</label>
+            <label class="col-sm-4 col-form-label">Drivers number</label>
             <div class="col sm-8">
-                <input type="text" th:field="*{fullName}" class="form-control">
+                <input type="text" th:field="*{driversNumber}" class="form-control" required minlength="">
             </div>
         </div>
+
         <div class="row2">
-            <label class="col-sm-4 col-form-label">Customer Phone number</label>
+            <label class="col-sm-4 col-form-label">Bankcard number</label>
             <div class="col sm-8">
-                <input type="text" th:field="*{phoneNumber}" class="form-control">
+                <input type="text" th:field="*{cardNumber}" class="form-control" required minlength="">
             </div>
         </div>
+
         <div class="row2">
-            <label class="col-sm-4 col-form-label">Customer Address</label>
-            <div class="col sm-8">
-                <input type="text" th:field="*{address}" class="form-control">
+            <label class="col-sm-4 col-form-label">Choose a motorhome</label>
+            <div class="col sm-8" >
+                <select th:field="*{motorhomeId}" class="form-control" id="dropDownList">
+                    <!--                    <option value="0">Select motorhome</option>-->
+                    <option th:each="motorhome : ${motorhomeList}" th:value="${motorhome.id}"
+                            th:text="${motorhome.name}"></option>
+                </select>
             </div>
         </div>
-        <div class="row2">
-            <label class="col-sm-4 col-form-label">Customer Drivers Number</label>
-            <div class="col sm-8">
-                <input type="text" th:field="*{driversNumber}" class="form-control">
-            </div>
-        </div>
-        <div class="row2">
-            <label class="col-sm-4 col-form-label">Customer Card Number</label>
-            <div class="col sm-8">
-                <input type="text" th:field="*{cardNumber}" class="form-control">
-            </div>
-        </div>
-        <p> consent</p>
 
         <div class="text-center">
             <button type="submit" class=" btn btn-primary m-2">Save</button>
@@ -108,11 +92,8 @@
 </form>
 <script type="text/javascript">
     function cancelForm() {
-        window.location= "[[@{/managebookings}]]"
+        window.location = "[[@{/managemotorhomes}]]"
     }
 </script>
-
-
-
 </body>
 </html>

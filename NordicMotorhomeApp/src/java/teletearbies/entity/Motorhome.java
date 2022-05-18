@@ -26,8 +26,7 @@ public class Motorhome {
     private Brand brand;
 
     @OneToMany(mappedBy = "motorhome")
-    private List<Booking> booking;
-
+    private List<Booking> bookingList;
 
     public Motorhome(String name, String fuelType, double speedometer, Brand brand) {
         this.name = name;
@@ -39,6 +38,13 @@ public class Motorhome {
     public Motorhome() {
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -64,36 +70,27 @@ public class Motorhome {
         this.speedometer = speedometer;
     }
 
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public List<Booking> getBooking() {
-        return booking;
-    }
-
-    public void setBooking(List<Booking> booking) {
-        this.booking = booking;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
     public Brand getBrand() {
-        return brand;
-    }
-    public Brand getBrandId() {
         return brand;
     }
 
     public void setBrand(Brand brand) {
         this.brand = brand;
     }
+
+    public List<Booking> getBookingList() {
+        return bookingList;
+    }
+
+    public void setBookingList(List<Booking> bookingList) {
+        this.bookingList = bookingList;
+    }
+
+    public Brand getBrandId() {
+        return brand;
+    }
+
     public void setBrandId(Brand brand) {
         this.brand = brand;
     }
-
-
 }

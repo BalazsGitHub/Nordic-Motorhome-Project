@@ -26,6 +26,8 @@
         <th>Customer address</th>
         <th>Customer drivers number</th>
         <th>Customer card number</th>
+        <th>Motorhome</th>
+
         <th></th>
         <th>Actions</th>
         <th></th>
@@ -44,6 +46,8 @@
             <td>[[${booking.address}]]</td>
             <td>[[${booking.driversNumber}]]</td>
             <td>[[${booking.cardNumber}]]</td>
+            <td>[[${booking.motorhome.name}]]</td>
+
             <td></td>
             <td>
                 <a class="p mr-3 text-black" th:href="@{'booking/edit/' + ${booking.id}}">Edit</a>
