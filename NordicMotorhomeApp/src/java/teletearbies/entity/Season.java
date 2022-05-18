@@ -1,5 +1,7 @@
 package teletearbies.entity;
 
+import teletearbies.service.BookingService;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,6 +17,11 @@ public class Season {
 
     @Column(nullable = false, unique = false, length = 10, name = "type")
     private double seasonPriceMultiplier;
+
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "booking_id")
+    private Booking booking;
 
     public Season() {
     }

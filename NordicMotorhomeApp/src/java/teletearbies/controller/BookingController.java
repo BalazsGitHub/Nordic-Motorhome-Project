@@ -7,13 +7,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import teletearbies.entity.Booking;
-import teletearbies.entity.Brand;
-import teletearbies.entity.Motorhome;
-import teletearbies.service.BookingNotFoundException;
-import teletearbies.service.BookingService;
-import teletearbies.service.MotorhomeNotFoundException;
 
-import java.util.ArrayList;
+import teletearbies.entity.Motorhome;
+import teletearbies.entity.Season;
+import teletearbies.entity.User;
+import teletearbies.service.*;
+
 import java.util.List;
 
 public class BookingController {
@@ -21,6 +20,26 @@ public class BookingController {
     @Autowired
     BookingService bookingService;
 
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    SeasonService seasonService;
+
+    @Autowired
+    MotorhomeService motorhomeService;
+
+    @RequestMapping("/booking/add")
+    public String addBooking(Model model) {
+        List<Motorhome> motorhomeList = motorhomeService.getAllMotorhomes();
+        model.addAttribute("motorhomeList", motorhomeList);
+        List<User> userList = userService.getAllUsers();
+        model.addAttribute("userList", userList);
+        List<Season> seasonList = seasonService.getAllSeasons();
+        model.addAttribute("seasonList",seasonList);
+        model.addAttribute("booking", new Booking());
+        return "bookings/bookingForm";
+    }
 
     @PostMapping("/booking/save")
     public String saveBooking(Booking booking, RedirectAttributes redirectAttributes) {
@@ -34,8 +53,14 @@ public class BookingController {
         try {
             Booking booking = bookingService.getBooking(id);
             model.addAttribute("booking", booking);
+            List<Motorhome> motorhomeList = motorhomeService.getAllMotorhomes();
+            model.addAttribute("motorhomeList", motorhomeList);
+//            List<User> userList = userService.getAllUsers();
+//            model.addAttribute("userList", userList);
+//            List<Season> seasonList = seasonService.getAllSeasons();
+//            model.addAttribute("seasonList",seasonList);
             return "bookings/bookingForm";
-        } catch (BookingNotFoundException e) {
+        }   catch (BookingNotFoundException e) {
             redirectAttributes.addFlashAttribute("message", e.getMessage());
             model.addAttribute("pageTitle", "edit user (ID: " + id + ")");
             return "redirect:/managebookings";
@@ -53,7 +78,6 @@ public class BookingController {
 
         }
         return "redirect:/managebookings";
-
     }
 
    /* @RequestMapping( "/booking/add")

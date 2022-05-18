@@ -13,12 +13,11 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = false,unique = false, length = 255, name = "start_date")
+    @Column(nullable = false, unique = false, length = 255, name = "start_date")
     private String startDate;
 
-    @Column(nullable = false,unique = false, length = 255, name = "end_date")
+    @Column(nullable = false, unique = false, length = 255, name = "end_date")
     private String endDate;
-
 
     @Column(nullable = false, unique = false, length = 255, name = "pickup_point")
     private String pickUpPoint;
@@ -26,19 +25,19 @@ public class Booking {
     @Column(nullable = false, unique = false, length = 255, name = "dropoff_point")
     private String dropOffPoint;
 
-    @Column(nullable = false,unique = false, length = 255, name = "customer_full_name")
+    @Column(nullable = false, unique = false, length = 255, name = "customer_full_name")
     private String fullName;
 
-    @Column(nullable = false,unique = false, length = 255, name = "customer_phone_number")
+    @Column(nullable = false, unique = false, length = 255, name = "customer_phone_number")
     private String phoneNumber;
 
-    @Column(nullable = false,unique = false, length = 255, name = "customer_address")
+    @Column(nullable = false, unique = false, length = 255, name = "customer_address")
     private String address;
 
-    @Column(nullable = false,unique = false, length = 255, name = "customer_driver_number")
+    @Column(nullable = false, unique = false, length = 255, name = "customer_driver_number")
     private String driversNumber;
 
-    @Column(nullable = false,unique = false, length = 255, name = "customer_card_number")
+    @Column(nullable = false, unique = false, length = 255, name = "customer_card_number")
     private String cardNumber;
 
 
@@ -50,28 +49,26 @@ public class Booking {
     //private boolean isFuelHalf;
 
     @ManyToOne
+    @JoinColumn(name = "motorhome_id")
     private Motorhome motorhome;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer_id")
-    private Customer customerId;
-
-    @OneToOne(cascade = CascadeType.ALL)
+/*    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User userId;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "season_id")
-    private Season seasonId;
+    private Season seasonId;*/
 
-    @OneToOne(cascade = CascadeType.ALL)
+/*    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cancellation_id")
-    private Cancellation cancellationId;
+    private Cancellation cancellationId;*/
 
     @OneToMany(mappedBy = "booking")
     private List<BookedExtras> bookedExtras;
 
-    public Booking(){}
+    public Booking() {
+    }
 
     public Booking(String startDate, String endDate, String pickUpPoint, String dropOffPoint, String fullName, String phoneNumber, String address, String driversNumber, String cardNumber) {
         this.startDate = startDate;
@@ -173,15 +170,7 @@ public class Booking {
         this.motorhome = motorhome;
     }
 
-    public Customer getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Customer customerId) {
-        this.customerId = customerId;
-    }
-
-    public User getUserId() {
+ /*   public User getUserId() {
         return userId;
     }
 
@@ -195,8 +184,17 @@ public class Booking {
 
     public void setSeasonId(Season seasonId) {
         this.seasonId = seasonId;
+    }*/
+
+    public Motorhome getMotorhomeId() {
+        return motorhome;
     }
 
+    public void setMotorhomeId(Motorhome motorhome) {
+        this.motorhome = motorhome;
+    }
+
+/*
     public Cancellation getCancellationId() {
         return cancellationId;
     }
@@ -204,6 +202,7 @@ public class Booking {
     public void setCancellationId(Cancellation cancellationId) {
         this.cancellationId = cancellationId;
     }
+*/
 
     public List<BookedExtras> getBookedExtras() {
         return bookedExtras;

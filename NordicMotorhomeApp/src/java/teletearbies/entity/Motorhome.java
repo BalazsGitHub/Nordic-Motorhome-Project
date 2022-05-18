@@ -21,9 +21,8 @@ public class Motorhome {
     private double speedometer;
 
 
-
     @ManyToOne
-    @JoinColumn( name = "brand_id", referencedColumnName = "id")
+    @JoinColumn(name = "brand_id")
     private Brand brand;
 
     @OneToMany(mappedBy = "motorhome")
@@ -85,8 +84,14 @@ public class Motorhome {
     public Brand getBrand() {
         return brand;
     }
+    public Brand getBrandId() {
+        return brand;
+    }
 
     public void setBrand(Brand brand) {
+        this.brand = brand;
+    }
+    public void setBrandId(Brand brand) {
         this.brand = brand;
     }
 

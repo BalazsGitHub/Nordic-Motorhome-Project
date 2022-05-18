@@ -22,6 +22,10 @@ public class User {
     @Column(nullable = false, unique = false, length = 255, name = "phone_number")
     private String phoneNumber;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "booking_id")
+    private Booking booking;
+
     public User(String fullName, String title, String phoneNumber, String userName, String password) {
         this.fullName = fullName;
         this.title = title;

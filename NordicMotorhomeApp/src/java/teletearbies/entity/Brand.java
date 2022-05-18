@@ -76,8 +76,4 @@ public class Brand {
         this.capacity = capacity;
     }
 
-    @Override
-    public String toString() {
-        return id + " " + name;
-    }
 }

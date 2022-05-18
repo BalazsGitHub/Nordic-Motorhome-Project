@@ -46,11 +46,26 @@
         </div>
 
         <div>
-        <select class="form-control" id="dropDownList">
-            <option value="0">select option</option>
-            <option th:each="cars : ${cars}" th:value="${cars}" th:text="${cars}"></option>
+            <select th:field="*{motorhomeId}" class="form-control" id="dropDownList">
+<!--            <option value="0">select option</option>-->
+            <option th:each="motorhome : ${mothorhomeList}" th:value="${motorhome.id}" th:text="${motorhome.name}"></option>
         </select>
         </div>
+
+<!--        <div>
+            <select th:field="*{season}" class="form-control" id="dropDownList2">
+                &lt;!&ndash;            <option value="0">select option</option>&ndash;&gt;
+                <option th:each="season : ${seasonList}" th:value="${season.id}" th:text="${season.name}"></option>
+            </select>
+        </div>
+
+        <div>
+            <select th:field="*{user}" class="form-control" id="dropDownList3">
+                &lt;!&ndash;            <option value="0">select option</option>&ndash;&gt;
+                <option th:each="user : ${userList}" th:value="${user.id}" th:text="${user.fullName}"></option>
+            </select>
+        </div>-->
+
         <p>extras</p>
 
         <div class="row2">
