@@ -2,11 +2,11 @@ package teletearbies.entity;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "booked_extras")
+//@Entity
+//@Table(name = "booked_extras")
 public class BookedExtras {
 
-    @Id
+    /*@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
@@ -34,5 +34,5 @@ public class BookedExtras {
 
     public BookedExtras() {
     }
-
+*/
 }

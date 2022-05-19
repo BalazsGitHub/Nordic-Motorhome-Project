@@ -5,9 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import teletearbies.entity.Booking;
+import teletearbies.entity.Extra;
 import teletearbies.entity.Motorhome;
 import teletearbies.entity.User;
 import teletearbies.service.BookingService;
+import teletearbies.service.ExtraService;
 import teletearbies.service.MotorhomeService;
 import teletearbies.service.UserService;
 
@@ -25,6 +27,9 @@ public class MainController {
     private BookingService bookingService;
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private ExtraService extraService;
 
     @RequestMapping("/")
     public String index() {
@@ -46,6 +51,8 @@ public class MainController {
     @RequestMapping("/managebookings")
     public String manageBookings(Model model) {
         List<Booking> bookingList = bookingService.getAllBookings();
+        List<Extra> extraList = extraService.getAllExtras();
+        model.addAttribute("extraList", extraList);
         model.addAttribute("bookingList", bookingList);
         return "bookings/manageBookings";
     }

@@ -82,31 +82,6 @@ public class BookingController {
         return "redirect:/managebookings";
     }
 
-   /* @RequestMapping( "/booking/add")
-    public String carDropDown(Model model) {
-        List<String> cars = new ArrayList<>();
-        cars.add("Ymir");
-        cars.add("Heimdal");
-        cars.add("Odin");
-        cars.add("Thor");
-        cars.add("Vidar");
-        cars.add("Freja");
-        cars.add("Tyr");
-        cars.add("Loki");
-        cars.add("Hela");
-        cars.add("Idun");
-        model.addAttribute("cars", cars);
-        return "bookings/bookingForm";
-    }*/
 
-  /*  @RequestMapping("/booking/add")
-    public String addBooking(Model model) {
-        model.addAttribute("booking", new Booking());
 
-        List<Brand> brandList = brandService.getAllBrands();
-
-        model.addAttribute("brands", brandList );
-
-        return "motorhomes/motorhomeForm";
-    }*/
 }

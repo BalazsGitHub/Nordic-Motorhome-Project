@@ -27,6 +27,7 @@
         <th>Customer drivers number</th>
         <th>Customer card number</th>
         <th>Motorhome</th>
+        <th>Extras</th>
 
         <th></th>
         <th>Actions</th>
@@ -47,6 +48,9 @@
             <td>[[${booking.driversNumber}]]</td>
             <td>[[${booking.cardNumber}]]</td>
             <td>[[${booking.motorhome.name}]]</td>
+            <td th:each="extra : ${extraList}"  th:text="${extra.name}"></td>
+
+
 
             <td></td>
             <td>
