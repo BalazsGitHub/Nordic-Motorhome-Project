@@ -1,7 +1,11 @@
 package teletearbies.entity;
 
+
+
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "booking")
@@ -52,6 +56,12 @@ public class Booking {
     @JoinColumn(name = "motorhome_id")
     private Motorhome motorhome;
 
+    @ManyToMany
+    @JoinTable(name = "booked_extras",
+            joinColumns = @JoinColumn(name = "booking_id"),
+            inverseJoinColumns = @JoinColumn(name = "extras_id"))
+    private Set<Extra> extras = new HashSet<>();
+
     public Booking() {
     }
 
@@ -66,6 +76,20 @@ public class Booking {
         this.driversNumber = driversNumber;
         this.cardNumber = cardNumber;
         this.motorhome = motorhome;
+    }
+
+    public Booking(String startDate, String endDate, String pickUpPoint, String dropOffPoint, String fullName, String phoneNumber, String address, String driversNumber, String cardNumber, Motorhome motorhome, Set<Extra> extras) {
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.pickUpPoint = pickUpPoint;
+        this.dropOffPoint = dropOffPoint;
+        this.fullName = fullName;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.driversNumber = driversNumber;
+        this.cardNumber = cardNumber;
+        this.motorhome = motorhome;
+        this.extras=extras;
     }
 
     public int getId() {
@@ -162,5 +186,13 @@ public class Booking {
 
     public void setMotorhomeId(Motorhome motorhome) {
         this.motorhome = motorhome;
+    }
+
+    public Set<Extra> getExtras() {
+        return extras;
+    }
+
+    public void setExtras(Set<Extra> extras) {
+        this.extras = extras;
     }
 }

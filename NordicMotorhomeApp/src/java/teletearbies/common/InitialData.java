@@ -6,6 +6,7 @@ import teletearbies.entity.*;
 import teletearbies.service.*;
 
 import javax.annotation.PostConstruct;
+import java.util.*;
 
 @Configuration
 public class InitialData {
@@ -27,6 +28,9 @@ public class InitialData {
 
     @Autowired
     private BookingService bookingService;
+
+    @Autowired
+    private ExtraService extraService;
 
     @PostConstruct
     public void initialiseDatabase() {
@@ -106,16 +110,41 @@ public class InitialData {
 
 
         Extra extra1 = new Extra("bike rack", 250);
-        Extra extra2 = new Extra("mattress", 200);
+        Extra extra2 = new Extra("bed linen", 150);
         Extra extra3 = new Extra("bicycle", 300);
-        Extra extra4 = new Extra("motorhoe", 999);
+        Extra extra4 = new Extra("parasol", 75);
         Extra extra5 = new Extra("trailer", 500);
+        Extra extra6 = new Extra("picnic chair", 100);
+        Extra extra7 = new Extra("picnic table", 150);
+        Extra extra8 = new Extra("beach towel", 40);
 
-        Booking booking1 = new Booking("2022.05.05.", "2022.05.06.", "Køge", "Kastrup", "Mubby Mubibovich", "555-43536576", "Everland", "01234567", "12346543234567876543", motorhome1);
-        Booking booking2 = new Booking("2022.11.11", "2022.12.12.", "Køge", "Kastrup", "Mubby Mubibovich", "555-43536576", "Everland", "01234567", "12346543234567876543", motorhome2);
+        extraService.saveExtra(extra1);
+        extraService.saveExtra(extra2);
+        extraService.saveExtra(extra3);
+        extraService.saveExtra(extra4);
+        extraService.saveExtra(extra5);
+        extraService.saveExtra(extra6);
+        extraService.saveExtra(extra7);
+        extraService.saveExtra(extra8);
+
+        Set<Extra> extrasList = new HashSet<>();
+        extrasList.add(extra1);
+        extrasList.add(extra2);
+        extrasList.add(extra3);
+        extrasList.add(extra4);
+        extrasList.add(extra5);
+        extrasList.add(extra6);
+        extrasList.add(extra7);
+        extrasList.add(extra8);
+
+
+
+
+
+        Booking booking1 = new Booking("2022.05.05.", "2022.05.06.", "Køge", "Kastrup", "Mubby Mubibovich", "555-43536576", "Everland", "01234567", "12346543234567876543", motorhome1, extrasList);
+        Booking booking2 = new Booking("2022.11.11", "2022.12.12.", "Køge", "Kastrup", "Mubby Mubibovich", "555-43536576", "Everland", "01234567", "12346543234567876543", motorhome2, extrasList);
 
         bookingService.saveBooking(booking1);
         bookingService.saveBooking(booking2);
-
     }
 }
