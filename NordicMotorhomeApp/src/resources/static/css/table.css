@@ -7,6 +7,7 @@ body {
     padding: 24px;
     font-family: "Source Sans Pro", sans-serif;
     margin: 0;
+    background: linear-gradient(45deg, #bff6af,#6ac1c5, #bda5ff, #fae7a3);
 }
 
 h1, h2, h3, h4, h5, h6 {

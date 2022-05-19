@@ -31,7 +31,7 @@ public class InitialData {
     @PostConstruct
     public void initialiseDatabase() {
 
-    /*    Brand brand1 = new Brand("American coach", "Eagle", 4000, 12);
+        Brand brand1 = new Brand("American coach", "Eagle", 4000, 12);
         Brand brand2 = new Brand("American coach", "Dream", 4000, 12);
         Brand brand3 = new Brand("Jayco", "Alante", 3500, 10);
         Brand brand4 = new Brand("Jayco", "Embark", 3500, 10);
@@ -85,18 +85,6 @@ public class InitialData {
         userService.saveUser(user5);
 
 
-//        Employee employee1 = new Employee("Barbara Santa", "Sales assistant", "55512131415");
-//        Employee employee2 = new Employee("Monica Lewinsky", "Sales assistant", "55522232425");
-//        Employee employee3 = new Employee("Cindy Crawford", "Sales assistant", "55532333435");
-//        Employee employee4 = new Employee("Mr. Robot", "Sales assistant", "55542434445");
-//        Employee employee5 = new Employee("Claudia Schiffer", "Cleaning staff", "55552535455");
-//        Employee employee6 = new Employee("Heidi Klum", "Cleaning staff", "55562636465");
-//        Employee employee7 = new Employee("Big Gay Al", "Auto mechanic", "55572737475");
-//        Employee employee8 = new Employee("John Doe", "Bookkeeper", "55582838485");
-//
-//        employeeService.saveEmployee(employee1);
-//        employeeService.saveEmployee(employee1);
-
 
         Season seasonLow = new Season("Low Season", 1);
         Season seasonMiddle = new Season("Middle Season", 1.3);
@@ -129,6 +117,5 @@ public class InitialData {
         bookingService.saveBooking(booking1);
         bookingService.saveBooking(booking2);
 
-    */
     }
 }
