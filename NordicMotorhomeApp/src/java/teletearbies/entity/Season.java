@@ -3,6 +3,7 @@ package teletearbies.entity;
 import teletearbies.service.BookingService;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "season")
@@ -18,10 +19,8 @@ public class Season {
     @Column(nullable = false, unique = false, length = 10, name = "type")
     private double seasonPriceMultiplier;
 
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "booking_id")
-    private Booking booking;
+    @OneToMany(mappedBy = "season")
+    private List<Booking> bookingList;
 
     public Season() {
     }
@@ -45,5 +44,13 @@ public class Season {
 
     public void setSeasonPriceMultiplier(double seasonPriceMultiplier) {
         this.seasonPriceMultiplier = seasonPriceMultiplier;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

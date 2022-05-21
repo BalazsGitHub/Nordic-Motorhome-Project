@@ -1,11 +1,7 @@
 body{
     overflow-x: hidden !important;
     padding: 50px 100px !important;
-    background: linear-gradient(45deg, #bff6af,#6ac1c5, #bda5ff, #fae7a3);
-    text-align:center;
-    vertical-align:center;
+    /*background: linear-gradient(0.25turn, #bff6af,#6ac1c5, #bda5ff, #fae7a3);*/
+    background: black;
     color: #f3e6fd;
-    height: 1000px;
-    width: 150%;
-
 }

@@ -72,6 +72,8 @@ public class MotorhomeController {
         } catch (MotorhomeNotFoundException e) {
             redirectAttributes.addFlashAttribute("message", e.getMessage());
 
+        } catch (Exception exception) {
+            System.out.println("Cant delete motorhome if its booked");
         }
         return "redirect:/managemotorhomes";
     }

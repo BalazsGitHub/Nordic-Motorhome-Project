@@ -1,6 +1,7 @@
 package teletearbies.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "cancellation")
@@ -15,6 +16,9 @@ public class Cancellation {
 
     @Column(nullable = false, unique = false, length = 10, name = "percentage")
     private double percentage;
+
+    @OneToMany(mappedBy = "cancellation")
+    private List<Booking> bookingList;
 
     public Cancellation() {
     }
@@ -46,5 +50,21 @@ public class Cancellation {
 
     public void setPercentage(double percentage) {
         this.percentage = percentage;
+    }
+
+    public List<Booking> getBookingList() {
+        return bookingList;
+    }
+
+    public void setBookingList(List<Booking> bookingList) {
+        this.bookingList = bookingList;
+    }
+
+    public List<Booking> getBookingListId() {
+        return bookingList;
+    }
+
+    public void setBookingListId(List<Booking> bookingList) {
+        this.bookingList = bookingList;
     }
 }

@@ -32,7 +32,7 @@ public class InitialData {
     @Autowired
     private ExtraService extraService;
 
-    @PostConstruct
+    //@PostConstruct
     public void initialiseDatabase() {
 
         Brand brand1 = new Brand("American coach", "Eagle", 4000, 12);
@@ -89,7 +89,6 @@ public class InitialData {
         userService.saveUser(user5);
 
 
-
         Season seasonLow = new Season("Low Season", 1);
         Season seasonMiddle = new Season("Middle Season", 1.3);
         Season seasonPeak = new Season("Peak Season", 1.6);
@@ -100,13 +99,17 @@ public class InitialData {
         seasonService.saveSeason(seasonPeak);
 
 
-        Cancellation noCancellation = new Cancellation("50 days", 20.00);
-        Cancellation cancellation1 = new Cancellation("49-15 days", 50.00);
-        Cancellation cancellation2 = new Cancellation("14-1 days", 80.00);
-        Cancellation cancellation3 = new Cancellation("on rental day", 95.00);
+        Cancellation cancellation1 = new Cancellation("No cancellation", 100.00);
+        Cancellation cancellation2 = new Cancellation("50 days", 20.00);
+        Cancellation cancellation3 = new Cancellation("49-15 days", 50.00);
+        Cancellation cancellation4 = new Cancellation("14-1 days", 80.00);
+        Cancellation cancellation5 = new Cancellation("On rental day", 95.00);
 
         cancellationService.saveCancellation(cancellation1);
         cancellationService.saveCancellation(cancellation2);
+        cancellationService.saveCancellation(cancellation3);
+        cancellationService.saveCancellation(cancellation4);
+        cancellationService.saveCancellation(cancellation5);
 
 
         Extra extra1 = new Extra("bike rack", 250);
@@ -134,15 +137,10 @@ public class InitialData {
         extrasList.add(extra4);
         extrasList.add(extra5);
         extrasList.add(extra6);
-        extrasList.add(extra7);
-        extrasList.add(extra8);
 
 
-
-
-
-        Booking booking1 = new Booking("2022.05.05.", "2022.05.06.", "Køge", "Kastrup", "Mubby Mubibovich", "555-43536576", "Everland", "01234567", "12346543234567876543", motorhome1, extrasList);
-        Booking booking2 = new Booking("2022.11.11", "2022.12.12.", "Køge", "Kastrup", "Mubby Mubibovich", "555-43536576", "Everland", "01234567", "12346543234567876543", motorhome2, extrasList);
+        Booking booking1 = new Booking("2022.05.05.", "2022.05.06.", "Køge", "Kastrup", "Mubby Mubibovich", "555-43536576", "Everland", "01234567", "12346543234567876543", motorhome1, extrasList, cancellation1, user1, seasonLow);
+        Booking booking2 = new Booking("2022.11.11", "2022.12.12.", "Køge", "Kastrup", "Mubby Mubibovich", "555-43536576", "Everland", "01234567", "12346543234567876543", motorhome2, extrasList, cancellation1, user2, seasonLow);
 
         bookingService.saveBooking(booking1);
         bookingService.saveBooking(booking2);

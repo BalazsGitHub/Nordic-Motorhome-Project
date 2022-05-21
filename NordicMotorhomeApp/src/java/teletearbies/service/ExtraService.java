@@ -2,7 +2,9 @@ package teletearbies.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import teletearbies.entity.Brand;
 import teletearbies.entity.Extra;
+import teletearbies.repository.BrandRepository;
 import teletearbies.repository.ExtraRepository;
 
 import java.util.List;
@@ -25,5 +27,7 @@ public class ExtraService {
         return (List<Extra>) extraRepository.findAll();
     }
 
-    //public Extra findByName(String name){return brandRepository.findBrandByName(name);}
+    public Extra findByName(String name){
+        return extraRepository.findExtraByName(name);
+    }
 }

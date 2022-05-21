@@ -33,8 +33,6 @@ public class Extra {
         this.price = price;
     }
 
-
-
     public Integer getId() {
         return id;
     }

@@ -1,10 +1,7 @@
 package teletearbies.entity;
 
-
-
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -62,6 +59,19 @@ public class Booking {
             inverseJoinColumns = @JoinColumn(name = "extras_id"))
     private Set<Extra> extras = new HashSet<>();
 
+
+    @ManyToOne
+    @JoinColumn(name = "cancellation_id")
+    private Cancellation cancellation;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "season_id")
+    private Season season;
+
     public Booking() {
     }
 
@@ -78,7 +88,7 @@ public class Booking {
         this.motorhome = motorhome;
     }
 
-    public Booking(String startDate, String endDate, String pickUpPoint, String dropOffPoint, String fullName, String phoneNumber, String address, String driversNumber, String cardNumber, Motorhome motorhome, Set<Extra> extras) {
+    public Booking(String startDate, String endDate, String pickUpPoint, String dropOffPoint, String fullName, String phoneNumber, String address, String driversNumber, String cardNumber, Motorhome motorhome, Set<Extra> extras, Cancellation cancellation, User user, Season season) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.pickUpPoint = pickUpPoint;
@@ -89,8 +99,13 @@ public class Booking {
         this.driversNumber = driversNumber;
         this.cardNumber = cardNumber;
         this.motorhome = motorhome;
-        this.extras=extras;
+        this.extras = extras;
+        this.cancellation = cancellation;
+        this.user = user;
+        this.season = season;
     }
+
+
 
     public int getId() {
         return id;
@@ -194,5 +209,53 @@ public class Booking {
 
     public void setExtras(Set<Extra> extras) {
         this.extras = extras;
+    }
+
+    public Cancellation getCancellation() {
+        return cancellation;
+    }
+
+    public void setCancellation(Cancellation cancellation) {
+        this.cancellation = cancellation;
+    }
+
+    public Cancellation getCancellationId() {
+        return cancellation;
+    }
+
+    public void setCancellationId(Cancellation cancellation) {
+        this.cancellation = cancellation;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Season getSeason() {
+        return season;
+    }
+
+    public void setSeason(Season season) {
+        this.season = season;
+    }
+
+    public User getUserId() {
+        return user;
+    }
+
+    public void setUserId(User user) {
+        this.user = user;
+    }
+
+    public Season getSeasonId() {
+        return season;
+    }
+
+    public void setSeasonId(Season season) {
+        this.season = season;
     }
 }

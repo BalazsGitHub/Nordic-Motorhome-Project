@@ -1,6 +1,7 @@
 package teletearbies.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class User {
@@ -22,9 +23,8 @@ public class User {
     @Column(nullable = false, unique = false, length = 255, name = "phone_number")
     private String phoneNumber;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "booking_id")
-    private Booking booking;
+    @OneToMany(mappedBy = "user")
+    private List<Booking> bookingList;
 
     public User(String fullName, String title, String phoneNumber, String userName, String password) {
         this.fullName = fullName;

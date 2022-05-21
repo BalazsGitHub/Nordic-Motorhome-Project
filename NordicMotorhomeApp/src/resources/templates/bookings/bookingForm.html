@@ -75,11 +75,41 @@
 
         <div class="row2">
             <label class="col-sm-4 col-form-label">Choose a motorhome</label>
-            <div class="col sm-8" >
+            <div class="col sm-8">
                 <select th:field="*{motorhomeId}" class="form-control" id="dropDownList">
                     <!--                    <option value="0">Select motorhome</option>-->
                     <option th:each="motorhome : ${motorhomeList}" th:value="${motorhome.id}"
                             th:text="${motorhome.name}"></option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row2">
+            <label class="col-sm-4 col-form-label">Choose a cancellation</label>
+            <div class="col sm-8">
+                <select th:field="*{cancellationId}" class="form-control" id="dropDownList2">
+                    <option th:each="cancellation : ${cancellationList}" th:value="${cancellation.id}"
+                            th:text="${cancellation.type}"></option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row2">
+            <label class="col-sm-4 col-form-label">Choose a User</label>
+            <div class="col sm-8">
+                <select th:field="*{userId}" class="form-control" id="dropDownList3">
+                    <option th:each="user : ${userList}" th:value="${user.id}"
+                            th:text="${user.fullName}"></option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row2">
+            <label class="col-sm-4 col-form-label">Choose a season</label>
+            <div class="col sm-8">
+                <select th:field="*{seasonId}" class="form-control" id="dropDownList4">
+                    <option th:each="season : ${seasonList}" th:value="${season.id}"
+                            th:text="${season.name}"></option>
                 </select>
             </div>
         </div>
@@ -92,7 +122,7 @@
 </form>
 <script type="text/javascript">
     function cancelForm() {
-        window.location = "[[@{/managemotorhomes}]]"
+        window.location = "[[@{/managebookings}]]"
     }
 </script>
 </body>
