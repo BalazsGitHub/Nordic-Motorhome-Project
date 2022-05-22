@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import teletearbies.entity.User;
 import teletearbies.service.UserNotFoundException;
 import teletearbies.service.UserService;
@@ -21,7 +20,6 @@ public class UserController {
 
     @RequestMapping("/user/add")
     public String addUser(Model model) {
-
         List<User> userList = userService.getAllUsers();
         model.addAttribute("user", userList);
         model.addAttribute("user", new User());
@@ -41,7 +39,6 @@ public class UserController {
             User user = userService.getUser(id);
             model.addAttribute("user", user);
             return "users/userForm";
-
         } catch (UserNotFoundException e) {
             redirectAttributes.addFlashAttribute("message", e.getMessage());
             model.addAttribute("pageTitle", "edit user (ID: " + id + ")");

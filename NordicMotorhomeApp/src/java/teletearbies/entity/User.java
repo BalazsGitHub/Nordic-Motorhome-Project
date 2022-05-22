@@ -10,7 +10,7 @@ public class User {
     private int id;
 
     @Column(nullable = false, unique = false, length = 255, name = "user_name")
-    private String userName;
+    private String username;
 
     @Column(nullable = false, unique = false, length = 255, name = "password")
     private String password;
@@ -26,11 +26,11 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Booking> bookingList;
 
-    public User(String fullName, String title, String phoneNumber, String userName, String password) {
+    public User(String fullName, String title, String phoneNumber, String username, String password) {
         this.fullName = fullName;
         this.title = title;
         this.phoneNumber = phoneNumber;
-        this.userName = userName;
+        this.username = username;
         this.password = password;
     }
 
@@ -69,12 +69,12 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String userName) {
+        this.username = userName;
     }
 
     public String getPassword() {
@@ -84,4 +84,6 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+
 }

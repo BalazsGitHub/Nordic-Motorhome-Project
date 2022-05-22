@@ -1,4 +1,3 @@
-
 package teletearbies.common;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +53,7 @@ public class InitialData {
         brandService.saveBrand(brand7);
         brandService.saveBrand(brand8);
 
+
         Motorhome motorhome1 = new Motorhome("Ymir", "benzin", 1000, brand1);
         Motorhome motorhome2 = new Motorhome("Heimdal", "diesel", 2000, brand2);
         Motorhome motorhome3 = new Motorhome("Odin", "benzin", 3000, brand3);
@@ -93,7 +93,6 @@ public class InitialData {
         Season seasonLow = new Season("Low Season", 1);
         Season seasonMiddle = new Season("Middle Season", 1.3);
         Season seasonPeak = new Season("Peak Season", 1.6);
-
 
         seasonService.saveSeason(seasonLow);
         seasonService.saveSeason(seasonMiddle);
@@ -140,7 +139,7 @@ public class InitialData {
         extrasList.add(extra6);
 
 
-        Booking booking1 = new Booking( "Køge", "Kastrup", "Mubby Mubibovich", "555-43536576", "Everland", "01234567", "12346543234567876543", motorhome1, extrasList, cancellation1, user1, seasonLow);
+        Booking booking1 = new Booking("Køge", "Kastrup", "Mubby Mubibovich", "555-43536576", "Everland", "01234567", "12346543234567876543", motorhome1, extrasList, cancellation1, user1, seasonLow);
         Booking booking2 = new Booking("Køge", "Kastrup", "Mubby Mubibovich", "555-43536576", "Everland", "01234567", "12346543234567876543", motorhome2, extrasList, cancellation1, user2, seasonLow);
 
         bookingService.saveBooking(booking1);

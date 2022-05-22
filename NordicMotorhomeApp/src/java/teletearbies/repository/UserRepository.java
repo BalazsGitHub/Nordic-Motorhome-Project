@@ -6,5 +6,7 @@ import teletearbies.entity.User;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, Integer> {
-    Long countById(Integer id);
+    public Long countById(Integer id);
+
+    public User findUserByUsername(String username);
 }

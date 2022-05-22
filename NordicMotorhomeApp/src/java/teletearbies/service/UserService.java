@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import teletearbies.entity.User;
 import teletearbies.repository.UserRepository;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -27,6 +26,10 @@ public class UserService {
             return result.get();
         }
         throw new UserNotFoundException("Could not find any user with id: " + id);
+    }
+
+    public User getUserByUsername(String username) {
+        return userRepository.findUserByUsername(username);
     }
 
     public void deleteUser(Integer id) throws UserNotFoundException {
