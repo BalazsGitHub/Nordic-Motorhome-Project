@@ -13,7 +13,7 @@
 </div>
 <a class="h3" th:href="@{booking/add}">Add new booking</a>
 <table class="table" table-bordered>
-    <thead class="thead-dark"></thead>
+    <thead class="thead-dark">
     <tr>
         <th>ID number</th>
         <th>Start date</th>
@@ -30,6 +30,7 @@
         <th>Actions</th>
         <th></th>
     </tr>
+    </thead>
     <tbody>
     <th:block th:each="booking : ${bookingList}">
         <tr>
@@ -47,13 +48,11 @@
 
             <td>
                 <select class="form-control" id="dropDownList">
-                    <!--                    <option value="0">Select motorhome</option>-->
                     <option th:each="extra : ${extraList}" th:value="${extra.id}"
                             th:text="${extra.name}"></option>
                 </select>
             </td>
 
-            <td>
             <td>
                 <a class="p mr-3 text-white" th:href="@{'/booking/edit/' + ${booking.id}}">Edit</a>
                 <a class="p text-white" th:href="@{'booking/delete/' + ${booking.id}}">Delete</a>
@@ -64,7 +63,7 @@
     </tbody>
 </table>
 <div>
-    <a class="h5 text-center" th:href="@{/}">Back to the main site</a>
+    <a class="action-buttons" th:href="@{/}">Back to the main site</a>
 </div>
 </div>
 </body>

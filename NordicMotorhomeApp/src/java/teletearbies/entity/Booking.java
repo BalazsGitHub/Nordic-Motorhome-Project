@@ -1,6 +1,9 @@
 package teletearbies.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,11 +17,11 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = false, unique = false, length = 255, name = "start_date")
+ /*   @Column(nullable = false, unique = false, length = 255, name = "start_date")
     private String startDate;
 
     @Column(nullable = false, unique = false, length = 255, name = "end_date")
-    private String endDate;
+    private String endDate;*/
 
     @Column(nullable = false, unique = false, length = 255, name = "pickup_point")
     private String pickUpPoint;
@@ -72,12 +75,18 @@ public class Booking {
     @JoinColumn(name = "season_id")
     private Season season;
 
+    @Column(name = "start_date")
+   @DateTimeFormat(pattern = "yyyy-MM-dd'T'hh:mm")
+    private Date startDate;
+
+    @Column(name = "end_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'hh:mm")
+    private Date endDate;
+
     public Booking() {
     }
 
-    public Booking(String startDate, String endDate, String pickUpPoint, String dropOffPoint, String fullName, String phoneNumber, String address, String driversNumber, String cardNumber, Motorhome motorhome) {
-        this.startDate = startDate;
-        this.endDate = endDate;
+    public Booking(String pickUpPoint, String dropOffPoint, String fullName, String phoneNumber, String address, String driversNumber, String cardNumber, Motorhome motorhome) {
         this.pickUpPoint = pickUpPoint;
         this.dropOffPoint = dropOffPoint;
         this.fullName = fullName;
@@ -88,9 +97,7 @@ public class Booking {
         this.motorhome = motorhome;
     }
 
-    public Booking(String startDate, String endDate, String pickUpPoint, String dropOffPoint, String fullName, String phoneNumber, String address, String driversNumber, String cardNumber, Motorhome motorhome, Set<Extra> extras, Cancellation cancellation, User user, Season season) {
-        this.startDate = startDate;
-        this.endDate = endDate;
+    public Booking(String pickUpPoint, String dropOffPoint, String fullName, String phoneNumber, String address, String driversNumber, String cardNumber, Motorhome motorhome, Set<Extra> extras, Cancellation cancellation, User user, Season season) {
         this.pickUpPoint = pickUpPoint;
         this.dropOffPoint = dropOffPoint;
         this.fullName = fullName;
@@ -115,21 +122,6 @@ public class Booking {
         this.id = id;
     }
 
-    public String getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
-    }
-
-    public String getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
-    }
 
     public String getPickUpPoint() {
         return pickUpPoint;
@@ -257,5 +249,23 @@ public class Booking {
 
     public void setSeasonId(Season season) {
         this.season = season;
+    }
+
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+
     }
 }
