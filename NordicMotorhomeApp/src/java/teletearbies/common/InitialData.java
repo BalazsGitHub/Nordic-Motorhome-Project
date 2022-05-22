@@ -1,3 +1,4 @@
+/*
 package teletearbies.common;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class InitialData {
     @Autowired
     private ExtraService extraService;
 
-    //@PostConstruct
+    @PostConstruct
     public void initialiseDatabase() {
 
         Brand brand1 = new Brand("American coach", "Eagle", 4000, 12);
@@ -139,10 +140,11 @@ public class InitialData {
         extrasList.add(extra6);
 
 
-        Booking booking1 = new Booking("2022.05.05.", "2022.05.06.", "Køge", "Kastrup", "Mubby Mubibovich", "555-43536576", "Everland", "01234567", "12346543234567876543", motorhome1, extrasList, cancellation1, user1, seasonLow);
-        Booking booking2 = new Booking("2022.11.11", "2022.12.12.", "Køge", "Kastrup", "Mubby Mubibovich", "555-43536576", "Everland", "01234567", "12346543234567876543", motorhome2, extrasList, cancellation1, user2, seasonLow);
+        Booking booking1 = new Booking( "Køge", "Kastrup", "Mubby Mubibovich", "555-43536576", "Everland", "01234567", "12346543234567876543", motorhome1, extrasList, cancellation1, user1, seasonLow);
+        Booking booking2 = new Booking("Køge", "Kastrup", "Mubby Mubibovich", "555-43536576", "Everland", "01234567", "12346543234567876543", motorhome2, extrasList, cancellation1, user2, seasonLow);
 
         bookingService.saveBooking(booking1);
         bookingService.saveBooking(booking2);
     }
 }
+*/
