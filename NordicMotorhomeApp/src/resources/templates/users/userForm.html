@@ -1,4 +1,4 @@
-<head th:replace="fragments/header :: head"></head>
+<head th:replace="fragments/formHeader :: head"></head>
 <body>
 <div class="container-fluid">
     <h2 class="text-center">Add New User</h2>
@@ -31,7 +31,7 @@
         </div>
 
         <div class="row2">
-            <label class="col-sm-4 col-form-label">Titel</label>
+            <label class="col-sm-4 col-form-label">Title</label>
             <div class="col sm-8">
                 <input type="text" th:field="*{title}" class="form-control">
             </div>

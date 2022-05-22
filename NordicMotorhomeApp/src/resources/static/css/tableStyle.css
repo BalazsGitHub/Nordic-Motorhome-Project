@@ -1,0 +1,27 @@
+body{
+    padding: 20px !important;
+    /*background: linear-gradient(0.25turn, #bff6af,#6ac1c5, #bda5ff, #fae7a3);*/
+    background: #1a1e23;
+    color: ghostwhite;
+}
+
+a:link {
+    color: ghostwhite;
+}
+
+/* visited link */
+a:visited {
+    color: ghostwhite;
+}
+
+/* mouse over link */
+a:hover {
+    color: #1c44d0;
+}
+
+/* selected link */
+a:active {
+    color: #2bea14;
+}
+
+

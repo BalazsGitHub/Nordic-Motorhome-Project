@@ -6,7 +6,12 @@ body {
     min-height: 100vh;
     margin: 0;
     font-family: Lora, sans-serif;
-    background: linear-gradient(45deg, #bff6af,#6ac1c5, #bda5ff, #fae7a3);
+    /*background: linear-gradient(45deg, #bff6af,#6ac1c5, #bda5ff, #fae7a3);*/
+    background: #1a1e23;
+}
+
+h1 {
+    color: ghostwhite;
 }
 
 p {
@@ -70,7 +75,7 @@ p {
     left: 25%;
     width: 50%;
     height: 3px;
-    background: linear-gradient(45deg, #bff6af,#6ac1c5, #bda5ff, #fae7a3);
+    background: ghostwhite;
     border-radius: 10px;
     overflow: hidden;
     transition: 0.5s;
@@ -91,7 +96,7 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, #bff6af,#6ac1c5, #bda5ff, #fae7a3);
+    background: ghostwhite;
     transform: translateX(-100%);
     transition: 0.25s;
 }

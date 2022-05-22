@@ -28,7 +28,6 @@ public class MotorhomeController {
 
     @RequestMapping("/motorhome/add")
     public String addMotorhome(Model model) {
-
        List<Brand> brandList = brandService.getAllBrands();
        model.addAttribute("brands", brandList );
        model.addAttribute("motorhome", new Motorhome());
@@ -53,27 +52,27 @@ public class MotorhomeController {
             List<Brand> brandList = brandService.getAllBrands();
             model.addAttribute("brands", brandList );
 
-
-
             return "motorhomes/motorhomeForm";
+
         } catch (MotorhomeNotFoundException e) {
             redirectAttributes.addFlashAttribute("message", e.getMessage());
             model.addAttribute("pageTitle", "edit user (ID: " + id + ")");
+
             return "redirect:/managemotorhomes";
         }
     }
 
     @RequestMapping("/motorhome/delete/{id}")
     public String deleteMotorhome(@PathVariable("id") Integer id, RedirectAttributes redirectAttributes) {
-
         try {
             motorhomeService.deleteMotorhome(id);
             redirectAttributes.addFlashAttribute("message", "Motorhome was deleted!");
+
         } catch (MotorhomeNotFoundException e) {
             redirectAttributes.addFlashAttribute("message", e.getMessage());
 
         } catch (Exception exception) {
-            System.out.println("Cant delete motorhome if its booked");
+            redirectAttributes.addFlashAttribute("message", "Can't delete booked motorhome");
         }
         return "redirect:/managemotorhomes";
     }

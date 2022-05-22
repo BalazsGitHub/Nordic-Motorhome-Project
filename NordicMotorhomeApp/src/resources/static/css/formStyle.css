@@ -1,24 +1,20 @@
 body{
     overflow-x: hidden !important;
     padding: 50px 100px !important;
-    background: linear-gradient(45deg, #bff6af,#6ac1c5, #bda5ff, #fae7a3);
+    /*background: linear-gradient(45deg, #bff6af,#6ac1c5, #bda5ff, #fae7a3);*/
+    background: #1a1e23;
     text-align:center;
     vertical-align:center;
     color: #f3e6fd;
     height: 200%;
     width: 100%;
-
 }
 
 .center{
     text-align: center;
 }
 
-
-
 /*---------------------INDEX-------------------*/
-
-
 
 .image{
     display:inline-block;
