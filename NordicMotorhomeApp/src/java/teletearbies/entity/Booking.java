@@ -43,6 +43,8 @@ public class Booking {
     @Column(nullable = false, unique = false, length = 255, name = "customer_card_number")
     private String cardNumber;
 
+    @Column(nullable = false, unique = false, length = 255, name = "final_price")
+    private double finalPrice;
 
     //@Column(nullable = false, unique = false, length = 255, name = "extra_kilometer")
     //private double extraKilometer;
@@ -61,7 +63,6 @@ public class Booking {
             inverseJoinColumns = @JoinColumn(name = "extras_id"))
     private Set<Extra> extras = new HashSet<>();
 
-
     @ManyToOne
     @JoinColumn(name = "cancellation_id")
     private Cancellation cancellation;
@@ -75,7 +76,7 @@ public class Booking {
     private Season season;
 
     @Column(name = "start_date")
-   @DateTimeFormat(pattern = "yyyy-MM-dd'T'hh:mm")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'hh:mm")
     private Date startDate;
 
     @Column(name = "end_date")
@@ -83,17 +84,6 @@ public class Booking {
     private Date endDate;
 
     public Booking() {
-    }
-
-    public Booking(String pickUpPoint, String dropOffPoint, String fullName, String phoneNumber, String address, String driversNumber, String cardNumber, Motorhome motorhome) {
-        this.pickUpPoint = pickUpPoint;
-        this.dropOffPoint = dropOffPoint;
-        this.fullName = fullName;
-        this.phoneNumber = phoneNumber;
-        this.address = address;
-        this.driversNumber = driversNumber;
-        this.cardNumber = cardNumber;
-        this.motorhome = motorhome;
     }
 
     public Booking(String pickUpPoint, String dropOffPoint, String fullName, String phoneNumber, String address, String driversNumber, String cardNumber, Motorhome motorhome, Set<Extra> extras, Cancellation cancellation, User user, Season season) {
@@ -109,9 +99,19 @@ public class Booking {
         this.cancellation = cancellation;
         this.user = user;
         this.season = season;
+
+        //Calculate price of booking, missing motorhome daily price, calculate days needed for that.
+        double basePrice = 0;
+
+        for (Extra extra : extras
+        ) {
+            basePrice += extra.getPrice();
+        }
+
+        basePrice *= season.getSeasonPriceMultiplier();
+        basePrice *= (cancellation.getPercentage() / 100);
+        this.finalPrice = basePrice;
     }
-
-
 
     public int getId() {
         return id;
@@ -120,7 +120,6 @@ public class Booking {
     public void setId(int id) {
         this.id = id;
     }
-
 
     public String getPickUpPoint() {
         return pickUpPoint;
@@ -265,6 +264,13 @@ public class Booking {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
 
+    public double getFinalPrice() {
+        return finalPrice;
+    }
+
+    public void setFinalPrice(double finalPrice) {
+        this.finalPrice = finalPrice;
     }
 }

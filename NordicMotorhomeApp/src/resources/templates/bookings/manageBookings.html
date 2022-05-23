@@ -19,6 +19,7 @@
         <th>Customer card number</th>
         <th>Motorhome name</th>
         <th>Extras</th>
+        <th>Final Price</th>
         <th>Actions</th>
         <th></th>
     </tr>
@@ -37,14 +38,13 @@
             <td>[[${booking.driversNumber}]]</td>
             <td>[[${booking.cardNumber}]]</td>
             <td>[[${booking.motorhome.name}]]</td>
-
             <td>
                 <select class="form-control" id="dropDownList">
                     <option th:each="extra : ${extraList}" th:value="${extra.id}"
                             th:text="${extra.name}"></option>
                 </select>
             </td>
-
+            <td>[[${booking.finalPrice}]]</td>
             <td>
                 <a class="p mr-3 text-white" th:href="@{'/booking/edit/' + ${booking.id}}">Edit</a>
                 <a class="p text-white" th:href="@{'booking/delete/' + ${booking.id}}">Delete</a>

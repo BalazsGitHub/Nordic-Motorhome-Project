@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import teletearbies.entity.*;
+
 import teletearbies.service.*;
 
 import java.util.List;
@@ -17,14 +18,19 @@ public class BookingController {
 
     @Autowired
     BookingService bookingService;
+
     @Autowired
     UserService userService;
+
     @Autowired
     SeasonService seasonService;
+
     @Autowired
     MotorhomeService motorhomeService;
+
     @Autowired
     ExtraService extraService;
+
     @Autowired
     CancellationService cancellationService;
 
@@ -43,8 +49,8 @@ public class BookingController {
         List<Season> seasonList = seasonService.getAllSeasons();
         model.addAttribute("seasonList", seasonList);
 
-        List<Booking> bookingList = bookingService.getAllBookings();
         model.addAttribute("booking", new Booking());
+
         return "bookings/bookingForm";
     }
 
@@ -72,7 +78,6 @@ public class BookingController {
 
             List<User> userList = userService.getAllUsers();
             model.addAttribute("userList", userList);
-
             List<Season> seasonList = seasonService.getAllSeasons();
             model.addAttribute("seasonList", seasonList);
             return "bookings/bookingForm";

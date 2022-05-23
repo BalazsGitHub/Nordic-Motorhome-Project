@@ -140,7 +140,7 @@ public class InitialData {
 
 
         Booking booking1 = new Booking("Køge", "Kastrup", "Mubby Mubibovich", "555-43536576", "Everland", "01234567", "12346543234567876543", motorhome1, extrasList, cancellation1, user1, seasonLow);
-        Booking booking2 = new Booking("Køge", "Kastrup", "Mubby Mubibovich", "555-43536576", "Everland", "01234567", "12346543234567876543", motorhome2, extrasList, cancellation1, user2, seasonLow);
+        Booking booking2 = new Booking("Køge", "Kastrup", "Mubby Mubibovich", "555-43536576", "Everland", "01234567", "12346543234567876543", motorhome2, extrasList, cancellation1, user2, seasonPeak);
 
         bookingService.saveBooking(booking1);
         bookingService.saveBooking(booking2);
