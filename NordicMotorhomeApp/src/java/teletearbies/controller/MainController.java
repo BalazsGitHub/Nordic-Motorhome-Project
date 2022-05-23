@@ -29,6 +29,11 @@ public class MainController {
     @Autowired
     private ExtraService extraService;
 
+    /*@RequestMapping("/")
+    public String index() {
+        return "mainPage/mainPage";
+    }*/
+
     @GetMapping(value = {"/", "/login"})
     public String showHomePage() {
         return "login/login";
@@ -94,4 +99,5 @@ public class MainController {
         model.addAttribute("motorhomeList", motorhomeList);
         return "repairshop/manageRepairShop";
     }
+
 }

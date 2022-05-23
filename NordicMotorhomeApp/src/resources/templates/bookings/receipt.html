@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" href="styles.css" th:href="@{/css/styles.css}" media="screen">
+    <title>Nordic Motorhome Rental</title>
+</head>
+
+<body>
+<div class="container-fluid text-center">
+</div>
+<table class="table" table-bordered>
+  <h1>
+      NMR Receipt
+  </h1>
+
+    <h4>
+        Nordic Motorhome Rental
+    </h4>
+    <h4>
+        Gladvej 45, 2770 Kastrup
+    </h4>
+    <h4>
+        +45 37485960
+    </h4>
+    <p></p>
+    <tbody>
+    <th:block th:each="booking : ${booking}">
+        <tr>
+            <th>ID number</th>
+            <td>[[${booking.id}]]</td>
+        </tr>
+        <th>Motorhome name</th>
+        <td>[[${booking.motorhome.name}]]</td>
+        <tr>
+            <th>Start date</th>
+            <td>[[${booking.startDate}]]</td>
+        </tr>
+        <tr>
+            <th>End date</th>
+            <td>[[${booking.endDate}]]</td>
+        </tr>
+        <tr>
+            <th>Number of days</th>
+            <td>[[${booking.numberOfDays}]]</td>
+        </tr>
+        <tr>
+            <th>Pick up point/Delivery point</th>
+            <td>[[${booking.pickUpPoint}]]</td>
+        </tr>
+        <tr>
+            <th>Drop off point</th>
+            <td>[[${booking.dropOffPoint}]]</td>
+        </tr>
+        <tr>
+            <th>Customer name</th>
+            <td>[[${booking.fullName}]]</td>
+        </tr>
+        <tr>
+            <th>Customer phone number</th>
+            <td>[[${booking.phoneNumber}]]</td>
+        <tr>
+            <th>Customer address</th>
+            <td>[[${booking.address}]]</td>
+        </tr>
+        <tr>
+            <th>Extras</th>
+            <td>
+                <view th:each="extra : ${extraList}" th:value="${extra.id}"
+                      th:text="${extra.name} + '/ ' "> </view>
+            </td>
+        </tr>
+        <tr>
+            <th>Final Price</th>
+            <td>[[${booking.finalPrice} + ' DKK']]</td>
+        </tr>
+
+
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+<div>
+    <a class="action-buttons" th:href="@{/mainpage}">Back to the main site</a>
+</div>
+</div>
+</body>
+</html>
