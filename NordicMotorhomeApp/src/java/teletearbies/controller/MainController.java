@@ -85,4 +85,11 @@ public class MainController {
         model.addAttribute("userList", userList);
         return "users/manageUsers";
     }
+
+    @RequestMapping("/repairshop")
+    public String manageRepairshop(Model model) {
+        List<Motorhome> motorhomeList = motorhomeService.getAllMotorhomes();
+        model.addAttribute("motorhomeList", motorhomeList);
+        return "repairshop/manageRepairShop";
+    }
 }

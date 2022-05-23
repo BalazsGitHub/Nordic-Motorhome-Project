@@ -1,4 +1,3 @@
-
 <head th:replace="fragments/formHeader :: head"></head>
 <body>
 <div class="container-fluid">
@@ -6,8 +5,8 @@
     <h2 class="text/center"> [[${pageTitle}]]</h2>
 </div>
 <form th:action="@{/repairshop/save}" method="post" th:object="${motorhome}" style="max-width: 500px; margin: 0 auto;">
-        <label>Mark vehicle for repair</label>
-        <input type="checkbox" name="my_checkbox" value="setIsBeingRepaired()">
+    <label>Mark vehicle for repair</label>
+    <input type="checkbox" name="my_checkbox" value="setIsBeingRepaired()">
     <div class="text-center">
         <button type="submit" class=" btn btn-primary m-2">Save</button>
         <button type="button" class="btn btn-secondary m-2" onclick="cancelForm()">Cancel</button>
@@ -18,6 +17,5 @@
         window.location = "[[@{/managerepairshop}]]"
     }
 </script>
-
 </body>
 </html>

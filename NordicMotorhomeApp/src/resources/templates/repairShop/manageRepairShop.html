@@ -19,6 +19,7 @@
         <th>Fuel</th>
         <th>Brand</th>
         <th>Model</th>
+        <th>Under repair</th>
         <th></th>
         <th>Actions</th>
         <th></th>
@@ -31,6 +32,7 @@
             <td>[[${motorhome.fuelType}]]</td>
             <td>[[${motorhome.brandId.name}]]</td>
             <td>[[${motorhome.brandId.model}]]</td>
+            <td>[[${motorhome.isBeingRepaired}]]</td>
             <td></td>
             <td>
                 <a class="p mr-3 text-black-50" th:href="@{'repairshop/repair/' + ${motorhome.id}}">Repair</a>

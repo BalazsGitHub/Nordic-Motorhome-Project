@@ -1,4 +1,4 @@
-/*
+
 package teletearbies.common;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,7 @@ public class InitialData {
     @Autowired
     private ExtraService extraService;
 
-    @PostConstruct
+    //@PostConstruct
     public void initialiseDatabase() {
 
         Brand brand1 = new Brand("American coach", "Eagle", 4000, 12);
@@ -146,5 +146,4 @@ public class InitialData {
         bookingService.saveBooking(booking1);
         bookingService.saveBooking(booking2);
     }
-}*/
-
+}
