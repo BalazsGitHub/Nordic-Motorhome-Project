@@ -66,10 +66,12 @@ public class MotorhomeController {
             model.addAttribute("motorhome", motorhome);
 
             return "repairShop/repairShopForm";
+
         } catch (MotorhomeNotFoundException e) {
             redirectAttributes.addFlashAttribute("message", e.getMessage());
             model.addAttribute("pageTitle", "edit user (ID: " + id + ")");
-            return "redirect:/managepepairshop";
+
+            return "redirect:/repairshop";
         }
     }
 
@@ -95,6 +97,4 @@ public class MotorhomeController {
         }
         return "redirect:/managemotorhomes";
     }
-
-
 }

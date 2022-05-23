@@ -1,6 +1,7 @@
 package teletearbies.entity;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
@@ -43,8 +44,6 @@ public class Booking {
     @Column(nullable = false, unique = false, length = 255, name = "customer_card_number")
     private String cardNumber;
 
-    @Column(nullable = false, unique = false, length = 255, name = "final_price")
-    private double finalPrice;
 
     //@Column(nullable = false, unique = false, length = 255, name = "extra_kilometer")
     //private double extraKilometer;
@@ -83,6 +82,14 @@ public class Booking {
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'hh:mm")
     private Date endDate;
 
+    @Column(nullable = false, unique = false, length = 255, name = "number_of_days")
+    private int numberOfDays;
+
+    @Column(nullable = false, unique = false, length = 255, name = "final_price")
+    private double finalPrice;
+
+
+
     public Booking() {
     }
 
@@ -99,18 +106,48 @@ public class Booking {
         this.cancellation = cancellation;
         this.user = user;
         this.season = season;
+        this.numberOfDays = calculateDay();
+        this.finalPrice = calculatePrice();
+    }
 
-        //Calculate price of booking, missing motorhome daily price, calculate days needed for that.
-        double basePrice = 0;
+    public double calculatePrice() {
+        double price = motorhome.getBrand().getDailyBrandPrice() * numberOfDays;
 
         for (Extra extra : extras
         ) {
-            basePrice += extra.getPrice();
+            price += extra.getPrice();
         }
 
-        basePrice *= season.getSeasonPriceMultiplier();
-        basePrice *= (cancellation.getPercentage() / 100);
-        this.finalPrice = basePrice;
+        price *= season.getSeasonPriceMultiplier();
+        price *= (cancellation.getPercentage() / 100);
+
+        return price;
+    }
+
+    public int calculateDay() {
+        // creating the date 1 with sample input date.
+        Date date1 = new Date(2022, 11, 1);
+
+        // creating the date 2 with sample input date.
+        Date date2 = new Date(2022, 11, 30);
+
+        // getting milliseconds for both dates
+        long date1InMs = date1.getTime();
+        long date2InMs = date2.getTime();
+
+        // getting the diff between two dates.
+        long timeDiff = 0;
+
+        if(date1InMs > date2InMs) {
+            timeDiff = date1InMs - date2InMs;
+        } else {
+            timeDiff = date2InMs - date1InMs;
+        }
+
+        // converting diff into days
+        int daysDiff = (int) (timeDiff / (1000 * 60 * 60* 24));
+
+        return daysDiff;
     }
 
     public int getId() {
@@ -272,5 +309,13 @@ public class Booking {
 
     public void setFinalPrice(double finalPrice) {
         this.finalPrice = finalPrice;
+    }
+
+    public int getNumberOfDays() {
+        return numberOfDays;
+    }
+
+    public void setNumberOfDays(int numberOfDays) {
+        this.numberOfDays = numberOfDays;
     }
 }

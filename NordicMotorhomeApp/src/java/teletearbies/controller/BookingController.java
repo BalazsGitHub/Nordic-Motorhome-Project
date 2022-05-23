@@ -37,7 +37,6 @@ public class BookingController {
     @Autowired
     CancellationService cancellationService;
 
-
     @RequestMapping("/booking/add")
     public String addBooking(Model model) {
         List<Motorhome> motorhomeList = motorhomeService.getAllMotorhomes();
@@ -59,6 +58,11 @@ public class BookingController {
 
     @PostMapping("/booking/save")
     public String saveBooking(Booking booking, RedirectAttributes redirectAttributes) {
+
+        booking.setNumberOfDays(booking.calculateDay());
+        booking.setFinalPrice(booking.calculatePrice());
+
+
         bookingService.saveBooking(booking);
         redirectAttributes.addFlashAttribute("message", "Booking was saved!");
         return "redirect:/managebookings";
@@ -81,13 +85,18 @@ public class BookingController {
 
             List<User> userList = userService.getAllUsers();
             model.addAttribute("userList", userList);
+
             List<Season> seasonList = seasonService.getAllSeasons();
             model.addAttribute("seasonList", seasonList);
+
             return "bookings/bookingForm";
+
         } catch (BookingNotFoundException e) {
             redirectAttributes.addFlashAttribute("message", e.getMessage());
             model.addAttribute("pageTitle", "edit user (ID: " + id + ")");
+
             return "redirect:/managebookings";
+
         }
     }
 
