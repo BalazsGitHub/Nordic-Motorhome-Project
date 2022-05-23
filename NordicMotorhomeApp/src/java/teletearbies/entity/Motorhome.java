@@ -14,14 +14,14 @@ public class Motorhome {
     @Column(nullable = false, unique = false, length = 255, name = "name")
     private String name;
 
-    @Column(nullable = false, unique = false, length = 255, name = "fuel_type")
+    @Column(unique = false, length = 255, name = "fuel_type")
     private String fuelType;
 
     @Column(nullable = false, unique = false, length = 10, name = "speedomenter")
     private double speedometer;
 
-    @Column(nullable = false, unique = false, name = "being_repaired")
-    private boolean isBeingRepaired = false;
+    //@Column(nullable = false, unique = false, name = "being_repaired")
+    private boolean repaired;
 
     @ManyToOne
     @JoinColumn(name = "brand_id")
@@ -96,11 +96,11 @@ public class Motorhome {
         this.brand = brand;
     }
 
-    public boolean isBeingRepaired() {
-        return isBeingRepaired;
+    public boolean isRepaired() {
+        return repaired;
     }
 
-    public void setBeingRepaired(boolean beingRepaired) {
-        isBeingRepaired = beingRepaired;
+    public void setRepaired(boolean repaired) {
+        this.repaired = repaired;
     }
 }

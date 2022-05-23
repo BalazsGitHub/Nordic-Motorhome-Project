@@ -59,29 +59,6 @@ public class MotorhomeController {
         }
     }
 
-    @RequestMapping("/repairshop/repair/{id}")
-    public String repairMotorhome(@PathVariable("id") Integer id, Model model, RedirectAttributes redirectAttributes) {
-        try {
-            Motorhome motorhome = motorhomeService.getMotorhome(id);
-            model.addAttribute("motorhome", motorhome);
-
-            return "repairShop/repairShopForm";
-
-        } catch (MotorhomeNotFoundException e) {
-            redirectAttributes.addFlashAttribute("message", e.getMessage());
-            model.addAttribute("pageTitle", "edit user (ID: " + id + ")");
-
-            return "redirect:/repairshop";
-        }
-    }
-
-    @PostMapping("/repairshop/save")
-    public String saveMotorhomeRepair(Motorhome motorhome) {
-        motorhome.setBeingRepaired(true);
-        motorhomeService.saveMotorhome(motorhome);
-
-        return "repairShop/manageRepairShop";
-    }
 
     @RequestMapping("/motorhome/delete/{id}")
     public String deleteMotorhome(@PathVariable("id") Integer id, RedirectAttributes redirectAttributes) {
