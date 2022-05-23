@@ -36,7 +36,7 @@ public class MainController {
 
     @GetMapping(value = {"/", "/login"})
     public String showHomePage() {
-        return "login";
+        return "login/login";
     }
 
     @RequestMapping("/logUserIn")
@@ -49,8 +49,13 @@ public class MainController {
             return "mainPage/mainPage";
         } else {
             model.addAttribute("errorMessage", "Wrong username or password!");
-            return "error";
+            return "login/error";
         }
+    }
+
+    @RequestMapping("/mainpage")
+    public String backToMainMenu() {
+        return "mainPage/mainPage";
     }
 
     @RequestMapping("/teampage")
@@ -80,6 +85,4 @@ public class MainController {
         model.addAttribute("userList", userList);
         return "users/manageUsers";
     }
-
-
 }
