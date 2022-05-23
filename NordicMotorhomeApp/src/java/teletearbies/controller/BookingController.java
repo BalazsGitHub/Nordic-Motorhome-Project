@@ -40,6 +40,9 @@ public class BookingController {
     @RequestMapping("/booking/add")
     public String addBooking(Model model) {
         List<Motorhome> motorhomeList = motorhomeService.getAllMotorhomes();
+
+        motorhomeList.removeIf(motorhome -> !motorhome.isRepaired());
+
         model.addAttribute("motorhomeList", motorhomeList);
 
         List<Cancellation> cancellationList = cancellationService.getAllCancellations();
@@ -104,6 +107,12 @@ public class BookingController {
     public String deleteBooking(@PathVariable("id") Integer id, RedirectAttributes redirectAttributes) {
 
         try {
+
+            Booking booking = bookingService.getBooking(id);
+            Motorhome motorhome = booking.getMotorhome();
+            motorhome.setRepairedFalse();
+            motorhomeService.saveMotorhome(motorhome);
+
             bookingService.deleteBooking(id);
             redirectAttributes.addFlashAttribute("message", "Booking was deleted!");
         } catch (BookingNotFoundException e) {

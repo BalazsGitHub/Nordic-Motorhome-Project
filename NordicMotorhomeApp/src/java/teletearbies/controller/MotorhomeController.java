@@ -32,6 +32,7 @@ public class MotorhomeController {
         return "motorhomes/motorhomeForm";
     }
 
+
     @PostMapping("/motorhome/save")
     public String saveMotorhome(Motorhome motorhome, RedirectAttributes redirectAttributes) {
         motorhomeService.saveMotorhome(motorhome);
@@ -39,6 +40,8 @@ public class MotorhomeController {
 
         return "redirect:/managemotorhomes";
     }
+
+
 
     @RequestMapping("/motorhome/edit/{id}")
     public String editMotorhome(@PathVariable("id") Integer id, Model model, RedirectAttributes redirectAttributes) {
@@ -59,7 +62,6 @@ public class MotorhomeController {
         }
     }
 
-
     @RequestMapping("/motorhome/delete/{id}")
     public String deleteMotorhome(@PathVariable("id") Integer id, RedirectAttributes redirectAttributes) {
         try {
@@ -74,4 +76,35 @@ public class MotorhomeController {
         }
         return "redirect:/managemotorhomes";
     }
+
+
+
+    @PostMapping("/motorhome/registerRepair")
+    public String saveRepair(Motorhome motorhome, RedirectAttributes redirectAttributes) {
+        motorhome.setRepairedFalse();
+        motorhomeService.saveMotorhome(motorhome);
+        redirectAttributes.addFlashAttribute("message", "Motorhome was saved!");
+
+        return "redirect:/managemotorhomes";
+    }
+
+    @RequestMapping("/motorhome/repair/{id}")
+    public String editRepair(@PathVariable("id") Integer id, Model model, RedirectAttributes redirectAttributes) {
+        try {
+            Motorhome motorhome = motorhomeService.getMotorhome(id);
+            model.addAttribute("motorhome", motorhome);
+
+            List<Brand> brandList = brandService.getAllBrands();
+            model.addAttribute("brands", brandList);
+
+            return "motorhomes/registerMotorhomeRepairForm";
+
+        } catch (MotorhomeNotFoundException e) {
+            redirectAttributes.addFlashAttribute("message", e.getMessage());
+            model.addAttribute("pageTitle", "edit user (ID: " + id + ")");
+
+            return "redirect:/managemotorhomes";
+        }
+    }
 }
+

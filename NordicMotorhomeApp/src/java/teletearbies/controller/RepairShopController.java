@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import teletearbies.entity.Brand;
 import teletearbies.entity.Motorhome;
 import teletearbies.service.BrandService;
 import teletearbies.service.MotorhomeNotFoundException;
@@ -23,21 +24,23 @@ public class RepairShopController {
     @Autowired
     private BrandService brandService;
 
-    @PostMapping("/repairshop/save")
+    @PostMapping("/repair/save")
     public String saveRepair(Motorhome motorhome, RedirectAttributes redirectAttributes) {
-        motorhome.setRepaired(true);
+        motorhome.setRepairedTrue();
         motorhomeService.saveMotorhome(motorhome);
-        redirectAttributes.addFlashAttribute("message", "Repair update was saved!");
+        redirectAttributes.addFlashAttribute("message", "Motorhome was saved!");
 
         return "redirect:/repairshop";
     }
 
-
-    @RequestMapping("/repairshop/repair/{id}")
-    public String repairMotorhome(@PathVariable("id") Integer id, Model model, RedirectAttributes redirectAttributes) {
+    @RequestMapping("/repair/edit/{id}")
+    public String editRepair(@PathVariable("id") Integer id, Model model, RedirectAttributes redirectAttributes) {
         try {
             Motorhome motorhome = motorhomeService.getMotorhome(id);
             model.addAttribute("motorhome", motorhome);
+
+            List<Brand> brandList = brandService.getAllBrands();
+            model.addAttribute("brands", brandList);
 
             return "repairShop/repairShopForm";
 
@@ -48,5 +51,4 @@ public class RepairShopController {
             return "redirect:/repairshop";
         }
     }
-
 }

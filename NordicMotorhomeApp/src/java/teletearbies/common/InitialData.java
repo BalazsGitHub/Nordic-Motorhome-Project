@@ -54,16 +54,16 @@ public class InitialData {
         brandService.saveBrand(brand7);
         brandService.saveBrand(brand8);
 
-        Motorhome motorhome1 = new Motorhome("Ymir", "benzin", 1000, brand1);
-        Motorhome motorhome2 = new Motorhome("Heimdal", "diesel", 2000, brand2);
-        Motorhome motorhome3 = new Motorhome("Odin", "benzin", 3000, brand3);
-        Motorhome motorhome4 = new Motorhome("Thor", "diesel", 4000, brand4);
-        Motorhome motorhome5 = new Motorhome("Vidar", "benzin", 5000, brand3);
-        Motorhome motorhome6 = new Motorhome("Freja", "diesel", 6000, brand4);
-        Motorhome motorhome7 = new Motorhome("Tyr", "benzin", 7000, brand5);
-        Motorhome motorhome8 = new Motorhome("Loki", "diesel", 8000, brand6);
-        Motorhome motorhome9 = new Motorhome("Hela", "benzin", 9000, brand7);
-        Motorhome motorhome10 = new Motorhome("Idun", "diesel", 10000, brand8);
+        Motorhome motorhome1 = new Motorhome("Ymir", "benzin", 1000, brand1, false);
+        Motorhome motorhome2 = new Motorhome("Heimdal", "diesel", 2000, brand2,false);
+        Motorhome motorhome3 = new Motorhome("Odin", "benzin", 3000, brand3,false);
+        Motorhome motorhome4 = new Motorhome("Thor", "diesel", 4000, brand4,false);
+        Motorhome motorhome5 = new Motorhome("Vidar", "benzin", 5000, brand3, false);
+        Motorhome motorhome6 = new Motorhome("Freja", "diesel", 6000, brand4, false);
+        Motorhome motorhome7 = new Motorhome("Tyr", "benzin", 7000, brand5, false);
+        Motorhome motorhome8 = new Motorhome("Loki", "diesel", 8000, brand6, false);
+        Motorhome motorhome9 = new Motorhome("Hela", "benzin", 9000, brand7, false);
+        Motorhome motorhome10 = new Motorhome("Idun", "diesel", 10000, brand8, false);
 
         motorhomeService.saveMotorhome(motorhome1);
         motorhomeService.saveMotorhome(motorhome2);

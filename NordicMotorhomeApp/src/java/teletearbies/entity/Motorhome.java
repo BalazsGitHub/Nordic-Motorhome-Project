@@ -20,7 +20,7 @@ public class Motorhome {
     @Column(nullable = false, unique = false, length = 10, name = "speedomenter")
     private double speedometer;
 
-    //@Column(nullable = false, unique = false, name = "being_repaired")
+    @Column(nullable = false, unique = false, name = "being_repaired")
     private boolean repaired;
 
     @ManyToOne
@@ -30,14 +30,27 @@ public class Motorhome {
     @OneToMany(mappedBy = "motorhome")
     private List<Booking> bookingList;
 
-    public Motorhome(String name, String fuelType, double speedometer, Brand brand) {
+    public Motorhome() {
+    }
+
+    public Motorhome(String name, String fuelType, double speedometer, Brand brand, boolean repaired) {
         this.name = name;
         this.fuelType = fuelType;
         this.speedometer = speedometer;
         this.brand = brand;
+        this.repaired = repaired;
     }
 
-    public Motorhome() {
+    public void setRepairedTrue() {
+        if (!repaired) {
+            repaired = true;
+        }
+    }
+
+    public void setRepairedFalse() {
+        if (repaired) {
+            repaired = false;
+        }
     }
 
     public Integer getId() {

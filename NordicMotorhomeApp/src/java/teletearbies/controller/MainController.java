@@ -61,6 +61,9 @@ public class MainController {
     @RequestMapping("/managemotorhomes")
     public String manageMotorhomes(Model model) {
         List<Motorhome> motorhomeList = motorhomeService.getAllMotorhomes();
+
+        motorhomeList.removeIf(motorhome -> !motorhome.isRepaired());
+
         model.addAttribute("motorhomeList", motorhomeList);
         return "motorhomes/manageMotorhomes";
     }
@@ -83,7 +86,11 @@ public class MainController {
 
     @RequestMapping("/repairshop")
     public String manageRepairshop(Model model) {
+
         List<Motorhome> motorhomeList = motorhomeService.getAllMotorhomes();
+
+        motorhomeList.removeIf(Motorhome::isRepaired);
+
         model.addAttribute("motorhomeList", motorhomeList);
         return "repairshop/manageRepairShop";
     }

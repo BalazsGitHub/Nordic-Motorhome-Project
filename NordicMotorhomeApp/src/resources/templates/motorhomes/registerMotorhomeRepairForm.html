@@ -1,12 +1,12 @@
 <head th:replace="fragments/formHeader :: head"></head>
 <body>
 <div class="container-fluid">
-    <h2 class="text-center">Is vehicle repaired?</h2>
+    <h2 class="text-center">Does vehicle needs repair?</h2>
     <h2 class="text/center"> [[${pageTitle}]]</h2>
 </div>
 <!--  method attribute specifies how to send form-data  -->
 <!--  method="post" = sent as http -->
-<form th:action="@{/repair/save}" method="post" th:object="${motorhome}" style="max-width: 500px; margin: 0 auto;">
+<form th:action="@{/motorhome/registerRepair}" method="post" th:object="${motorhome}" style="max-width: 500px; margin: 0 auto;">
     <input type="hidden" th:field="*{id}">
     <!-- th:object="${brand} = same as showNewForm attribute -->
     <div class="border border-secondary rounded p-3">
