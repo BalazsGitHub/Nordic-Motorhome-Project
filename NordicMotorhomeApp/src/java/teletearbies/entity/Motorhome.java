@@ -20,6 +20,8 @@ public class Motorhome {
     @Column(nullable = false, unique = false, length = 10, name = "speedomenter")
     private double speedometer;
 
+   @Column(nullable = true, unique = false, name = "being_repaired")
+   private boolean isBeingRepaired = false;
 
     @ManyToOne
     @JoinColumn(name = "brand_id")
@@ -92,5 +94,13 @@ public class Motorhome {
 
     public void setBrandId(Brand brand) {
         this.brand = brand;
+    }
+
+    public boolean isBeingRepaired() {
+        return isBeingRepaired;
+    }
+
+    public void setBeingRepaired(boolean beingRepaired) {
+        isBeingRepaired = beingRepaired;
     }
 }

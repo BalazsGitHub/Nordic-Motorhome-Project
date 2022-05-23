@@ -32,7 +32,7 @@ h1, h2, h3, h4, h5, h6 {
 .table-header {
     display: flex;
     width: 100%;
-    background: #000;
+    background: linear-gradient(45deg, #bff6af,#6ac1c5, #bda5ff, #fae7a3);
     padding: 18px 0;
 }
 
