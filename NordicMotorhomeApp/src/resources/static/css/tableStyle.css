@@ -1,9 +1,10 @@
 body{
     padding: 20px !important;
-    /*background: linear-gradient(0.25turn, #bff6af,#6ac1c5, #bda5ff, #fae7a3);*/
-    background: #1a1e23;
+    background: linear-gradient(45deg, #6ac1c5, #bda5ff, #9e7afc);
     color: ghostwhite;
 }
+
+
 
 a:link {
     color: ghostwhite;

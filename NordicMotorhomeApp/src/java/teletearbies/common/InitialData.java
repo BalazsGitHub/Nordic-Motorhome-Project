@@ -54,15 +54,15 @@ public class InitialData {
         brandService.saveBrand(brand7);
         brandService.saveBrand(brand8);
 
-        Motorhome motorhome1 = new Motorhome("Ymir", "benzin", 1000, brand1, false);
-        Motorhome motorhome2 = new Motorhome("Heimdal", "diesel", 2000, brand2,false);
+        Motorhome motorhome1 = new Motorhome("Ymir", "benzin", 1000, brand1, true);
+        Motorhome motorhome2 = new Motorhome("Heimdal", "diesel", 2000, brand2,true);
         Motorhome motorhome3 = new Motorhome("Odin", "benzin", 3000, brand3,false);
         Motorhome motorhome4 = new Motorhome("Thor", "diesel", 4000, brand4,false);
-        Motorhome motorhome5 = new Motorhome("Vidar", "benzin", 5000, brand3, false);
-        Motorhome motorhome6 = new Motorhome("Freja", "diesel", 6000, brand4, false);
-        Motorhome motorhome7 = new Motorhome("Tyr", "benzin", 7000, brand5, false);
-        Motorhome motorhome8 = new Motorhome("Loki", "diesel", 8000, brand6, false);
-        Motorhome motorhome9 = new Motorhome("Hela", "benzin", 9000, brand7, false);
+        Motorhome motorhome5 = new Motorhome("Vidar", "benzin", 5000, brand3, true);
+        Motorhome motorhome6 = new Motorhome("Freja", "diesel", 6000, brand4, true);
+        Motorhome motorhome7 = new Motorhome("Tyr", "benzin", 7000, brand5, true);
+        Motorhome motorhome8 = new Motorhome("Loki", "diesel", 8000, brand6, true);
+        Motorhome motorhome9 = new Motorhome("Hela", "benzin", 9000, brand7, true);
         Motorhome motorhome10 = new Motorhome("Idun", "diesel", 10000, brand8, false);
 
         motorhomeService.saveMotorhome(motorhome1);
@@ -140,10 +140,16 @@ public class InitialData {
         extrasList.add(extra6);
 
 
-        Booking booking1 = new Booking( "Køge", "Kastrup", "Mubby Mubibovich", "555-43536576", "Everland", "01234567", "12346543234567876543", motorhome1, extrasList, cancellation1, user1, seasonLow);
-        Booking booking2 = new Booking("Køge", "Kastrup", "Mubby Mubibovich", "555-43536576", "Everland", "01234567", "12346543234567876543", motorhome2, extrasList, cancellation1, user2, seasonPeak);
+
+
+        Booking booking1 = new Booking( "Køge", "Kastrup", "Mubby Mubibovich", "555-43536576", "Otatop 32", "48374653", "9872349873454328733", motorhome1, extrasList, cancellation1, user1, seasonLow);
+        Booking booking2 = new Booking("Kastrup", "Kastrup", "Bogi Wogikan", "456-85764572", "Everland 1", "01234567", "12346543234567876543", motorhome2, extrasList, cancellation1, user2, seasonPeak);
+        Booking booking3 = new Booking("Billund", "Kastrup", "Fe Buffelion", "45 34789567", "Cucumbala 43", "98762344", "5467893200398754783", motorhome3, extrasList, cancellation1, user3, seasonMiddle);
+        Booking booking4 = new Booking("Kastrup", "Kastrup", "Dani Banman", "45987234982", "Orbanland 67", "908746372", "4839273847563728837", motorhome4, extrasList, cancellation1, user4, seasonPeak);
 
         bookingService.saveBooking(booking1);
         bookingService.saveBooking(booking2);
+        bookingService.saveBooking(booking3);
+        bookingService.saveBooking(booking4);
     }
 }

@@ -44,13 +44,30 @@ public class Booking {
     @Column(nullable = false, unique = false, length = 255, name = "customer_card_number")
     private String cardNumber;
 
+    @Column(nullable = false, unique = false, length = 255, name = "extra_kilometer")
+    private double extraKilometer;
 
-    //@Column(nullable = false, unique = false, length = 255, name = "extra_kilometer")
-    //private double extraKilometer;
+    @Column(nullable = false, unique = false, name = "fuel_below_half")
+    private boolean fuelBelowHalf;
 
-    //private boolean isServiced;
+    @Column(nullable = false, unique = false, name = "distance_from_nmr")
+    private double distanceFromNMR;
 
-    //private boolean isFuelHalf;
+    @Column(name = "start_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'hh:mm")
+    private Date startDate;
+
+    @Column(name = "end_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'hh:mm")
+    private Date endDate;
+
+    @Column(nullable = false, unique = false, length = 255, name = "number_of_days")
+    private int numberOfDays;
+
+    @Column(nullable = false, unique = false, length = 255, name = "final_price")
+    private double finalPrice;
+
+
 
     @ManyToOne
     @JoinColumn(name = "motorhome_id")
@@ -74,20 +91,6 @@ public class Booking {
     @JoinColumn(name = "season_id")
     private Season season;
 
-    @Column(name = "start_date")
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'hh:mm")
-    private Date startDate;
-
-    @Column(name = "end_date")
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'hh:mm")
-    private Date endDate;
-
-    @Column(nullable = false, unique = false, length = 255, name = "number_of_days")
-    private int numberOfDays;
-
-    @Column(nullable = false, unique = false, length = 255, name = "final_price")
-    private double finalPrice;
-
 
 
     public Booking() {
@@ -108,7 +111,10 @@ public class Booking {
         this.season = season;
         this.numberOfDays = calculateDay();
         this.finalPrice = calculatePrice();
+        this.extraKilometer = 0;
+        this.distanceFromNMR = 0;
     }
+
 
     public double calculatePrice() {
         double price = motorhome.getBrand().getDailyBrandPrice() * numberOfDays;
@@ -118,6 +124,11 @@ public class Booking {
             price += extra.getPrice();
         }
 
+        price += extraKilometer;
+        if(fuelBelowHalf){
+            price += 70;
+        }
+        price += distanceFromNMR * 0.7;
         price *= season.getSeasonPriceMultiplier();
         price *= (cancellation.getPercentage() / 100);
 
@@ -317,5 +328,29 @@ public class Booking {
 
     public void setNumberOfDays(int numberOfDays) {
         this.numberOfDays = numberOfDays;
+    }
+
+    public double getExtraKilometer() {
+        return extraKilometer;
+    }
+
+    public void setExtraKilometer(double extraKilometer) {
+        this.extraKilometer = extraKilometer;
+    }
+
+    public boolean isFuelBelowHalf() {
+        return fuelBelowHalf;
+    }
+
+    public void setFuelBelowHalf(boolean fuelHalf) {
+        this.fuelBelowHalf = fuelHalf;
+    }
+
+    public double getDistanceFromNMR() {
+        return distanceFromNMR;
+    }
+
+    public void setDistanceFromNMR(double distanceFromNMR) {
+        this.distanceFromNMR = distanceFromNMR;
     }
 }

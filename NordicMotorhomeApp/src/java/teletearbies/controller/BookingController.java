@@ -58,7 +58,6 @@ public class BookingController {
 
     @PostMapping("/booking/save")
     public String saveBooking(Booking booking, RedirectAttributes redirectAttributes) {
-
         booking.setNumberOfDays(booking.calculateDay());
         booking.setFinalPrice(booking.calculatePrice());
 
@@ -88,6 +87,8 @@ public class BookingController {
 
             List<Season> seasonList = seasonService.getAllSeasons();
             model.addAttribute("seasonList", seasonList);
+
+            model.addAttribute("fuelHalf", booking.isFuelBelowHalf());
 
             return "bookings/bookingForm";
 
@@ -122,23 +123,28 @@ public class BookingController {
     @RequestMapping("booking/receipt/{id}")
     public String viewReceipt (Model model, @PathVariable("id") Integer id) throws BookingNotFoundException {
 
+        int fuelFee = 0;
+
        Booking booking = bookingService.getBooking(id);
         List<Booking> bookingList = bookingService.getAllBookings();
+
+        if(booking.isFuelBelowHalf()){
+            fuelFee = 70;
+        }
+
+        double deliveryFee = booking.getDistanceFromNMR() * 0.7;
+
+
 
         List<Extra> extraList = extraService.getAllExtras();
         model.addAttribute("extraList", booking.getExtras());
         model.addAttribute("booking", booking);
+        model.addAttribute("fuelFee", fuelFee);
+        model.addAttribute("deliveryFee", deliveryFee);
+
+
+
         return "bookings/receipt";
     }
 
-  /*  @GetMapping("/pdf")
-    public ModelAndView exportToPdf() {
-        ModelAndView mav = new ModelAndView();
-        mav.setView(new InvoicePdfExport());
-        //read data from DB
-        List<Booking> list= bookingService.getAllBookings();
-        //send to pdfImpl class
-        mav.addObject("list", list);
-        return mav;
-    }*/
 }

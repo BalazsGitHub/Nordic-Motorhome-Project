@@ -6,8 +6,8 @@ body {
     min-height: 100vh;
     margin: 0;
     font-family: Lora, sans-serif;
-    /*background: linear-gradient(45deg, #bff6af,#6ac1c5, #bda5ff, #fae7a3);*/
-    background: #1a1e23;
+    background: linear-gradient(45deg, #6ac1c5, #bda5ff, #9e7afc);
+
 }
 
 h1 {
@@ -119,7 +119,7 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #1a1e23;
+    background: #4c3f57;
     opacity: 0;
     overflow-x: hidden;
     visibility: hidden;
@@ -166,7 +166,7 @@ p {
     left: 0;
     width: 100%;
     height: 3px;
-    background: linear-gradient(45deg, #bff6af,#6ac1c5, #bda5ff, #fae7a3);
+    background: linear-gradient(45deg, #6ac1c5, #bda5ff, #9e7afc);
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 0.5s;
@@ -227,7 +227,7 @@ p {
     width: 100%;
     height: 100%;
     color: white;
-    background: linear-gradient(45deg, #bff6af,#6ac1c5, #bda5ff, #fae7a3);
+    background: linear-gradient(45deg, #6ac1c5, #bda5ff, #9e7afc);
     opacity: 0;
     transition: 0.4s;
 }

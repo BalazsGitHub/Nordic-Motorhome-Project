@@ -5,7 +5,7 @@
 </div>
 <a class="h3" th:href="@{booking/add}">Add new booking</a>
 <table class="table" table-bordered>
-    <thead class="thead-dark">
+    <thead class="thead-transparent">
     <tr>
         <th>ID number</th>
         <th>Motorhome name</th>
@@ -17,8 +17,6 @@
         <th>Customer phone number</th>
         <th>Customer address</th>
         <th>Customer drivers number</th>
-        <th>Customer card number</th>
-        <th>Extras</th>
         <th>Final Price</th>
         <th>Actions</th>
         <th></th>
@@ -37,13 +35,6 @@
             <td>[[${booking.phoneNumber}]]</td>
             <td>[[${booking.address}]]</td>
             <td>[[${booking.driversNumber}]]</td>
-            <td>[[${booking.cardNumber}]]</td>
-            <td>
-                <select class="form-control" id="dropDownList">
-                    <option th:each="extra : ${extraList}" th:value="${extra.id}"
-                            th:text="${extra.name}"></option>
-                </select>
-            </td>
             <td>[[${booking.finalPrice}]]</td>
             <td>
                 <a class="p mr-3 text-white" th:href="@{'/booking/edit/' + ${booking.id}}">Edit</a>

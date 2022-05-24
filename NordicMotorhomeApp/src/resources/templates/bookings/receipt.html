@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
-    <link rel="stylesheet" type="text/css" href="styles.css" th:href="@{/css/styles.css}" media="screen">
+    <link rel="stylesheet" type="text/css" href="styles.css" th:href="@{/css/receiptStyle.css}" media="screen">
     <title>Nordic Motorhome Rental</title>
 </head>
 
@@ -30,7 +30,7 @@
     <tbody>
     <th:block th:each="booking : ${booking}">
         <tr>
-            <th>ID number</th>
+            <th>Invoice number</th>
             <td>[[${booking.id}]]</td>
         </tr>
         <th>Motorhome name</th>
@@ -43,10 +43,7 @@
             <th>End date</th>
             <td>[[${booking.endDate}]]</td>
         </tr>
-        <tr>
-            <th>Number of days</th>
-            <td>[[${booking.numberOfDays}]]</td>
-        </tr>
+
         <tr>
             <th>Pick up point/Delivery point</th>
             <td>[[${booking.pickUpPoint}]]</td>
@@ -70,13 +67,45 @@
             <th>Extras</th>
             <td>
                 <view th:each="extra : ${extraList}" th:value="${extra.id}"
-                      th:text="${extra.name} + '/ ' "> </view>
+                      th:text="${extra.name} +  ' = ' + ${extra.price} + ' € ' + '/ ' "> </view>
             </td>
         </tr>
         <tr>
-            <th>Final Price</th>
-            <td>[[${booking.finalPrice} + ' DKK']]</td>
+            <th>Motorhome daily price</th>
+            <td>[[${booking.motorhome.brand.dailyBrandPrice} + ' €']]</td>
         </tr>
+        <tr>
+            <th>Number of days</th>
+            <td>[[${booking.numberOfDays}]]</td>
+        </tr>
+        <tr>
+            <th>Extra kilometers</th>
+            <td>[[${booking.extraKilometer}]]</td>
+        </tr>
+        <tr>
+            <th>Fuel fee</th>
+            <td>[[${fuelFee + ' €'}]]</td>
+        </tr>
+
+        <tr>
+            <th>Delivery fee</th>
+            <td>[[${deliveryFee + ' €'}]]</td>
+        </tr>
+        <tr>
+            <th>Season</th>
+            <td>[[${booking.season.name}  + ' ' + '( x  ' + ${booking.season.seasonPriceMultiplier} + ' )' ]]</td>
+        </tr>
+        <tr>
+            <th>Cancellation</th>
+            <td>[[${booking.cancellation.type} + ' ' + '( ' + ${booking.cancellation.percentage} + ' % price )' ]]</td>
+        </tr>
+
+        <br>
+        <tr>
+            <th>Final Price</th>
+            <td>[[${booking.finalPrice} + ' €']]</td>
+        </tr>
+
 
 
         </tr>

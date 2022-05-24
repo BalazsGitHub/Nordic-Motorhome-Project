@@ -5,7 +5,7 @@ body{
     text-align:center;
     vertical-align:center;
     color: #f3e6fd;
-    height: 200%;
+    height: 100%;
     width: 100%;
 }
 
@@ -55,11 +55,10 @@ span{
     font-size:15px;
 }
 span:before{
-    content:'  ';
+    content:' Red: Bogi Wogi. Green: Mubrick Brack. Yellow: Fe Buffet. Dark Purple: Doni Banoni  ';
 }
 
 a{
     text-decoration:none;
     color: #ffffff;
 }
-

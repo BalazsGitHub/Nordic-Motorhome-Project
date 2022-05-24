@@ -33,7 +33,7 @@
     </div>
 
     <div class="row2">
-        <label class="col-sm-4 col-form-label">Pick-up point</label>
+        <label class="col-sm-4 col-form-label">Pick-up point/ Delivery point</label>
         <div class="col sm-8">
             <input type="text" th:field="*{pickUpPoint}" class="form-control" required minlength="">
         </div>
@@ -91,16 +91,18 @@
             </select>
         </div>
     </div>
-
+    <br>
     <div class="row2">
-        <label class="col-sm-4 col-form-label">Choose a cancellation</label>
-        <div class="col sm-8">
-            <select th:field="*{cancellationId}" class="form-control" id="dropDownList2">
-                <option th:each="cancellation : ${cancellationList}" th:value="${cancellation.id}"
-                        th:text="${cancellation.type}"></option>
-            </select>
+        <label> Extras</label>
+        <div th:each="extra : ${extraList}">
+            <div class="ui checkbox">
+
+                <input type="checkbox" th:field="*{extras}" th:value="${extra.id}">
+                <label th:text="${extra.name}"></label>
+            </div>
         </div>
     </div>
+
 
     <div class="row2">
         <label class="col-sm-4 col-form-label">Choose a User</label>
@@ -121,6 +123,43 @@
             </select>
         </div>
     </div>
+
+    <div class="row2">
+        <label class="col-sm-4 col-form-label">Choose a cancellation</label>
+        <div class="col sm-8">
+            <select th:field="*{cancellationId}" class="form-control" id="dropDownList2">
+                <option th:each="cancellation : ${cancellationList}" th:value="${cancellation.id}"
+                        th:text="${cancellation.type}"></option>
+            </select>
+        </div>
+    </div>
+    <div class="row2">
+        <label class="col-sm-4 col-form-label">Extra kilometers</label>
+        <div class="col sm-8">
+            <input type="text" th:field="*{extraKilometer}" class="form-control">
+        </div>
+    </div>
+
+    <div class="row2">
+        <label class="col-sm-4 col-form-label">Distance from NMR</label>
+        <div class="col sm-8">
+            <input type="text" th:field="*{distanceFromNMR}" class="form-control">
+        </div>
+    </div>
+
+    <br>
+    <div class="row2">
+        <label> Is fuel below half?</label>
+        <div th:each="fuel : ${fuelHalf}">
+            <div class="ui checkbox">
+
+                <input type="checkbox" th:field="*{fuelBelowHalf}" th:value="${fuelBelowHalf}">
+                <label th:text="${fuelBelowHalf}"></label>
+            </div>
+        </div>
+    </div>
+
+
 
     <div class="text-center">
         <button type="submit" class=" btn btn-primary m-2">Save</button>

@@ -9,3 +9,7 @@ body{
     height: 200%;
     width: 100%;
 }
+th, td, table {
+    border-style: dotted;
+    border-color: dimgray;
+}
