@@ -61,7 +61,6 @@ public class BookingController {
         booking.setNumberOfDays(booking.calculateDay());
         booking.setFinalPrice(booking.calculatePrice());
 
-
         bookingService.saveBooking(booking);
         redirectAttributes.addFlashAttribute("message", "Booking was saved!");
         return "redirect:/managebookings";
