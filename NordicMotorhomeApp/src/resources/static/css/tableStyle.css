@@ -1,7 +1,10 @@
 body{
+    overflow-x: hidden !important;
     padding: 20px !important;
     background: linear-gradient(45deg, #6ac1c5, #bda5ff, #9e7afc);
     color: ghostwhite;
+    text-align:center;
+    vertical-align:center;
 }
 
 
@@ -23,4 +26,12 @@ a:hover {
 /* selected link */
 a:active {
     color: #2bea14;
+}
+
+table {
+    margin: 10px !important;
+}
+
+thead {
+    margin: 2px;
 }
