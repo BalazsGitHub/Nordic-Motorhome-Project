@@ -4,7 +4,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.Period;
 import java.util.Date;
 import java.util.HashSet;
@@ -50,9 +49,11 @@ public class Booking {
     @Column(nullable = false, unique = false, name = "distance_from_nmr")
     private double distanceFromNMR;
 
+    @Column(name = "start_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate startDate;
 
+    @Column(name = "end_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
 
@@ -112,7 +113,7 @@ public class Booking {
 
 
     public double calculatePrice() {
-        double price = motorhome.getBrand().getDailyBrandPrice() * calculateDay();
+        double price = motorhome.getBrand().getDailyBrandPrice() * numberOfDays;
 
         for (Extra extra : extras
         ) {
@@ -120,7 +121,7 @@ public class Booking {
         }
 
         price += extraKilometer;
-        if (fuelBelowHalf) {
+        if(fuelBelowHalf){
             price += 70;
         }
         price += distanceFromNMR * 0.7;
@@ -131,11 +132,37 @@ public class Booking {
     }
 
     public int calculateDay() {
+      /*  // creating the date 1 with sample input date.
+        Date date1 = new Date(2022, 11, 1);
+
+        // creating the date 2 with sample input date.
+        Date date2 = new Date(2022, 11, 30);
+
+        // getting milliseconds for both dates
+        long date1InMs = date1.getTime();
+        long date2InMs = date2.getTime();
+
+        // getting the diff between two dates.
+        long timeDiff = 0;
+
+        if(date1InMs > date2InMs) {
+            timeDiff = date1InMs - date2InMs;
+        } else {
+            timeDiff = date2InMs - date1InMs;
+        }
+
+        // converting diff into days
+        int daysDiff = (int) (timeDiff / (1000 * 60 * 60* 24));
+
+        return daysDiff;*/
+
         Period period = Period.between(startDate, endDate);
+
 
         int daysBetween = period.getDays();
 
         return daysBetween;
+
     }
 
     public int getId() {
