@@ -2,15 +2,21 @@
 2nd semester exam project
 
 
-Add consent (At bottom of booking?) - not done 
-
-Get the exact amount of booked days - not done
+Get the exact amount of booked days - partially done as 
+bookings can not be initialized now
 
 Write comments - not done 
 
 Security (hiding password) - not done
 
+Do we wanna keep the Drop off point?
+
+Write report
+
 ---
+
+Terms and conditions (At bottom of booking?) - done
+
 Manage Booking - done
 
 Log in - done
@@ -32,6 +38,6 @@ Fé: Booking, BookedExtras
 
 Mubbi: Motorhome, Extra, Customer
 
-Balu: initialdata, Employee
+Balu: initialdata, Employee, log in, t&c
 
 Dani: Brand, Season, Cancellation

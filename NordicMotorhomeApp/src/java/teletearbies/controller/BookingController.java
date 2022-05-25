@@ -72,7 +72,6 @@ public class BookingController {
     @PostMapping("/booking/save")
     public String saveBooking(Booking booking, RedirectAttributes redirectAttributes) {
 
-
         booking.setNumberOfDays(booking.calculateDay());
         booking.setFinalPrice(booking.calculatePrice());
 
@@ -159,5 +158,10 @@ public class BookingController {
         model.addAttribute("deliveryFee", deliveryFee);
 
         return "bookings/receipt";
+    }
+
+    @RequestMapping("/booking/terms")
+    public String showTerms() {
+        return "bookings/termsandconditions";
     }
 }

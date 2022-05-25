@@ -8,7 +8,7 @@
 <!--  method="post" = sent as http -->
 <form th:action="@{/booking/save}" method="post" th:object="${booking}" style="max-width: 500px; margin: 0 auto;">
     <input type="hidden" th:field="*{id}">
-    <div class="form-group row col-md-8 ">
+    <div class="form-group row col-md-8">
         <div class="justify-content-center">
             <label for="startDate">Start Date</label>
             <div class="input-group date">
@@ -147,18 +147,18 @@
         <label>Is fuel below half?</label>
         <div th:each="fuel : ${fuelHalf}">
             <div class="ui checkbox">
-                <td> <input type="checkbox" th:field="*{fuelBelowHalf}" th:value="${fuelBelowHalf}">
-                <label th:text="${fuelBelowHalf}"></label>
-     </div>
+                <td><input type="checkbox" th:field="*{fuelBelowHalf}" th:value="${fuelBelowHalf}">
+                    <label th:text="${fuelBelowHalf}"></label>
+            </div>
         </div>
     </div>
 
     <div class="row2">
-        <label>Terms and conditions</label>
+        <a class="action-button" th:href="@{terms}">Agree to terms & conditions</a>
         <div th:each="consentToTerms : ${consentToTerms}">
             <div class="ui checkbox">
                 <input type="checkbox" th:field="*{consentToTerms}" th:value="${consentToTerms}">
-<!--                <label th:text="${consentToTerms}"></label>-->
+                <!--<label th:text="${consentToTerms}"></label>-->
             </div>
         </div>
     </div>
@@ -190,4 +190,3 @@
     }
 </script>
 </body>
-</html>

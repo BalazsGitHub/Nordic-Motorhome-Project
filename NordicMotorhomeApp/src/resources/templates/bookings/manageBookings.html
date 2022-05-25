@@ -3,7 +3,7 @@
 <body>
 <div class="container-fluid text-center">
 </div>
-<a class="h3" th:href="@{booking/add}">Add new booking</a>
+<a class="action-buttons" th:href="@{booking/add}">Add new booking</a>
 <table class="table" table-bordered>
     <thead class="thead-transparent">
     <tr>
@@ -17,6 +17,7 @@
         <th>Customer phone number</th>
         <th>Customer address</th>
         <th>Customer drivers number</th>
+        <th>Agreed to t&c</th>
         <th>Final Price</th>
         <th>Actions</th>
         <th></th>
@@ -35,6 +36,7 @@
             <td>[[${booking.phoneNumber}]]</td>
             <td>[[${booking.address}]]</td>
             <td>[[${booking.driversNumber}]]</td>
+            <td>[[${booking.consentToTerms}]]</td>
             <td>[[${booking.finalPrice}]]</td>
             <td>
                 <a class="p mr-3 text-white" th:href="@{'/booking/edit/' + ${booking.id}}">Edit</a>
@@ -49,6 +51,4 @@
 <div>
     <a class="action-buttons" th:href="@{/mainpage}">Back to the main site</a>
 </div>
-</div>
 </body>
-</html>

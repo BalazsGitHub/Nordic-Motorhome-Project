@@ -33,17 +33,17 @@ public class InitialData {
     @Autowired
     private ExtraService extraService;
 
-   // @PostConstruct
+    @PostConstruct
     public void initialiseDatabase() {
 
-        Brand brand1 = new Brand("American coach", "Eagle", 4000, 12);
-        Brand brand2 = new Brand("American coach", "Dream", 4000, 12);
-        Brand brand3 = new Brand("Jayco", "Alante", 3500, 10);
-        Brand brand4 = new Brand("Jayco", "Embark", 3500, 10);
-        Brand brand5 = new Brand("Fleetwood RV", "Discovery", 3000, 8);
-        Brand brand6 = new Brand("Fleetwood RV", "Southwind", 2500, 6);
-        Brand brand7 = new Brand("Mercedes-benz", "Hymer B-class", 1500, 4);
-        Brand brand8 = new Brand("Mercedes-benz", "Hymer Exsis", 1500, 3);
+        Brand brand1 = new Brand("American coach", "Eagle", 300, 12);
+        Brand brand2 = new Brand("American coach", "Dream", 300, 12);
+        Brand brand3 = new Brand("Jayco", "Alante", 250, 10);
+        Brand brand4 = new Brand("Jayco", "Embark", 250, 10);
+        Brand brand5 = new Brand("Fleetwood RV", "Discovery", 200, 8);
+        Brand brand6 = new Brand("Fleetwood RV", "Southwind", 150, 6);
+        Brand brand7 = new Brand("Mercedes-benz", "Hymer B-class", 125, 4);
+        Brand brand8 = new Brand("Mercedes-benz", "Hymer Exsis", 100, 3);
 
         brandService.saveBrand(brand1);
         brandService.saveBrand(brand2);
@@ -55,9 +55,9 @@ public class InitialData {
         brandService.saveBrand(brand8);
 
         Motorhome motorhome1 = new Motorhome("Ymir", "benzin", 1000, brand1, true);
-        Motorhome motorhome2 = new Motorhome("Heimdal", "diesel", 2000, brand2,true);
-        Motorhome motorhome3 = new Motorhome("Odin", "benzin", 3000, brand3,false);
-        Motorhome motorhome4 = new Motorhome("Thor", "diesel", 4000, brand4,false);
+        Motorhome motorhome2 = new Motorhome("Heimdal", "diesel", 2000, brand2, true);
+        Motorhome motorhome3 = new Motorhome("Odin", "benzin", 3000, brand3, false);
+        Motorhome motorhome4 = new Motorhome("Thor", "diesel", 4000, brand4, false);
         Motorhome motorhome5 = new Motorhome("Vidar", "benzin", 5000, brand3, true);
         Motorhome motorhome6 = new Motorhome("Freja", "diesel", 6000, brand4, true);
         Motorhome motorhome7 = new Motorhome("Tyr", "benzin", 7000, brand5, true);
@@ -113,14 +113,14 @@ public class InitialData {
         cancellationService.saveCancellation(cancellation5);
 
 
-        Extra extra1 = new Extra("bike rack", 250);
-        Extra extra2 = new Extra("bed linen", 150);
-        Extra extra3 = new Extra("bicycle", 300);
-        Extra extra4 = new Extra("parasol", 75);
-        Extra extra5 = new Extra("trailer", 500);
-        Extra extra6 = new Extra("picnic chair", 100);
-        Extra extra7 = new Extra("picnic table", 150);
-        Extra extra8 = new Extra("beach towel", 40);
+        Extra extra1 = new Extra("bike rack", 75);
+        Extra extra2 = new Extra("bed linen", 40);
+        Extra extra3 = new Extra("bicycle", 100);
+        Extra extra4 = new Extra("parasol", 70);
+        Extra extra5 = new Extra("trailer", 300);
+        Extra extra6 = new Extra("picnic chair", 25);
+        Extra extra7 = new Extra("picnic table", 40);
+        Extra extra8 = new Extra("beach towel", 15);
 
         extraService.saveExtra(extra1);
         extraService.saveExtra(extra2);

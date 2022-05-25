@@ -8,10 +8,8 @@ body{
 }
 
 
-
 a:link {
-    color: ghostwhite;
-}
+    color: #0202bd;}
 
 /* visited link */
 a:visited {
@@ -20,7 +18,7 @@ a:visited {
 
 /* mouse over link */
 a:hover {
-    color: #1c44d0;
+    color: #193dbd;
 }
 
 /* selected link */
