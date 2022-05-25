@@ -100,4 +100,9 @@ public class MainController {
         return "repairshop/manageRepairShop";
     }
 
+    @RequestMapping("/calendar")
+    public String calendarpage() {
+        return "calendar/calendar";
+    }
+
 }

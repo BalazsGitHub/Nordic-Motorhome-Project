@@ -6,6 +6,8 @@ import teletearbies.entity.Booking;
 import teletearbies.entity.Motorhome;
 import teletearbies.repository.BookingRepository;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,6 +29,7 @@ public class BookingService {
         return (List<Booking>) bookingRepository.findAll();
     }
 
+
     public Booking getBooking(Integer id) throws BookingNotFoundException {
         Optional<Booking> result = bookingRepository.findById(id);
         if (result.isPresent()) {
@@ -42,5 +45,13 @@ public class BookingService {
         }
         bookingRepository.deleteById(id);
     }
-}
 
+   /* public Booking getBookedDates(LocalDate startDate, LocalDate endDate) throws BookingNotFoundException {
+        List<Booking> result = bookingRepository.findByColumnDateBetween(startDate, endDate);
+        if (result.contains(result)) {
+            return (Booking) result;
+        }
+        throw new BookingNotFoundException("Could not find any Booking with this date");
+    }
+*/
+}

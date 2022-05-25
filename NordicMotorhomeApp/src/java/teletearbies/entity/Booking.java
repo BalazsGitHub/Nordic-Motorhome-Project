@@ -3,6 +3,9 @@ package teletearbies.entity;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,12 +19,6 @@ public class Booking {
     //identity means that will be unique
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
- /*   @Column(nullable = false, unique = false, length = 255, name = "start_date")
-    private String startDate;
-
-    @Column(nullable = false, unique = false, length = 255, name = "end_date")
-    private String endDate;*/
 
     @Column(nullable = false, unique = false, length = 255, name = "pickup_point")
     private String pickUpPoint;
@@ -53,21 +50,17 @@ public class Booking {
     @Column(nullable = false, unique = false, name = "distance_from_nmr")
     private double distanceFromNMR;
 
-    @Column(name = "start_date")
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'hh:mm")
-    private Date startDate;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private LocalDate startDate;
 
-    @Column(name = "end_date")
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'hh:mm")
-    private Date endDate;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private LocalDate endDate;
 
     @Column(nullable = false, unique = false, length = 255, name = "number_of_days")
     private int numberOfDays;
 
     @Column(nullable = false, unique = false, length = 255, name = "final_price")
     private double finalPrice;
-
-
 
     @ManyToOne
     @JoinColumn(name = "motorhome_id")
@@ -90,7 +83,6 @@ public class Booking {
     @ManyToOne
     @JoinColumn(name = "season_id")
     private Season season;
-
 
 
     public Booking() {
@@ -117,7 +109,7 @@ public class Booking {
 
 
     public double calculatePrice() {
-        double price = motorhome.getBrand().getDailyBrandPrice() * numberOfDays;
+        double price = motorhome.getBrand().getDailyBrandPrice() * calculateDay();
 
         for (Extra extra : extras
         ) {
@@ -136,29 +128,11 @@ public class Booking {
     }
 
     public int calculateDay() {
-        // creating the date 1 with sample input date.
-        Date date1 = new Date(2022, 11, 1);
+        Period period = Period.between(startDate, endDate);
 
-        // creating the date 2 with sample input date.
-        Date date2 = new Date(2022, 11, 30);
+        int daysBetween = period.getDays();
 
-        // getting milliseconds for both dates
-        long date1InMs = date1.getTime();
-        long date2InMs = date2.getTime();
-
-        // getting the diff between two dates.
-        long timeDiff = 0;
-
-        if(date1InMs > date2InMs) {
-            timeDiff = date1InMs - date2InMs;
-        } else {
-            timeDiff = date2InMs - date1InMs;
-        }
-
-        // converting diff into days
-        int daysDiff = (int) (timeDiff / (1000 * 60 * 60* 24));
-
-        return daysDiff;
+        return daysBetween;
     }
 
     public int getId() {
@@ -297,20 +271,19 @@ public class Booking {
         this.season = season;
     }
 
-
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
