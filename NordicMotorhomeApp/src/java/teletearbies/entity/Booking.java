@@ -50,10 +50,10 @@ public class Booking {
     @Column(nullable = false, unique = false, name = "distance_from_nmr")
     private double distanceFromNMR;
 
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate startDate;
 
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
 
     @Column(nullable = false, unique = false, length = 255, name = "number_of_days")
@@ -83,6 +83,9 @@ public class Booking {
     @ManyToOne
     @JoinColumn(name = "season_id")
     private Season season;
+
+    @Column(name = "consent_to_terms")
+    private boolean consentToTerms;
 
 
     public Booking() {
@@ -117,7 +120,7 @@ public class Booking {
         }
 
         price += extraKilometer;
-        if(fuelBelowHalf){
+        if (fuelBelowHalf) {
             price += 70;
         }
         price += distanceFromNMR * 0.7;
@@ -325,5 +328,13 @@ public class Booking {
 
     public void setDistanceFromNMR(double distanceFromNMR) {
         this.distanceFromNMR = distanceFromNMR;
+    }
+
+    public boolean isConsentToTerms() {
+        return consentToTerms;
+    }
+
+    public void setConsentToTerms(boolean consentToTerms) {
+        this.consentToTerms = consentToTerms;
     }
 }

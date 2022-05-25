@@ -38,12 +38,16 @@ public class BookingController {
     CancellationService cancellationService;
 
     @RequestMapping("/booking/add")
-    public String addBooking(Model model) throws BookingNotFoundException {
+    public String addBooking(Model model, Booking booking) throws BookingNotFoundException {
+
         List<Motorhome> motorhomeList = motorhomeService.getAllMotorhomes();
 
         motorhomeList.removeIf(motorhome -> !motorhome.isRepaired());
 
         model.addAttribute("motorhomeList", motorhomeList);
+
+        List<Extra> extraList = extraService.getAllExtras();
+        model.addAttribute("extraList", extraList);
 
         List<Cancellation> cancellationList = cancellationService.getAllCancellations();
         model.addAttribute("cancellationList", cancellationList);
@@ -54,6 +58,9 @@ public class BookingController {
         List<Season> seasonList = seasonService.getAllSeasons();
         model.addAttribute("seasonList", seasonList);
 
+        model.addAttribute("fuelHalf", booking.isFuelBelowHalf());
+
+        model.addAttribute("consentToTerms", booking.isConsentToTerms());
 
 
         model.addAttribute("booking", new Booking());
@@ -97,6 +104,8 @@ public class BookingController {
             model.addAttribute("seasonList", seasonList);
 
             model.addAttribute("fuelHalf", booking.isFuelBelowHalf());
+
+            model.addAttribute("consentToTerms", booking.isConsentToTerms());
 
             return "bookings/bookingForm";
 
@@ -148,8 +157,6 @@ public class BookingController {
         model.addAttribute("booking", booking);
         model.addAttribute("fuelFee", fuelFee);
         model.addAttribute("deliveryFee", deliveryFee);
-
-
 
         return "bookings/receipt";
     }

@@ -45,13 +45,4 @@ public class BookingService {
         }
         bookingRepository.deleteById(id);
     }
-
-   /* public Booking getBookedDates(LocalDate startDate, LocalDate endDate) throws BookingNotFoundException {
-        List<Booking> result = bookingRepository.findByColumnDateBetween(startDate, endDate);
-        if (result.contains(result)) {
-            return (Booking) result;
-        }
-        throw new BookingNotFoundException("Could not find any Booking with this date");
-    }
-*/
 }

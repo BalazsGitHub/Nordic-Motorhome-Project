@@ -85,7 +85,6 @@
         <label class="col-sm-4 col-form-label">Choose a motorhome</label>
         <div class="col sm-8">
             <select th:field="*{motorhomeId}" class="form-control" id="dropDownList">
-                <!--                    <option value="0">Select motorhome</option>-->
                 <option th:each="motorhome : ${motorhomeList}" th:value="${motorhome.id}"
                         th:text="${motorhome.name}"></option>
             </select>
@@ -96,7 +95,6 @@
         <label> Extras</label>
         <div th:each="extra : ${extraList}">
             <div class="ui checkbox">
-
                 <input type="checkbox" th:field="*{extras}" th:value="${extra.id}">
                 <label th:text="${extra.name}"></label>
             </div>
@@ -149,16 +147,24 @@
 
     <br>
     <div class="row2">
-        <label> Is fuel below half?</label>
+        <label>Is fuel below half?</label>
         <div th:each="fuel : ${fuelHalf}">
             <div class="ui checkbox">
-
                 <input type="checkbox" th:field="*{fuelBelowHalf}" th:value="${fuelBelowHalf}">
                 <label th:text="${fuelBelowHalf}"></label>
             </div>
         </div>
     </div>
 
+    <div class="row2">
+        <label>Terms and conditions</label>
+        <div th:each="consentToTerms : ${consentToTerms}">
+            <div class="ui checkbox">
+                <input type="checkbox" th:field="*{consentToTerms}" th:value="${consentToTerms}">
+                <label th:text="${consentToTerms}"></label>
+            </div>
+        </div>
+    </div>
 
 
     <div class="text-center">
