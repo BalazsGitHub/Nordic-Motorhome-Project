@@ -2,17 +2,31 @@
 2nd semester exam project
 
 
+Add consent (At bottom of booking?) - not done 
+
+Get the exact amount of booked days - not done
+
+Write comments - not done 
+
+Security (hiding password) - not done
+
+---
+Manage Booking - done
+
+Log in - done
+
+Calendar - let it go
+
+Add extras - done
+
+Calculate price - done
+
+Print receipt - done
+
+Service vehicle - done
+
+---
 Coding parts done by:
-
-
-Manage Booking
-Log in
-Calendar
-Add extras, Add consent
-Calculate price
-Print receipt
-Service vehicle
-
 
 Fé: Booking, BookedExtras
 
@@ -21,9 +35,3 @@ Mubbi: Motorhome, Extra, Customer
 Balu: initialdata, Employee
 
 Dani: Brand, Season, Cancellation
-
-
-Bugs!!!:
-
-You can't delete a motorhome while its used in a booking (you get whitepage error), 
-create exception to not get wp error
