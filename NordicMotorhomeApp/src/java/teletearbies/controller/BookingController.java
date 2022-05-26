@@ -21,7 +21,7 @@ public class BookingController {
 
     @Autowired
     BookingService bookingService;
-
+    //dependency injection to use UserService class
     @Autowired
     UserService userService;
 

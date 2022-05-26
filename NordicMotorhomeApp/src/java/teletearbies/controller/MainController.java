@@ -20,8 +20,10 @@ import java.util.List;
 @Controller
 public class MainController {
 
+
     @Autowired
     private MotorhomeService motorhomeService;
+    //dependency injection to use UserService class
     @Autowired
     private BookingService bookingService;
     @Autowired
@@ -29,7 +31,7 @@ public class MainController {
     @Autowired
     private ExtraService extraService;
 
-
+    //get the mapping for index page
     @GetMapping(value = {"/", "/login"})
     public String showHomePage() {
         return "login/login";
@@ -60,6 +62,7 @@ public class MainController {
     }
 
     @RequestMapping("/managemotorhomes")
+    //create a list of users @fetchAll() - add them to the model
     public String manageMotorhomes(Model model) {
         List<Motorhome> motorhomeList = motorhomeService.getAllMotorhomes();
 
