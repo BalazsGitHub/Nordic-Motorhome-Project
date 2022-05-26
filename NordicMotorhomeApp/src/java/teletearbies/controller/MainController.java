@@ -10,10 +10,7 @@ import teletearbies.entity.Booking;
 import teletearbies.entity.Extra;
 import teletearbies.entity.Motorhome;
 import teletearbies.entity.User;
-import teletearbies.service.BookingService;
-import teletearbies.service.ExtraService;
-import teletearbies.service.MotorhomeService;
-import teletearbies.service.UserService;
+import teletearbies.service.*;
 
 import java.util.List;
 
@@ -42,6 +39,14 @@ public class MainController {
                                     @RequestParam("password") String password,
                                     Model model) {
         User user = userService.getUserByUsername(username);
+        if (user == null) {
+            user = new User();
+
+            model.addAttribute("errorMessage", "Wrong username or password!");
+            return "login/error";
+
+        }
+
         if (user.getPassword().equals(password)) {
             model.addAttribute("username", user.getUsername());
             return "mainPage/mainPage";
