@@ -56,14 +56,36 @@ public class InitialData {
 
         Motorhome motorhome1 = new Motorhome("Ymir", "benzin", 1000, brand1, true);
         Motorhome motorhome2 = new Motorhome("Heimdal", "diesel", 2000, brand2, true);
-        Motorhome motorhome3 = new Motorhome("Odin", "benzin", 3000, brand3, false);
-        Motorhome motorhome4 = new Motorhome("Thor", "diesel", 4000, brand4, false);
+        Motorhome motorhome3 = new Motorhome("Odin", "benzin", 3000, brand3, true);
+        Motorhome motorhome4 = new Motorhome("Thor", "diesel", 4000, brand4, true);
         Motorhome motorhome5 = new Motorhome("Vidar", "benzin", 5000, brand3, true);
         Motorhome motorhome6 = new Motorhome("Freja", "diesel", 6000, brand4, true);
         Motorhome motorhome7 = new Motorhome("Tyr", "benzin", 7000, brand5, true);
         Motorhome motorhome8 = new Motorhome("Loki", "diesel", 8000, brand6, true);
         Motorhome motorhome9 = new Motorhome("Hela", "benzin", 9000, brand7, true);
-        Motorhome motorhome10 = new Motorhome("Idun", "diesel", 10000, brand8, false);
+        Motorhome motorhome10 = new Motorhome("Idun", "diesel", 10000, brand8, true);
+        Motorhome motorhome11 = new Motorhome("Fenrir", "benzin", 10000, brand8, true);
+        Motorhome motorhome12 = new Motorhome("Baldur", "diesel", 10000, brand8,  true);
+        Motorhome motorhome13 = new Motorhome("Sleipnir", "diesel", 10000, brand8, true);
+        Motorhome motorhome14 = new Motorhome("Jord", "benzin", 10000, brand8, true);
+        Motorhome motorhome15 = new Motorhome("Frigg", "diesel", 1000, brand8, true);
+        Motorhome motorhome16 = new Motorhome("Mimir", "benzin", 1700, brand8, true);
+        Motorhome motorhome17 = new Motorhome("Vili", "benzin", 1800, brand8, true);
+        Motorhome motorhome18 = new Motorhome("Ve", "diesel", 10870, brand8, true);
+        Motorhome motorhome19 = new Motorhome("Aegir", "benzin", 14560, brand8, true);
+        Motorhome motorhome20 = new Motorhome("Njord", "diesel", 1090, brand8, true);
+        Motorhome motorhome21 = new Motorhome("Forseti", "benzin", 1100, brand8, true);
+        Motorhome motorhome22 = new Motorhome("Audumbla", "benzin", 4500, brand8, false);
+        Motorhome motorhome23 = new Motorhome("Skadi", "diesel", 12000, brand8, false);
+        Motorhome motorhome24 = new Motorhome("Bragi", "benzin", 13000, brand8, true);
+        Motorhome motorhome25 = new Motorhome("Sif", "diesel", 6000, brand8, true);
+        Motorhome motorhome26 = new Motorhome("Ullr", "benzin", 6500, brand8, true);
+        Motorhome motorhome27 = new Motorhome("Bestla", "diesel", 5400, brand8, true);
+        Motorhome motorhome28 = new Motorhome("Hoenir", "benzin", 15000, brand8, true);
+        Motorhome motorhome29 = new Motorhome("Buri", "diesel", 10060, brand8, true);
+        Motorhome motorhome30 = new Motorhome("Magni", "benzin", 15000, brand8, true);
+        Motorhome motorhome31 = new Motorhome("Thrud", "diesel", 18000, brand8, false);
+        Motorhome motorhome32 = new Motorhome("Modi", "benzin", 10800, brand8, true);
 
         motorhomeService.saveMotorhome(motorhome1);
         motorhomeService.saveMotorhome(motorhome2);
@@ -74,20 +96,45 @@ public class InitialData {
         motorhomeService.saveMotorhome(motorhome7);
         motorhomeService.saveMotorhome(motorhome8);
         motorhomeService.saveMotorhome(motorhome9);
-        motorhomeService.saveMotorhome(motorhome10);
+        motorhomeService.saveMotorhome(motorhome11);
+        motorhomeService.saveMotorhome(motorhome12);
+        motorhomeService.saveMotorhome(motorhome13);
+        motorhomeService.saveMotorhome(motorhome14);
+        motorhomeService.saveMotorhome(motorhome15);
+        motorhomeService.saveMotorhome(motorhome16);
+        motorhomeService.saveMotorhome(motorhome17);
+        motorhomeService.saveMotorhome(motorhome18);
+        motorhomeService.saveMotorhome(motorhome19);
+        motorhomeService.saveMotorhome(motorhome20);
+        motorhomeService.saveMotorhome(motorhome21);
+        motorhomeService.saveMotorhome(motorhome22);
+        motorhomeService.saveMotorhome(motorhome23);
+        motorhomeService.saveMotorhome(motorhome24);
+        motorhomeService.saveMotorhome(motorhome25);
+        motorhomeService.saveMotorhome(motorhome26);
+        motorhomeService.saveMotorhome(motorhome27);
+        motorhomeService.saveMotorhome(motorhome28);
+        motorhomeService.saveMotorhome(motorhome29);
+        motorhomeService.saveMotorhome(motorhome30);
+        motorhomeService.saveMotorhome(motorhome31);
+        motorhomeService.saveMotorhome(motorhome32);
 
 
-        User user1 = new User("Barbara Santa", "Sales assistant", "55512131415", "Barbi", "1234");
-        User user2 = new User("Monica Lewinsky", "Sales assistant", "55522232425", "Mona", "1111");
-        User user3 = new User("Cindy Crawford", "Sales assistant", "55532333435", "Cindy", "0000");
-        User user4 = new User("Mr. Robot", "Sales assistant", "55542434445", "Robi", "0123");
-        User user5 = new User("John Doe", "Bookkeeper", "55582838485", "Johnny", "4321");
+        User user1 = new User("Barbara Santa", "Sales assistant", "555121314", "Barbi", "1234");
+        User user2 = new User("Monica Lewinsky", "Sales assistant", "555222324", "Mona", "1111");
+        User user3 = new User("Cindy Crawford", "Sales assistant", "555323334", "Cindy", "0000");
+        User user4 = new User("Mr. Robot", "Sales assistant", "555424344", "Robi", "0123");
+        User user5 = new User("John Doe", "Bookkeeper", "555828384", "Johnny", "4321");
+        User user6 = new User("Tom Cruise", "Auto mechanic", "4587362739", "scientology", "9876");
+        User user7 = new User("Douglas Beaver", "Owner", "4539495867", "db", "3579");
 
         userService.saveUser(user1);
         userService.saveUser(user2);
         userService.saveUser(user3);
         userService.saveUser(user4);
         userService.saveUser(user5);
+        userService.saveUser(user6);
+        userService.saveUser(user7);
 
 
         Season seasonLow = new Season("Low Season", 1);
@@ -113,14 +160,14 @@ public class InitialData {
         cancellationService.saveCancellation(cancellation5);
 
 
-        Extra extra1 = new Extra("bike rack", 75);
-        Extra extra2 = new Extra("bed linen", 40);
-        Extra extra3 = new Extra("bicycle", 100);
-        Extra extra4 = new Extra("parasol", 70);
-        Extra extra5 = new Extra("trailer", 300);
+        Extra extra1 = new Extra("bike rack", 25);
+        Extra extra2 = new Extra("bed linen", 10);
+        Extra extra3 = new Extra("bicycle", 40);
+        Extra extra4 = new Extra("parasol", 12);
+        Extra extra5 = new Extra("trailer", 30);
         Extra extra6 = new Extra("picnic chair", 25);
-        Extra extra7 = new Extra("picnic table", 40);
-        Extra extra8 = new Extra("beach towel", 15);
+        Extra extra7 = new Extra("picnic table", 30);
+        Extra extra8 = new Extra("beach towel", 5);
 
         extraService.saveExtra(extra1);
         extraService.saveExtra(extra2);
