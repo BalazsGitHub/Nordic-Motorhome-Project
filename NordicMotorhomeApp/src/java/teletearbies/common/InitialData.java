@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import teletearbies.entity.*;
 import teletearbies.service.*;
 
+import javax.annotation.PostConstruct;
 import java.util.*;
 
 @Configuration
@@ -32,7 +33,7 @@ public class InitialData {
     @Autowired
     private ExtraService extraService;
 
-    //@PostConstruct
+    @PostConstruct
     public void initialiseDatabase() {
 
         Brand brand1 = new Brand("American coach", "Eagle", 300, 12);
