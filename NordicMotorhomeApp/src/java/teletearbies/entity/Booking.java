@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -49,11 +50,11 @@ public class Booking {
     @Column(nullable = false, unique = false, name = "distance_from_nmr")
     private double distanceFromNMR;
 
-    @Column(name = "start_date")
+    @Column(nullable = true, name = "start_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate startDate;
 
-    @Column(name = "end_date")
+    @Column(nullable = true, name = "end_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
 
@@ -156,6 +157,11 @@ public class Booking {
 
         return daysDiff;*/
 
+        //just want it to return any value, so I choose -1 to not be misleading
+        if (startDate == null){
+            return -1;
+        }
+
         Period period = Period.between(startDate, endDate);
 
 
@@ -164,6 +170,7 @@ public class Booking {
         return daysBetween;
 
     }
+
 
     public int getId() {
         return id;

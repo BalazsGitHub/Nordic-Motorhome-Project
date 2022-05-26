@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Configuration;
 import teletearbies.entity.*;
 import teletearbies.service.*;
 
-import javax.annotation.PostConstruct;
 import java.util.*;
 
 @Configuration
@@ -33,7 +32,7 @@ public class InitialData {
     @Autowired
     private ExtraService extraService;
 
-    @PostConstruct
+    //@PostConstruct
     public void initialiseDatabase() {
 
         Brand brand1 = new Brand("American coach", "Eagle", 300, 12);
@@ -139,10 +138,7 @@ public class InitialData {
         extrasList.add(extra5);
         extrasList.add(extra6);
 
-
-
-
-        /*Booking booking1 = new Booking( "Køge", "Kastrup", "Mubby Mubibovich", "555-43536576", "Otatop 32", "48374653", "9872349873454328733", motorhome1, extrasList, cancellation1, user1, seasonLow);
+        Booking booking1 = new Booking( "Køge", "Kastrup", "Mubby Mubibovich", "555-43536576", "Otatop 32", "48374653", "9872349873454328733", motorhome1, extrasList, cancellation1, user1, seasonLow);
         Booking booking2 = new Booking("Kastrup", "Kastrup", "Bogi Wogikan", "456-85764572", "Everland 1", "01234567", "12346543234567876543", motorhome2, extrasList, cancellation1, user2, seasonPeak);
         Booking booking3 = new Booking("Billund", "Kastrup", "Fe Buffelion", "45 34789567", "Cucumbala 43", "98762344", "5467893200398754783", motorhome3, extrasList, cancellation1, user3, seasonMiddle);
         Booking booking4 = new Booking("Kastrup", "Kastrup", "Dani Banman", "45987234982", "Orbanland 67", "908746372", "4839273847563728837", motorhome4, extrasList, cancellation1, user4, seasonPeak);
@@ -150,6 +146,6 @@ public class InitialData {
         bookingService.saveBooking(booking1);
         bookingService.saveBooking(booking2);
         bookingService.saveBooking(booking3);
-        bookingService.saveBooking(booking4);*/
+        bookingService.saveBooking(booking4);
     }
 }
