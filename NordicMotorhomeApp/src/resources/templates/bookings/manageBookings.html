@@ -1,8 +1,8 @@
 <head th:replace="fragments/tableHeader :: head"></head>
 
 <body>
-<div class="container-fluid text-center">
-</div>
+<div class="h1">Manage bookings</div>
+
 <a class="action-buttons" th:href="@{booking/add}">Add new booking</a>
 <table class="table" table-bordered>
     <thead class="thead-transparent">
@@ -24,6 +24,7 @@
     </tr>
     </thead>
     <tbody>
+<!--    Using Thymeleaf to retrect each booking object in the bookingList-->
     <th:block th:each="booking : ${bookingList}">
         <tr>
             <td>[[${booking.id}]]</td>

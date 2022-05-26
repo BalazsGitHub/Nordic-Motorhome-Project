@@ -15,6 +15,7 @@ import java.util.List;
 
 @Controller
 public class UserController {
+    //Reference an instance of the UserService
     @Autowired
     UserService userService;
 

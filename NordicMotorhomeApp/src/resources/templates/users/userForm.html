@@ -5,14 +5,15 @@
     <h2 class="text/center"> [[${pageTitle}]]</h2>
 </div>
 <!--  method attribute specifies how to send form-data  -->
-<!--  method="post" = sent as http -->
+<!--  method="post" means sending an http post request --> <!-- th:object="${user} = the 'user' name refers what was given in the handler method attribute in the controller class-->
 <form th:action="@{/user/save}" method="post" th:object="${user}" style="max-width: 500px; margin: 0 auto;">
     <input type="hidden" th:field="*{id}">
-    <!-- th:object="${user} = same as showNewForm attribute -->
-    <div class="border border-secondary rounded p-3">
+        <div class="border border-secondary rounded p-3">
         <div class="row2">
+            <!--sm-4 is the relative weight of the column and it will be responsive on small screen-->
             <label class="col-sm-4 col-form-label">User name</label>
             <div class="col sm-8">
+                <!-- "*" refers to the field in the entity object. For validation username attribute field is set to required-->
                 <input type="text" th:field="*{username}" class="form-control" required minlength="">
             </div>
         </div>
@@ -50,6 +51,8 @@
         </div>
     </div>
 </form>
+<!--Javascript code for clicking on cancel button running the cancelForm()method,
+which redirects to the given url useing a Thymeleaf expression-->
 <script type="text/javascript">
     function cancelForm() {
         window.location = "[[@{/manageusers}]]"

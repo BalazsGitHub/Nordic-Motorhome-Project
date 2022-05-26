@@ -78,10 +78,17 @@ public class MainController {
         return "bookings/manageBookings";
     }
 
-    @RequestMapping("/manageusers")
+
+    @GetMapping("/manageusers")
+    //Handler method to handle the request to view the users listing page at the given url
+    //With the model attribute we acces the MVC's model object
     public String manageUsers(Model model) {
+        //calling the service to get the list of users
         List<User> userList = userService.getAllUsers();
+        //putting this list to the model with attribute name and value,
+        //so we can access this collection in the view to display the user information
         model.addAttribute("userList", userList);
+        //return logical view name which is the path to manageUsers.html in the users folder
         return "users/manageUsers";
     }
 

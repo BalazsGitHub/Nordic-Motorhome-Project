@@ -1,9 +1,8 @@
 <head th:replace="fragments/tableHeader :: head"></head>
 
 <body>
-<div class="container-fluid text-center">
-</div>
-<a class="h3" th:href="@{user/add}">Add new user</a>
+<div class="h1">Manage users</div>
+<a class="h4" th:href="@{user/add}">Add new user</a>
 <table class="table" table-bordered>
     <thead class="thead-dark"></thead>
     <tr>
@@ -18,8 +17,10 @@
         <th></th>
     </tr>
     <tbody>
+    <!--Using Thymeleaf to retract each user object in the userList from the MainController-->
     <th:block th:each="user : ${userList}">
         <tr>
+            <!--Value for the first column is user is the variable name from the above each loop and id is a property name from user entity class-->
             <td>[[${user.id}]]</td>
             <td>[[${user.username}]]</td>
             <td>[[${user.password}]]</td>
@@ -28,6 +29,7 @@
             <td>[[${user.phoneNumber}]]</td>
             <td></td>
             <td>
+                <!--Hyperlinks for action buttons and the url path followed with the id of the user id-->
                 <a class="p mr-3 text-black" th:href="@{'user/edit/' + ${user.id}}">Edit</a>
                 <a class="p text-black" th:href="@{'user/delete/' + ${user.id}}">Delete</a>
             </td>

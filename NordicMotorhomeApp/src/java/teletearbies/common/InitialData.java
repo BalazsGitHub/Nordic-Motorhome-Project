@@ -33,7 +33,7 @@ public class InitialData {
     @Autowired
     private ExtraService extraService;
 
-    @PostConstruct
+    //@PostConstruct
     public void initialiseDatabase() {
 
         Brand brand1 = new Brand("American coach", "Eagle", 300, 12);
