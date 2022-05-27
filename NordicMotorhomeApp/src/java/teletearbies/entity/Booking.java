@@ -129,7 +129,11 @@ public class Booking {
         price *= season.getSeasonPriceMultiplier();
         price *= (cancellation.getPercentage() / 100);
 
-        return price;
+
+
+        double roundOff = Math.round(price*100.0)/100.0;
+
+        return roundOff;
     }
 
     public int calculateDay() {

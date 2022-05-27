@@ -154,7 +154,7 @@
     </div>
 
     <div class="row2">
-        <a class="action-button" th:href="@{terms}">Agree to terms & conditions</a>
+        <a class="action-button" th:href="@{/terms}">Agree to terms & conditions</a>
         <div th:each="consentToTerms : ${consentToTerms}">
             <div class="ui checkbox">
                 <input type="checkbox" th:field="*{consentToTerms}" th:value="${consentToTerms}">

@@ -38,7 +38,7 @@ public class BookingController {
     CancellationService cancellationService;
 
     @RequestMapping("/booking/add")
-    public String addBooking(Model model, Booking booking) throws BookingNotFoundException {
+    public String addBooking(Model model, Booking booking) {
 
         List<Motorhome> motorhomeList = motorhomeService.getAllMotorhomes();
 
@@ -142,7 +142,6 @@ public class BookingController {
         int fuelFee = 0;
 
        Booking booking = bookingService.getBooking(id);
-       List<Booking> bookingList = bookingService.getAllBookings();
 
         if(booking.isFuelBelowHalf()){
             fuelFee = 70;
@@ -150,8 +149,6 @@ public class BookingController {
 
         double deliveryFee = booking.getDistanceFromNMR() * 0.7;
 
-
-        List<Extra> extraList = extraService.getAllExtras();
         model.addAttribute("extraList", booking.getExtras());
         model.addAttribute("booking", booking);
         model.addAttribute("fuelFee", fuelFee);
@@ -160,7 +157,7 @@ public class BookingController {
         return "bookings/receipt";
     }
 
-    @RequestMapping("/booking/terms")
+    @RequestMapping("/terms")
     public String showTerms() {
         return "bookings/termsandconditions";
     }
