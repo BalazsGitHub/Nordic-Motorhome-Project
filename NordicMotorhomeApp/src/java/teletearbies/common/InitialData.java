@@ -33,7 +33,7 @@ public class InitialData {
     @Autowired
     private ExtraService extraService;
 
-    //@PostConstruct
+   // @PostConstruct
     public void initialiseDatabase() {
 
         Brand brand1 = new Brand("American coach", "Eagle", 300, 12);
@@ -96,6 +96,7 @@ public class InitialData {
         motorhomeService.saveMotorhome(motorhome7);
         motorhomeService.saveMotorhome(motorhome8);
         motorhomeService.saveMotorhome(motorhome9);
+        motorhomeService.saveMotorhome(motorhome10);
         motorhomeService.saveMotorhome(motorhome11);
         motorhomeService.saveMotorhome(motorhome12);
         motorhomeService.saveMotorhome(motorhome13);
