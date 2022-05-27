@@ -35,12 +35,6 @@ public class MainController {
     }
 
 
-
-    @GetMapping("/calendar")
-    public String showCalendar() {
-        return "calendar/calendar2";
-    }
-
     @RequestMapping("/logUserIn")
     public String getAdminDashboard(@RequestParam("username") String username,
                                     @RequestParam("password") String password,
