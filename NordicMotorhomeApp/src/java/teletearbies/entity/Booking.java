@@ -159,7 +159,7 @@ public class Booking {
 
         //just want it to return any value, so I choose -1 to not be misleading
         if (startDate == null){
-            return -1;
+            return 0;
         }
 
         Period period = Period.between(startDate, endDate);

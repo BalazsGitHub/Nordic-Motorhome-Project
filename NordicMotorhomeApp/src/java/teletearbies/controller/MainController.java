@@ -34,25 +34,26 @@ public class MainController {
         return "login/login";
     }
 
+
+
+    @GetMapping("/calendar")
+    public String showCalendar() {
+        return "calendar/calendar2";
+    }
+
     @RequestMapping("/logUserIn")
     public String getAdminDashboard(@RequestParam("username") String username,
                                     @RequestParam("password") String password,
                                     Model model) {
         User user = userService.getUserByUsername(username);
-        if (user == null) {
+        if (user == null || !password.equals(user.getPassword())) {
             user = new User();
 
             model.addAttribute("errorMessage", "Wrong username or password!");
             return "login/error";
-
-        }
-
-        if (user.getPassword().equals(password)) {
+        } else {
             model.addAttribute("username", user.getUsername());
             return "mainPage/mainPage";
-        } else {
-            model.addAttribute("errorMessage", "Wrong username or password!");
-            return "login/error";
         }
     }
 
