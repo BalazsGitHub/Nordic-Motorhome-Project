@@ -15,5 +15,7 @@ import teletearbies.entity.Booking;
 public interface BookingRepository extends CrudRepository<Booking, Integer> {
 
     //since interface methods are public, static, final by default, there's no need to use 'public' before the data type
+
+    //the below method is a customization/gathering of the methods, and therefore the id passed is an integer, the count method has by default type Long
     Long countById(Integer id);
 }

@@ -17,9 +17,10 @@ import teletearbies.entity.Season;
 import teletearbies.repository.BookingRepository;
 import teletearbies.repository.SeasonRepository;
 
+//@DataJpaTest annotation for a JPA integration test that focuses only on JPA components provides all the necessary configuration to test our database-related logic.
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@Rollback(false)
+//it rollsback by default --> after the test its performed, the actions won't be saved*.
 public class NordicMotorhomeAppApplicationTests {
 
     @Autowired
@@ -33,7 +34,7 @@ public class NordicMotorhomeAppApplicationTests {
 
     @Test
     public void testAddingNewUser() {
-        User user = new User("Bolly Shelly", "Talk person", "55512131669", "Shell", "1234");
+        User user = new User("Bugi Shelly", "Talk person", "55512131669", "Shell", "1234");
 
         User savedUser = userRepository.save(user);
 
