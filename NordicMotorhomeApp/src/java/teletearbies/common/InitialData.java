@@ -9,7 +9,7 @@ import teletearbies.service.*;
 import javax.annotation.PostConstruct;
 import java.util.*;
 
-//@Configuration
+@Configuration
 public class InitialData {
 
     @Autowired
