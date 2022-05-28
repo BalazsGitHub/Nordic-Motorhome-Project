@@ -4,9 +4,17 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import teletearbies.entity.User;
 
-@Repository
-public interface UserRepository extends CrudRepository<User, Integer> {
-    public Long countById(Integer id);
+//DAO: Data Access Object: The object responsible for CRUD operations. It is basically an object that provides an interface to perform all database operations.
 
-    public User findUserByUsername(String username);
+@Repository
+//It is the actual implementation of DAO
+//which simplify all the database operations.
+//We extend the CrudRepository Interface which provides general CRUD functionalities such as retrieve/search/save/delete.
+
+public interface UserRepository extends CrudRepository<User, Integer> {
+
+    //since interface methods are public, static, final by default, there's no need to use 'public' before the data type
+     Long countById(Integer id);
+
+     User findUserByUsername(String username);
 }
