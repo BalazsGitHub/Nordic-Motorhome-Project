@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+//specifies that the class (Booking) is an entity and is mapped to a database table.
 @Entity
 @Table(name = "booking")
 public class Booking {
