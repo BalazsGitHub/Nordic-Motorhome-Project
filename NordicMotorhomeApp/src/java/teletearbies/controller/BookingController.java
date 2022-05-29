@@ -1,20 +1,17 @@
 package teletearbies.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import teletearbies.entity.*;
-
 import teletearbies.service.*;
 
-import java.time.LocalDate;
 import java.util.List;
+
 //The @controller annotation indicated that a particular class serves the role of a controller.
 //The controller class is responsible for processing incoming HTTP requests, preparing a model,
 // and returning the view to be rendered as a response.
@@ -66,7 +63,6 @@ public class BookingController {
         model.addAttribute("fuelHalf", booking.isFuelBelowHalf());
 
         model.addAttribute("consentToTerms", booking.isConsentToTerms());
-
 
         model.addAttribute("booking", new Booking());
 

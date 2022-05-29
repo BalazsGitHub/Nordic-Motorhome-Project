@@ -17,6 +17,7 @@ import java.util.List;
 // and returning the view to be rendered as a response.
 @Controller
 public class UserController {
+
     // @Autowired enables us to inject object dependency implicitly. It internally uses setter or constructor injection.
     @Autowired
     UserService userService;

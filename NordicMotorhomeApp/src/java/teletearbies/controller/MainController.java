@@ -13,6 +13,7 @@ import teletearbies.entity.User;
 import teletearbies.service.*;
 
 import java.util.List;
+
 //The @controller annotation indicated that a particular class serves the role of a controller.
 //The controller class is responsible for processing incoming HTTP requests, preparing a model,
 // and returning the view to be rendered as a response.
@@ -68,7 +69,7 @@ public class MainController {
     //create a list of users @fetchAll() - add them to the model
     public String manageMotorhomes(Model model) {
         List<Motorhome> motorhomeList = motorhomeService.getAllMotorhomes();
-
+    // -> ! shorthand for when something is not true
         motorhomeList.removeIf(motorhome -> !motorhome.isRepaired());
 
         model.addAttribute("motorhomeList", motorhomeList);
@@ -103,6 +104,8 @@ public class MainController {
 
         List<Motorhome> motorhomeList = motorhomeService.getAllMotorhomes();
 
+        //:: shorthand for when something is true
+        // a for loop that goes through the motorhomes and removes if they are repaired
         motorhomeList.removeIf(Motorhome::isRepaired);
 
         model.addAttribute("motorhomeList", motorhomeList);

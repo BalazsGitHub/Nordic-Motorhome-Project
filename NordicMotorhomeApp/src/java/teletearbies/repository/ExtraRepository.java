@@ -2,7 +2,6 @@ package teletearbies.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import teletearbies.entity.Brand;
 import teletearbies.entity.Extra;
 
 

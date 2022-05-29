@@ -2,7 +2,6 @@ package teletearbies.entity;
 
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 //It is a JPA (Java Persistence API class), meaning: It is a Java thing that allows you to manipulate data between a Java object and a database.
 //@Entity annotation specifies that the class (Extra) is an entity and is mapped to a table.

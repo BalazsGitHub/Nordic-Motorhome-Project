@@ -34,7 +34,6 @@
             <label class="col-sm-4 col-form-label">Choose a model</label>
             <div class="col sm-8">
                 <select th:field="*{brandId}" class="form-control" id="dropDownList">
-                    <!--                    <option value="0">Select brand</option>-->
                     <option th:each="brand : ${brands}" th:value="${brand.id}" th:text="${brand.model}"></option>
                 </select>
 
