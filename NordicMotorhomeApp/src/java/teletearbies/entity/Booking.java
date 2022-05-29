@@ -128,35 +128,10 @@ public class Booking {
         this.cancellation = cancellation;
         this.user = user;
         this.season = season;
-        this.numberOfDays = calculateDay();
-        this.finalPrice = calculatePrice();
         this.extraKilometer = 0;
         this.distanceFromNMR = 0;
-    }
-
-
-    public double calculatePrice() {
-
-        double price = motorhome.getBrand().getDailyBrandPrice() * numberOfDays;
-
-        for (Extra extra : extras
-        ) {
-            price += extra.getPrice();
-        }
-
-        price += extraKilometer;
-        if(fuelBelowHalf){
-            price += 70;
-        }
-        price += distanceFromNMR * 0.7;
-        price *= season.getSeasonPriceMultiplier();
-        price *= (cancellation.getPercentage() / 100);
-
-
-
-        double roundOff = Math.round(price*100.0)/100.0;
-
-        return roundOff;
+        this.numberOfDays = calculateDay();
+        this.finalPrice = calculatePrice();
     }
 
     public int calculateDay() {
@@ -174,6 +149,38 @@ public class Booking {
         return daysBetween;
     }
 
+    public double calculatePrice() {
+        //Get price by multiplying the daily price of the motorhome's brand with the number of days.
+        double price = motorhome.getBrand().getDailyBrandPrice() * numberOfDays;
+
+        //Adding the cost of each extra chosen for the booking.
+        for (Extra extra : extras
+        ) {
+            price += extra.getPrice();
+        }
+
+        //Adding extra kilometer to the price (1 km = 1 €)
+        price += extraKilometer;
+
+        //If fuel of returned motorhome is below half, add 70 € to price.
+        if(fuelBelowHalf){
+            price += 70;
+        }
+
+        //Pick up point distance from rental is added to price (1 km = 0.7 €)
+        price += distanceFromNMR * 0.7;
+
+        //Depending on the current season, price is multiplied by season's price multiplier.
+        price *= season.getSeasonPriceMultiplier();
+
+        //Depending on cancellation status, price is multiplied by cancellation percentage / 100.
+        price *= (cancellation.getPercentage() / 100);
+
+        //Price is rounded to 2 decimal places.
+        double roundedPrice = Math.round(price*100.0)/100.0;
+
+        return roundedPrice;
+    }
 
     public int getId() {
         return id;
