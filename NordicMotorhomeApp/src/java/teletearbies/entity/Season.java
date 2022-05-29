@@ -10,6 +10,7 @@ import java.util.List;
 public class Season {
 
     @Id
+    //By marking the @Id field with @GeneratedValue we are now enabling id generation. Which means that the (database) will generate an Id value for us and handle the auto incrementing.
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
@@ -20,6 +21,8 @@ public class Season {
     private double seasonPriceMultiplier;
 
     @OneToMany(mappedBy = "season")
+    //@OneToMany means that one row in a table is mapped to many rows in another table.
+    //the mappedBy attribute to indicate the entity that owns the relationship
     private List<Booking> bookingList;
 
     public Season() {

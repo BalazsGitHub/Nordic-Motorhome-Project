@@ -11,13 +11,13 @@ import java.util.Set;
 //It is a JPA (Java Persistence API class), meaning: It is a Java thing that allows you to manipulate data between a Java object and a database.
 //@Entity annotation specifies that the class (Booking) is an entity and is mapped to a table.
 @Entity
-//@Table annotation is optional, we use it to customize the name of our tables
+//@Table annotation is optional, we use it to customize the name of our tables that should be mapped to this entity.
 @Table(name = "booking")
+
 public class Booking {
 
     @Id
-    //indicates that the ID should be generated automatically
-    //identity means that will be unique
+    //By marking the @Id field with @GeneratedValue we are now enabling id generation. Which means that the (database) will generate an Id value for us and handle the auto incrementing.
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
@@ -136,6 +136,7 @@ public class Booking {
 
 
     public double calculatePrice() {
+
         double price = motorhome.getBrand().getDailyBrandPrice() * numberOfDays;
 
         for (Extra extra : extras
@@ -159,12 +160,14 @@ public class Booking {
     }
 
     public int calculateDay() {
-        if (startDate == null){
+
+        if (startDate == null) {
             return 0;
         }
 
+        //the Period is a class can collect an amount of years, months and days.
+        //the "between" fetch the number years, months and days between TWO dates, and then we select to return the number of days from the calculation.
         Period period = Period.between(startDate, endDate);
-
 
         int daysBetween = period.getDays();
 
