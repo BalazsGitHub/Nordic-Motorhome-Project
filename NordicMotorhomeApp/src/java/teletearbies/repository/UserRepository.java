@@ -4,13 +4,14 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import teletearbies.entity.User;
 
-//DAO: Data Access Object: The object responsible for CRUD operations. It is basically an object that provides an interface to perform all database operations.
+//DAO: It is basically an object that provides an interface to perform all
+// database operations (CrudRepository).
 
 @Repository
-//It is the actual implementation of DAO
-//which simplify all the database operations.
-//We extend the CrudRepository Interface which provides general CRUD functionalities such as retrieve/search/save/delete.
+//DAO: It is basically an object that provides an interface to perform all
+// database operations (CrudRepository).
 
+//We extend the CrudRepository Interface which provides general CRUD functionalities such as retrieve/search/save/delete.
 public interface UserRepository extends CrudRepository<User, Integer> {
 
     //since interface methods are public, static, final by default, there's no need to use 'public' before the data type

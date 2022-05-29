@@ -5,13 +5,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.Period;
-import java.time.ZoneId;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-//specifies that the class (Booking) is an entity and is mapped to a database table.
+//It is a JPA (Java Persistence API class), meaning: It is a Java thing that allows you to manipulate data between a Java object and a database.
+//@Entity annotation specifies that the class (Booking) is an entity and is mapped to a table.
 @Entity
+//@Table annotation is optional, we use it to customize the name of our tables
 @Table(name = "booking")
 public class Booking {
 
@@ -21,6 +21,7 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    //We use the column annotation to create a customized column in our tables
     @Column(nullable = false, unique = false, length = 255, name = "pickup_point")
     private String pickUpPoint;
 
@@ -52,10 +53,12 @@ public class Booking {
     private double distanceFromNMR;
 
     @Column(nullable = true, name = "start_date")
+    //@DateTimeFormat Declares that the parameter should be formatted as a date or time.
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate startDate;
 
     @Column(nullable = true, name = "end_date")
+    //@DateTimeFormat Declares that the parameter should be formatted as a date or time.
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
 
@@ -66,24 +69,42 @@ public class Booking {
     private double finalPrice;
 
     @ManyToOne
+    //@ManyToOne is another JPA annotation that creates relationships between entity classes
+    //many-to-one mapping means that many rows in a table is mapped to one row in another table.
+
     @JoinColumn(name = "motorhome_id")
+    //The @JoinColumn annotation allows you to specify the Foreign Key column name
     private Motorhome motorhome;
 
     @ManyToMany
+    //@ManyToMany is another JPA annotation that specify the mapping of a many-to-many table relationship.
+    //many-to-many mapping means that many rows in a table are mapped/can relate to many other rows in another table.
+
+    //We provide the name of the join table (booked_extras) as well as the foreign keys with the @JoinColumn annotations.
+    // The joinColumn attribute joinColumns, where we are defining the columns that are to be joined, so joinColumn refers to the booking table
+    // and the inverseJoinColumns will refer to the Extras table.
     @JoinTable(name = "booked_extras",
             joinColumns = @JoinColumn(name = "booking_id"),
             inverseJoinColumns = @JoinColumn(name = "extras_id"))
+    //A HashSet is used because it guarantees that two values which are equal to each other (which are equality checked by looking at their GetHashCode and Equals methods) only appear once in the collection
+    //it is part of the ICollection
     private Set<Extra> extras = new HashSet<>();
 
     @ManyToOne
+    //@ManyToOne is another JPA annotation that creates relationships between entity classes
+    //many-to-one mapping means that many rows in a table is mapped to one row in another table.
     @JoinColumn(name = "cancellation_id")
     private Cancellation cancellation;
 
     @ManyToOne
+    //@ManyToOne is another JPA annotation that creates relationships between entity classes
+    //many-to-one mapping means that many rows in a table is mapped to one row in another table.
     @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne
+    //@ManyToOne is another JPA annotation that creates relationships between entity classes
+    //many-to-one mapping means that many rows in a table is mapped to one row in another table.
     @JoinColumn(name = "season_id")
     private Season season;
 
@@ -138,31 +159,6 @@ public class Booking {
     }
 
     public int calculateDay() {
-      /*  // creating the date 1 with sample input date.
-        Date date1 = new Date(2022, 11, 1);
-
-        // creating the date 2 with sample input date.
-        Date date2 = new Date(2022, 11, 30);
-
-        // getting milliseconds for both dates
-        long date1InMs = date1.getTime();
-        long date2InMs = date2.getTime();
-
-        // getting the diff between two dates.
-        long timeDiff = 0;
-
-        if(date1InMs > date2InMs) {
-            timeDiff = date1InMs - date2InMs;
-        } else {
-            timeDiff = date2InMs - date1InMs;
-        }
-
-        // converting diff into days
-        int daysDiff = (int) (timeDiff / (1000 * 60 * 60* 24));
-
-        return daysDiff;*/
-
-        //just want it to return any value, so I choose -1 to not be misleading
         if (startDate == null){
             return 0;
         }
@@ -173,7 +169,6 @@ public class Booking {
         int daysBetween = period.getDays();
 
         return daysBetween;
-
     }
 
 
