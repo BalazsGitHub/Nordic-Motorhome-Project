@@ -11,13 +11,13 @@ import java.util.Set;
 //It is a JPA (Java Persistence API class), meaning: It is a Java thing that allows you to manipulate data between a Java object and a database.
 //@Entity annotation specifies that the class (Booking) is an entity and is mapped to a table.
 @Entity
-//@Table annotation is optional, we use it to customize the name of our tables
+//@Table annotation is optional, we use it to customize the name of our tables that should be mapped to this entity.
 @Table(name = "booking")
+
 public class Booking {
 
     @Id
-    //indicates that the ID should be generated automatically
-    //identity means that will be unique
+    //By marking the @Id field with @GeneratedValue we are now enabling id generation. Which means that the (database) will generate an Id value for us and handle the auto incrementing.
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
