@@ -5,10 +5,6 @@ import org.springframework.stereotype.Service;
 import teletearbies.entity.Booking;
 import teletearbies.entity.Motorhome;
 import teletearbies.repository.BookingRepository;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,6 +42,4 @@ public class BookingService {
         }
         bookingRepository.deleteById(id);
     }
-
-
 }
