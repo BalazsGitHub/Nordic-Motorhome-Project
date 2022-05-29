@@ -33,6 +33,10 @@ public class InitialData {
     @Autowired
     private ExtraService extraService;
 
+    //the @PostConstruct annotation is used on a method that needs to be executed after dependency injection is done to perform any initialization.
+    // It is used to set up configuration before initializing bean (in our case, will first initialize the @Autowired services above,
+    // then will run the method below the @postConstruct
+
     //@PostConstruct
     public void initialiseDatabase() {
 
