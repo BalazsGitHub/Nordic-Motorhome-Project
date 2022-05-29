@@ -15,13 +15,16 @@ import teletearbies.service.*;
 
 import java.time.LocalDate;
 import java.util.List;
-
+//The @controller annotation indicated that a particular class serves the role of a controller.
+//The controller class is responsible for processing incoming HTTP requests, preparing a model,
+// and returning the view to be rendered as a response.
 @Controller
 public class BookingController {
 
+    //enables us to inject object dependency implicitly. It internally uses setter or constructor injection.
     @Autowired
     BookingService bookingService;
-    //dependency injection to use UserService class
+
     @Autowired
     UserService userService;
 
@@ -37,6 +40,8 @@ public class BookingController {
     @Autowired
     CancellationService cancellationService;
 
+    //this annotation is used to map HTTP requests onto a specific handler method (can also be a class)
+    //the url is the place this specific method will be executed.
     @RequestMapping("/booking/add")
     public String addBooking(Model model, Booking booking) {
 
@@ -68,7 +73,7 @@ public class BookingController {
         return "bookings/bookingForm";
     }
 
-
+// handles the HTTP POST request matched with the given URL expression
     @PostMapping("/booking/save")
     public String saveBooking(Booking booking, RedirectAttributes redirectAttributes) {
 

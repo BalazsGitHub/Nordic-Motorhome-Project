@@ -14,16 +14,19 @@ import teletearbies.service.MotorhomeNotFoundException;
 import teletearbies.service.MotorhomeService;
 
 import java.util.List;
-
+//The @controller annotation indicated that a particular class serves the role of a controller.
+//The controller class is responsible for processing incoming HTTP requests, preparing a model,
+// and returning the view to be rendered as a response.
 @Controller
 public class RepairShopController {
-
+    // @Autowired enables us to inject object dependency implicitly. It internally uses setter or constructor injection.
     @Autowired
     private MotorhomeService motorhomeService;
 
     @Autowired
     private BrandService brandService;
 
+// handles the HTTP POST request matched with the given URL expression
     @PostMapping("/repair/save")
     public String saveRepair(Motorhome motorhome, RedirectAttributes redirectAttributes) {
         motorhome.setRepairedTrue();
@@ -33,6 +36,8 @@ public class RepairShopController {
         return "redirect:/repairshop";
     }
 
+    //this annotation is used to map HTTP requests onto a specific handler method (can also be a class)
+    //the url is the place this specific method will be executed.
     @RequestMapping("/repair/edit/{id}")
     public String editRepair(@PathVariable("id") Integer id, Model model, RedirectAttributes redirectAttributes) {
         try {

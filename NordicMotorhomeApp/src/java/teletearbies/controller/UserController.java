@@ -12,13 +12,17 @@ import teletearbies.service.UserNotFoundException;
 import teletearbies.service.UserService;
 
 import java.util.List;
-
+//The @controller annotation indicated that a particular class serves the role of a controller.
+//The controller class is responsible for processing incoming HTTP requests, preparing a model,
+// and returning the view to be rendered as a response.
 @Controller
 public class UserController {
-    //Reference an instance of the UserService
+    // @Autowired enables us to inject object dependency implicitly. It internally uses setter or constructor injection.
     @Autowired
     UserService userService;
 
+    //this annotation is used to map HTTP requests onto a specific handler method (can also be a class)
+    //the url is the place this specific method will be executed.
     @RequestMapping("/user/add")
     public String addUser(Model model) {
         List<User> userList = userService.getAllUsers();
@@ -26,7 +30,7 @@ public class UserController {
         model.addAttribute("user", new User());
         return "users/userForm";
     }
-
+// handles the HTTP POST request matched with the given URL expression
     @PostMapping("/user/save")
     public String saveUser(User user, RedirectAttributes redirectAttributes) {
         userService.saveUser(user);

@@ -13,11 +13,13 @@ import teletearbies.entity.User;
 import teletearbies.service.*;
 
 import java.util.List;
-
+//The @controller annotation indicated that a particular class serves the role of a controller.
+//The controller class is responsible for processing incoming HTTP requests, preparing a model,
+// and returning the view to be rendered as a response.
 @Controller
 public class MainController {
 
-
+    // @Autowired enables us to inject object dependency implicitly. It internally uses setter or constructor injection.
     @Autowired
     private MotorhomeService motorhomeService;
     //dependency injection to use UserService class
@@ -28,13 +30,14 @@ public class MainController {
     @Autowired
     private ExtraService extraService;
 
-    //get the mapping for index page
+    //the @GetMapping annotation handles the HTTP requests matched with the given URL
     @GetMapping(value = {"/", "/login"})
     public String showHomePage() {
         return "login/login";
     }
 
-
+    //this annotation is used to map HTTP requests onto a specific handler method (can also be a class)
+    //the url is the place this specific method will be executed.
     @RequestMapping("/logUserIn")
     public String getAdminDashboard(@RequestParam("username") String username,
                                     @RequestParam("password") String password,
