@@ -136,6 +136,7 @@ public class Booking {
 
 
     public double calculatePrice() {
+
         double price = motorhome.getBrand().getDailyBrandPrice() * numberOfDays;
 
         for (Extra extra : extras
@@ -159,12 +160,14 @@ public class Booking {
     }
 
     public int calculateDay() {
-        if (startDate == null){
+
+        if (startDate == null) {
             return 0;
         }
 
+        //the Period is a class can collect an amount of years, months and days.
+        //the "between" fetch the number years, months and days between TWO dates, and then we select to return the number of days from the calculation.
         Period period = Period.between(startDate, endDate);
-
 
         int daysBetween = period.getDays();
 
