@@ -26,7 +26,7 @@ public class Motorhome {
     private double speedometer;
 
     @Column(nullable = false, unique = false, name = "being_repaired")
-    private boolean repaired;
+    private boolean repaired = true;
 
     @ManyToOne
     //@ManyToOne is another JPA annotation that creates relationships between entity classes
