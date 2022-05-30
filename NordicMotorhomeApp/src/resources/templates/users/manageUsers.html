@@ -1,8 +1,13 @@
 <head th:replace="fragments/tableHeader :: head"></head>
-
 <body>
-<div class="h1">Manage users</div>
-<a class="h4" th:href="@{user/add}">Add new user</a>
+<div class="container-fluid text-center">
+    <div>
+        <div class="h1">Manage users</div>
+        <a class="h4" th:href="@{user/add}">Add new user</a>
+        <div th:if="${message}"class="alert alert-success text-center">
+            [[${message}]]
+        </div>
+    </div>
 <table class="table" table-bordered>
     <thead class="thead-dark"></thead>
     <tr>

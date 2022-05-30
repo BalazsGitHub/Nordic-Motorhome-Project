@@ -77,7 +77,7 @@ public class BookingController {
         booking.setFinalPrice(booking.calculatePrice());
 
         bookingService.saveBooking(booking);
-        redirectAttributes.addFlashAttribute("message", "Booking was saved!");
+        redirectAttributes.addFlashAttribute("message", "Booking has been saved!");
 
         return "redirect:/managebookings";
     }
@@ -86,35 +86,48 @@ public class BookingController {
     public String editBooking(@PathVariable("id") Integer id, Model model, RedirectAttributes redirectAttributes) {
         try {
             Booking booking = bookingService.getBooking(id);
+            //Get the booking, by specifying the id, accordingly to @PathVariable id
             model.addAttribute("booking", booking);
 
             List<Motorhome> motorhomeList = motorhomeService.getAllMotorhomes();
+            //Calls the getAllMotorhomes method which returns a list of users
+            // then we set it to a user list, that is passed into the model
             model.addAttribute("motorhomeList", motorhomeList);
 
             List<Extra> extraList = extraService.getAllExtras();
+            //Calls the getAllExtras method which returns a list of users
+            // then we set it to a user list, that is passed into the model
             model.addAttribute("extraList", extraList);
 
             List<Cancellation> cancellationList = cancellationService.getAllCancellations();
+            //Calls the getAllCancellations method which returns a list of users
+            // then we set it to a user list, that is passed into the model
             model.addAttribute("cancellationList", cancellationList);
 
             List<User> userList = userService.getAllUsers();
+            //Calls the getAllUsers method which returns a list of users
+            // then we set it to a user list, that is passed into the model
             model.addAttribute("userList", userList);
 
             List<Season> seasonList = seasonService.getAllSeasons();
+            //Calls the getAllSeasons method which returns a list of users
+            // then we set it to a user list, that is passed into the model
             model.addAttribute("seasonList", seasonList);
 
             model.addAttribute("fuelHalf", booking.isFuelBelowHalf());
+            //the boolean method is called from the booking, then is passed into the model attribute
 
             model.addAttribute("consentToTerms", booking.isConsentToTerms());
+            //the boolean method is called from the booking, then is passed into the model attribute
 
             return "bookings/bookingForm";
 
         } catch (BookingNotFoundException e) {
+            //in case of an error/ exception we display a customized message that is passed into our booking exception method
             redirectAttributes.addFlashAttribute("message", e.getMessage());
             model.addAttribute("pageTitle", "edit user (ID: " + id + ")");
 
             return "redirect:/managebookings";
-
         }
     }
 
@@ -129,7 +142,7 @@ public class BookingController {
             motorhomeService.saveMotorhome(motorhome);
 
             bookingService.deleteBooking(id);
-            redirectAttributes.addFlashAttribute("message", "Booking was deleted!");
+            redirectAttributes.addFlashAttribute("message", "Booking has been deleted!");
         } catch (BookingNotFoundException e) {
             redirectAttributes.addFlashAttribute("message", e.getMessage());
 
