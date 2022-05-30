@@ -46,7 +46,6 @@ public class MotorhomeController {
     }
 
 
-
     @RequestMapping("/motorhome/edit/{id}")
     public String editMotorhome(@PathVariable("id") Integer id, Model model, RedirectAttributes redirectAttributes) {
         try {
@@ -87,7 +86,7 @@ public class MotorhomeController {
     public String saveRepair(Motorhome motorhome, RedirectAttributes redirectAttributes) {
         motorhome.setRepairedFalse();
         motorhomeService.saveMotorhome(motorhome);
-        redirectAttributes.addFlashAttribute("message", "Motorhome was saved!");
+        redirectAttributes.addFlashAttribute("message", "Motorhome has been sent to the repair shop!");
 
         return "redirect:/managemotorhomes";
     }

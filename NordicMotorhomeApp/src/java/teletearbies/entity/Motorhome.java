@@ -52,15 +52,11 @@ public class Motorhome {
     }
 
     public void setRepairedTrue() {
-        if (!repaired) {
             repaired = true;
-        }
     }
 
     public void setRepairedFalse() {
-        if (repaired) {
             repaired = false;
-        }
     }
 
     public Integer getId() {

@@ -31,7 +31,7 @@ public class RepairShopController {
     public String saveRepair(Motorhome motorhome, RedirectAttributes redirectAttributes) {
         motorhome.setRepairedTrue();
         motorhomeService.saveMotorhome(motorhome);
-        redirectAttributes.addFlashAttribute("message", "Motorhome has been successfully set to repair!");
+        redirectAttributes.addFlashAttribute("message", "Motorhome has been repaired!");
 
         return "redirect:/repairshop";
     }

@@ -4,7 +4,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -135,18 +135,12 @@ public class Booking {
     }
 
     public int calculateDay() {
-
         if (startDate == null) {
             return 0;
         }
 
-        //the Period is a class can collect an amount of years, months and days.
-        //the "between" fetch the number years, months and days between TWO dates, and then we select to return the number of days from the calculation.
-        Period period = Period.between(startDate, endDate);
-
-        int daysBetween = period.getDays();
-
-        return daysBetween;
+        //Calculates days between two local dates
+        return (int) ChronoUnit.DAYS.between(startDate, endDate);
     }
 
     public double calculatePrice() {
