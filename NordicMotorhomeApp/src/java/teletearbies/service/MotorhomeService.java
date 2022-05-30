@@ -11,7 +11,7 @@ import java.util.Optional;
 //the service annotation marks the class as a service provider. It is used on classes that provide functionalities.
 @Service
 public class MotorhomeService {
-    //enables us to inject object dependency implicitly. It internally uses setter or constructor injection.
+    //enables us to inject object dependency implicitly. It internally uses setter, instance variable or constructor injection.
    @Autowired
     private MotorhomeRepository motorhomeRepository;
 

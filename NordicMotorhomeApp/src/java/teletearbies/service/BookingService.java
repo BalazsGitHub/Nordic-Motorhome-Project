@@ -11,7 +11,7 @@ import java.util.Optional;
 @Service
 public class BookingService {
 
-    //enables us to inject object dependency implicitly. It internally uses setter or constructor injection.
+    //enables us to inject object dependency implicitly. It internally uses setter, instance variable or constructor injection.
     @Autowired
     private BookingRepository bookingRepository;
 
