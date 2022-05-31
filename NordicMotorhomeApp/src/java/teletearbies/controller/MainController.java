@@ -41,15 +41,18 @@ public class MainController {
     //the url is the place this specific method will be executed.
     @RequestMapping("/logUserIn")
     public String getAdminDashboard(@RequestParam("username") String username,
+                                    //the @requestparam extracts the input parameters from the form
                                     @RequestParam("password") String password,
                                     Model model) {
+        //then we check if the username and password matches
         User user = userService.getUserByUsername(username);
         if (user == null || !password.equals(user.getPassword())) {
             user = new User();
-
+        //if the username or password don't match/exists, we display an error page
             model.addAttribute("errorMessage", "Wrong username or password!");
             return "login/error";
         } else {
+            //if successful, the user its redirected to the main page
             model.addAttribute("username", user.getUsername());
             return "mainPage/mainPage";
         }
