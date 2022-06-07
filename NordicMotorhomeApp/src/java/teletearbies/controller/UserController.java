@@ -60,6 +60,10 @@ public class UserController {
         } catch (UserNotFoundException e) {
             redirectAttributes.addFlashAttribute("message", e.getMessage());
         }
+     catch (Exception exception) {
+        redirectAttributes.addFlashAttribute("message", "Can't delete user connected to active booking!");
+    }
+
         return "redirect:/manageusers";
     }
 }
