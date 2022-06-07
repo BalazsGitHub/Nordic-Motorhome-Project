@@ -10,6 +10,7 @@ import java.util.Set;
 
 //It is a JPA (Java Persistence API class), meaning: It is a Java thing that allows you to manipulate data between a Java object and a database.
 //@Entity annotation specifies that the class (Booking) is an entity and is mapped to a table.
+//It is basically the structure of our database.
 @Entity
 //@Table annotation is optional, we use it to customize the name of our tables that should be mapped to this entity.
 @Table(name = "booking")

@@ -41,6 +41,9 @@ public class BookingController {
     //the url is the place this specific method will be executed.
     @RequestMapping("/booking/add")
     public String addBooking(Model model, Booking booking) {
+        //In Spring MVC, the model interface is a container that contains data(objects, info from db, etc..)
+        //it puts together our frontend, and backend.
+        //The view(html, etc) visualizes the data that the model contains.
 
         List<Motorhome> motorhomeList = motorhomeService.getAllMotorhomes();
 
@@ -83,6 +86,7 @@ public class BookingController {
     }
 
     @RequestMapping("/booking/edit/{id}")
+    //@PathVariable is used to fetch a value from URL. It is used to identify, in this case, the specific id from the booking.
     public String editBooking(@PathVariable("id") Integer id, Model model, RedirectAttributes redirectAttributes) {
         try {
             Booking booking = bookingService.getBooking(id);
@@ -120,6 +124,8 @@ public class BookingController {
             model.addAttribute("consentToTerms", booking.isConsentToTerms());
             //the boolean method is called from the booking, then is passed into the model attribute
 
+            //once the bookingform, html page is returned,
+            // the save method within it will be invoked (the form contain an action, which has a method "post", so when press save, you post/"send"/update the new info on the db
             return "bookings/bookingForm";
 
         } catch (BookingNotFoundException e) {
@@ -133,14 +139,13 @@ public class BookingController {
 
     @RequestMapping("/booking/delete/{id}")
     public String deleteBooking(@PathVariable("id") Integer id, RedirectAttributes redirectAttributes) {
-
+        //@PathVariable is used to fetch a value from URL. It is used to identify, in this case, the specific id from the booking.
         try {
 
             Booking booking = bookingService.getBooking(id);
             Motorhome motorhome = booking.getMotorhome();
             motorhome.setRepairedFalse();
             motorhomeService.saveMotorhome(motorhome);
-
             bookingService.deleteBooking(id);
             redirectAttributes.addFlashAttribute("message", "Booking has been deleted!");
         } catch (BookingNotFoundException e) {
@@ -152,7 +157,7 @@ public class BookingController {
 
     @RequestMapping("booking/receipt/{id}")
     public String viewReceipt (Model model, @PathVariable("id") Integer id) throws BookingNotFoundException {
-
+        //@PathVariable is used to fetch a value from URL. It is used to identify, in this case, the specific id from the booking.
         int fuelFee = 0;
 
        Booking booking = bookingService.getBooking(id);
