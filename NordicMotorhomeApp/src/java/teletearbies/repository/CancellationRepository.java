@@ -9,7 +9,7 @@ import teletearbies.entity.Cancellation;
 
 
 @Repository
-//@Repository is more like a finder, it allows you to search for a specific type of objects, in this case Booking as well as store them.
+//@Repository is more like a finder, it allows you to search for a specific type of objects, in this case Cancellation as well as store them.
 //It is the actual implementation of the DAO.
 
 //We extend the CrudRepository Interface which provides general CRUD functionalities such as retrieve/search/save/delete.

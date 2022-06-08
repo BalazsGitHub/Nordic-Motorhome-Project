@@ -12,7 +12,7 @@ import java.util.Optional;
 @Service
 public class MotorhomeService {
     //enables us to inject object dependency implicitly. It internally uses setter, instance variable or constructor injection.
-   @Autowired
+    @Autowired
     private MotorhomeRepository motorhomeRepository;
 
     public void saveMotorhome(Motorhome motorhome) {
@@ -34,8 +34,8 @@ public class MotorhomeService {
     public void deleteMotorhome(Integer id) throws MotorhomeNotFoundException {
         Long count = motorhomeRepository.countById(id);
         if (count == null || count == 0) {
-                throw new MotorhomeNotFoundException("Could not find Motorhome with id " + id);
-            }
-            motorhomeRepository.deleteById(id);
+            throw new MotorhomeNotFoundException("Could not find Motorhome with id " + id);
         }
+        motorhomeRepository.deleteById(id);
     }
+}

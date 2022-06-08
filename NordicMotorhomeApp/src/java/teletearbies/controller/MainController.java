@@ -33,13 +33,13 @@ public class MainController {
 
     //the @GetMapping annotation handles the HTTP requests matched with the given URL
     @GetMapping(value = {"/", "/login"})
-    public String showHomePage() {
+    public String index() {
         return "login/login";
     }
 
     //this annotation is used to map HTTP requests onto a specific handler method (can also be a class)
     //the url is the place this specific method will be executed.
-    @RequestMapping("/logUserIn")
+    @RequestMapping("/logUserIn") //Requestparam annotation is used to read the form data and bind it automatically to the parameter present in the provided method
     public String getAdminDashboard(@RequestParam("username") String username,
                                     //the @requestparam extracts the input parameters from the form
                                     @RequestParam("password") String password,

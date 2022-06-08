@@ -14,7 +14,7 @@ import java.util.List;
 
 //The @controller annotation indicated that a particular class serves the role of a controller.
 //The controller class is responsible for processing incoming HTTP requests, preparing a model,
-// and returning the view to be rendered as a response.
+//and returning the view to be rendered as a response.
 @Controller
 public class BookingController {
 
@@ -46,9 +46,9 @@ public class BookingController {
         //The view(html, etc) visualizes the data that the model contains.
 
         List<Motorhome> motorhomeList = motorhomeService.getAllMotorhomes();
-
+        //it connects a for loop and an if statement, if motorhome not repaired it is removed from this temporary list
         motorhomeList.removeIf(motorhome -> !motorhome.isRepaired());
-
+        //gives this list to the model container/object. Model hands it to the form.
         model.addAttribute("motorhomeList", motorhomeList);
 
         List<Extra> extraList = extraService.getAllExtras();
@@ -68,7 +68,7 @@ public class BookingController {
         model.addAttribute("consentToTerms", booking.isConsentToTerms());
 
         model.addAttribute("booking", new Booking());
-
+        //loads the address of an HTML
         return "bookings/bookingForm";
     }
 
@@ -132,7 +132,7 @@ public class BookingController {
             //in case of an error/ exception we display a customized message that is passed into our booking exception method
             redirectAttributes.addFlashAttribute("message", e.getMessage());
             model.addAttribute("pageTitle", "edit user (ID: " + id + ")");
-
+            //redirect loads a URL
             return "redirect:/managebookings";
         }
     }
